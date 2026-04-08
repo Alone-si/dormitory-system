@@ -1,0 +1,40 @@
+# 🎨 前端项目规则 (Frontend Context)
+
+## 🛠 技术栈规范
+- **核心**: Vue 3 (Composition API, `<script setup>`), Vite.
+- **UI库**: Element Plus.
+- **样式**: CSS Variables (`src/styles/theme.css`), Scoped CSS.
+- **请求**: Axios (参考 `src/services` 封装).
+
+## 💻 编码习惯
+1. **必须**使用 `<script setup>` 语法。
+2. **禁止**在组件中写死颜色值，必须使用 CSS 变量 (如 `var(--primary-color)`).
+3. **禁止**使用 `any` 类型（如果是 TS），尽量定义清晰的 Interface。
+4. 修改 UI 库样式时，必须使用 `:deep()` 穿透。
+
+## 🎨 动态视觉设计系统 (Adaptive Design System)
+
+### 核心原则
+1. **布局**: 使用 Flexbox/Grid 保持对齐。
+2. **变量**: 严禁硬编码颜色/数值。
+3. **动效**: 所有交互元素必须有 `transition: all 0.3s`。
+
+### 🎭 风格预设 (Style Presets)
+当我指定某种风格时，请参考以下参数调整 UI：
+
+#### 1. 【默认】小清新 (Fresh Mint) -> *Apple Style*
+- **关键词**: 通透、年轻、毛玻璃、大圆角。
+- **特征**: 背景模糊 (backdrop-filter), 薄荷绿/天空蓝, 圆角 16px+, 柔和投影。
+
+#### 2. 【极简商务】(Corporate Clean) -> *SaaS Style*
+- **关键词**: 专业、克制、高效率、高对比度。
+- **特征**: 深蓝/品牌蓝, 纯白背景(无毛玻璃), 细边框, 小圆角 (4px).
+
+#### 3. 【赛博暗黑】(Cyber Dark) -> *Geek Style*
+- **关键词**: 沉浸、酷炫、数据可视化。
+- **特征**: 霓虹紫/荧光绿, 深黑背景, 发光边框 (Glow).
+
+> **交互指令**:
+> - 未指定时，默认使用 **[小清新]**。
+> - 要求“严肃点”时，切换 **[极简商务]**。
+> - 做“大屏”时，切换 **[赛博暗黑]**。
