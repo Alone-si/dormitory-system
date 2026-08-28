@@ -1,0 +1,318 @@
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.header-left h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 8px 0;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #999;
+  margin: 0;
+}
+
+.submit-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
+}
+
+.glass-card {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  margin-bottom: 16px;
+}
+
+.leaves-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.leave-card {
+  transition: all 0.3s ease;
+}
+
+.leave-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.date {
+  font-size: 13px;
+  color: #999;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.info-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.label {
+  color: #999;
+  min-width: 60px;
+}
+
+.reply-section {
+  margin-top: 8px;
+  padding: 12px;
+  background: rgba(102, 126, 234, 0.05);
+  border-radius: 8px;
+}
+
+.reply-label {
+  font-size: 13px;
+  color: #667eea;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.reply-content {
+  font-size: 14px;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* 类型标签样式 */
+.type-tag {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: white;
+}
+
+.type-personal {
+  background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+}
+
+.type-family {
+  background: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+}
+
+.type-sick {
+  background: linear-gradient(135deg, #f87171 0%, #ef4444 100%);
+}
+
+.type-emergency {
+  background: linear-gradient(135deg, #fb923c 0%, #f97316 100%);
+}
+
+.type-other {
+  background: linear-gradient(135deg, #94a3b8 0%, #64748b 100%);
+}
+
+/* 苹果风格对话框 */
+:deep(.apple-dialog) {
+  border-radius: 16px;
+  overflow: hidden;
+  padding: 0 !important;
+}
+
+:deep(.apple-dialog .el-dialog__header) {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+:deep(.apple-dialog .el-dialog__body) {
+  padding: 24px !important;
+  margin: 0 !important;
+}
+
+:deep(.apple-dialog .el-dialog__footer) {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.custom-dialog-header {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  padding: 24px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.custom-dialog-header .header-content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+}
+
+.custom-dialog-header .header-icon {
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  flex-shrink: 0;
+}
+
+.custom-dialog-header .header-text h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  margin: 0 0 4px 0;
+}
+
+.custom-dialog-header .header-text p {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+}
+
+.custom-dialog-header .close-btn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.custom-dialog-header .close-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* 表单样式 */
+.apple-form :deep(.el-form-item) {
+  margin-bottom: 12px;
+}
+
+.apple-form :deep(.el-form-item__label) {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 4px;
+}
+
+.apple-form :deep(.el-input__wrapper) {
+  border-radius: 10px;
+  padding: 10px 14px;
+  box-shadow: 0 0 0 1px #e5e7eb inset;
+  transition: all 0.2s;
+}
+
+.apple-form :deep(.el-input__wrapper:hover) {
+  box-shadow: 0 0 0 1px #d1d5db inset;
+}
+
+.apple-form :deep(.el-input__wrapper.is-focus) {
+  box-shadow: 0 0 0 2px #667eea inset;
+}
+
+.apple-form :deep(.el-select .el-input__wrapper) {
+  cursor: pointer;
+}
+
+.apple-form :deep(.el-textarea__inner) {
+  border-radius: 10px;
+  padding: 10px 14px;
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.apple-form :deep(.el-textarea__inner:hover) {
+  border-color: #d1d5db;
+}
+
+.apple-form :deep(.el-textarea__inner:focus) {
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.apple-form :deep(.el-date-editor) {
+  width: 100%;
+}
+
+/* 按钮样式 */
+.dialog-footer {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  padding: 20px 24px;
+  border-top: 1px solid #e5e7eb;
+  background: #f9fafb;
+  border-radius: 0 0 16px 16px;
+}
+
+.dialog-footer .el-button {
+  min-width: 100px;
+  border-radius: 10px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.cancel-btn {
+  background: #f5f5f5;
+  border: none;
+  color: #666;
+}
+
+.cancel-btn:hover {
+  background: #e8e8e8;
+  transform: translateY(-1px);
+}
+
+.dialog-footer .submit-btn {
+  background: #3b82f6;
+  border: none;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+}
+
+.dialog-footer .submit-btn:hover {
+  background: #2563eb;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}

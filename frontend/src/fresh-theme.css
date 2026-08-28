@@ -1,0 +1,1200 @@
+:root {
+  --sd-primary: #4b9c84;
+  --sd-primary-strong: #337a65;
+  --sd-primary-soft: #e2f4ed;
+  --sd-primary-softer: #f0faf6;
+  --sd-accent: #5c8fd4;
+  --sd-accent-soft: #eaf2ff;
+  --sd-warning: #e0a13e;
+  --sd-danger: #d96d75;
+  --sd-bg: #f3f7f5;
+  --sd-surface: #ffffff;
+  --sd-surface-soft: #f8fbfa;
+  --sd-text: #20332f;
+  --sd-text-2: #5d6f69;
+  --sd-text-3: #8b9b95;
+  --sd-border: #e1e9e6;
+  --sd-radius: 16px;
+  --sd-radius-lg: 20px;
+  --sd-shadow: 0 10px 30px rgba(48, 89, 76, 0.08);
+  --sd-shadow-hover: 0 16px 40px rgba(48, 89, 76, 0.13);
+  --sd-shadow-soft: 0 4px 18px rgba(48, 89, 76, 0.06);
+
+  --el-color-primary: #4b9c84;
+  --el-color-primary-light-3: #75b9a5;
+  --el-color-primary-light-5: #a0cfc0;
+  --el-color-primary-light-7: #cce5dd;
+  --el-color-primary-light-8: #e2f4ed;
+  --el-color-primary-light-9: #f0faf6;
+  --el-color-primary-dark-2: #337a65;
+  --el-border-radius-base: 10px;
+  --el-border-radius-small: 8px;
+  --el-border-radius-round: 20px;
+  --el-font-size-base: 15px;
+  --el-font-size-small: 13px;
+  --el-font-size-medium: 15px;
+  --el-font-size-large: 16px;
+  --el-font-size-extra-large: 20px;
+  --el-font-weight-primary: 500;
+  --el-text-color-primary: #20332f;
+  --el-text-color-regular: #5d6f69;
+  --el-text-color-secondary: #8b9b95;
+  --el-border-color: #e1e9e6;
+  --el-border-color-light: #eaf1ee;
+  --el-fill-color-blank: #ffffff;
+  --el-bg-color-page: #f3f7f5;
+}
+
+html,
+body,
+#app {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", "PingFang SC", "Microsoft YaHei UI", "Microsoft YaHei", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--sd-text);
+  background: var(--sd-bg);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+#app {
+  min-height: 100vh;
+}
+
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+}
+
+/* Element Plus 细节 */
+.el-button {
+  border-radius: 10px;
+  font-weight: 500;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
+}
+
+.el-button--primary:not(.is-plain) {
+  box-shadow: 0 8px 18px rgba(75, 156, 132, 0.2);
+}
+
+.el-button--primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px rgba(75, 156, 132, 0.24);
+}
+
+.el-input__wrapper,
+.el-select__wrapper,
+.el-textarea__inner {
+  border-radius: 10px;
+  transition: box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.el-input__wrapper.is-focus,
+.el-select__wrapper.is-focused {
+  box-shadow: 0 0 0 3px rgba(75, 156, 132, 0.12) inset;
+}
+
+.el-dialog {
+  border-radius: 18px !important;
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(32, 51, 47, 0.18) !important;
+}
+
+.el-dialog__header {
+  padding: 22px 24px 16px !important;
+  border-bottom: 1px solid var(--sd-border) !important;
+  background: var(--sd-surface-soft) !important;
+}
+
+.el-dialog__title {
+  color: var(--sd-text) !important;
+  font-size: 18px !important;
+  font-weight: 600 !important;
+}
+
+.el-dialog__body {
+  padding: 24px !important;
+  background: var(--sd-surface);
+}
+
+.el-dialog__footer {
+  padding: 16px 24px !important;
+  border-top: 1px solid var(--sd-border) !important;
+  background: var(--sd-surface-soft);
+}
+
+.el-message-box {
+  border-radius: 18px !important;
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(32, 51, 47, 0.18) !important;
+}
+
+.el-table {
+  --el-table-border-color: #eaf1ee;
+  --el-table-header-bg-color: #f6faf8;
+  --el-table-header-text-color: #4f635d;
+  --el-table-row-hover-bg-color: #f4faf7;
+  color: var(--sd-text-2);
+}
+
+.el-table th.el-table__cell {
+  background: #f6faf8 !important;
+  color: #4f635d !important;
+  font-weight: 600 !important;
+}
+
+.el-pagination.is-background .el-pager li.is-active {
+  background-color: var(--sd-primary) !important;
+}
+
+/* 通用标题与卡片 */
+body .view-header h2,
+body .page-header h2,
+body .dashboard-header h1,
+body .profile-header h2 {
+  color: var(--sd-text) !important;
+  font-weight: 650 !important;
+  letter-spacing: -0.01em;
+}
+
+body .subtitle {
+  color: var(--sd-text-3) !important;
+}
+
+/* 学生端布局 */
+body .student-layout {
+  background: var(--sd-bg);
+}
+
+body .student-layout .top-nav {
+  height: 72px;
+  padding: 0 30px;
+  background: rgba(255, 255, 255, 0.92);
+  border-bottom: 1px solid var(--sd-border);
+  box-shadow: none;
+  backdrop-filter: blur(16px);
+}
+
+body .student-layout .logo-wrapper {
+  width: 42px;
+  height: 42px;
+  background: linear-gradient(135deg, #69bda6 0%, #4b9c84 100%);
+  border-radius: 13px;
+  box-shadow: 0 8px 18px rgba(75, 156, 132, 0.2);
+}
+
+body .student-layout .main-title {
+  color: var(--sd-text);
+  font-size: 19px;
+  font-weight: 650;
+}
+
+body .student-layout .sub-title {
+  color: var(--sd-text-3);
+  font-weight: 400;
+}
+
+body .student-layout .school-label {
+  color: var(--sd-text-3);
+}
+
+body .student-layout .el-tag {
+  border-radius: 999px;
+  padding: 0 12px;
+  height: 30px;
+  line-height: 28px;
+  font-weight: 500;
+}
+
+body .student-layout .menu-btn {
+  background: var(--sd-surface-soft);
+  border: 1px solid var(--sd-border);
+  border-radius: 11px;
+  color: var(--sd-text-2);
+}
+
+body .student-layout .main-content {
+  background: var(--sd-bg);
+}
+
+body .student-layout .content-wrapper {
+  max-width: 1120px;
+  padding: 28px 24px 40px;
+}
+
+body .student-layout .user-card {
+  background: linear-gradient(135deg, #e4f6ef 0%, #edf5ff 100%);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: var(--sd-radius-lg);
+  padding: 22px 24px;
+  margin-bottom: 20px;
+  box-shadow: var(--sd-shadow-soft);
+}
+
+body .student-layout .avatar {
+  width: 58px;
+  height: 58px;
+  background: linear-gradient(135deg, #69bda6 0%, #4b9c84 100%);
+  box-shadow: 0 8px 18px rgba(75, 156, 132, 0.22);
+}
+
+body .student-layout .user-details h2 {
+  color: var(--sd-text);
+  font-weight: 650;
+}
+
+body .student-layout .meta {
+  color: var(--sd-text-2);
+}
+
+body .student-layout .tab-nav {
+  background: var(--sd-surface);
+  border: 1px solid var(--sd-border);
+  border-radius: var(--sd-radius);
+  padding: 8px;
+  margin-bottom: 20px;
+  gap: 6px;
+  box-shadow: var(--sd-shadow-soft);
+}
+
+body .student-layout .tab-item {
+  border-radius: 11px;
+  color: var(--sd-text-2);
+  font-weight: 500;
+}
+
+body .student-layout .tab-item:hover {
+  background: var(--sd-surface-soft);
+  color: var(--sd-primary-strong);
+}
+
+body .student-layout .tab-item.router-link-active {
+  background: var(--sd-primary-soft);
+  color: var(--sd-primary-strong);
+  font-weight: 600;
+}
+
+/* 学生首页 */
+body .student-home .content-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
+}
+
+body .student-home .personal-info-card {
+  grid-column: span 7;
+}
+
+body .student-home .roommates-card {
+  grid-column: span 5;
+}
+
+body .student-home .status-card {
+  grid-column: span 5;
+}
+
+body .student-home .rules-card {
+  grid-column: span 7;
+}
+
+body .student-home .section-card,
+body .student-home .rules-card {
+  border-radius: var(--sd-radius);
+  border: 1px solid var(--sd-border);
+  box-shadow: var(--sd-shadow-soft);
+}
+
+body .student-home .section-card {
+  background: var(--sd-surface);
+  padding: 22px;
+}
+
+body .student-home .section-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--sd-shadow-hover);
+}
+
+body .student-home .section-header {
+  color: var(--sd-primary);
+  margin-bottom: 16px;
+}
+
+body .student-home .section-header h3,
+body .student-home .section-card h3,
+body .student-home .rules-card h3 {
+  color: var(--sd-text);
+  font-size: 17px;
+  font-weight: 650;
+}
+
+body .student-home .avatar-section {
+  background: var(--sd-primary-softer);
+  border: 1px solid #dff2ea;
+  border-radius: 14px;
+  padding: 14px;
+}
+
+body .student-home .personal-avatar,
+body .student-home .roommate-avatar {
+  background: linear-gradient(135deg, #69bda6 0%, #4b9c84 100%);
+  box-shadow: 0 8px 18px rgba(75, 156, 132, 0.18);
+}
+
+body .student-home .basic-info h4,
+body .student-home .roommate-name {
+  color: var(--sd-text);
+}
+
+body .student-home .basic-info p,
+body .student-home .roommate-id,
+body .student-home .roommate-gender {
+  color: var(--sd-text-2);
+}
+
+body .student-home .info-item .label,
+body .student-home .status-item .label {
+  color: var(--sd-text-3);
+}
+
+body .student-home .info-item .value,
+body .student-home .status-item .value {
+  color: var(--sd-text);
+}
+
+body .student-home .status-item .value.highlight {
+  color: var(--sd-primary-strong);
+}
+
+body .student-home .roommate-card {
+  border: 1px solid var(--sd-border);
+  border-radius: 14px;
+  background: var(--sd-surface-soft);
+}
+
+body .student-home .roommate-card:hover {
+  border-color: #b9dccf;
+  box-shadow: var(--sd-shadow-hover);
+}
+
+body .student-home .rules-card {
+  background: linear-gradient(135deg, #4b9c84 0%, #5c8fd4 100%);
+  border: none;
+  color: white;
+  box-shadow: 0 12px 30px rgba(75, 156, 132, 0.2);
+}
+
+body .student-home .rules-card h3 {
+  color: white;
+}
+
+body .student-home .rules-list li {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+/* 学生列表页 */
+body .my-repairs-view .page-header,
+body .my-leaves-view .page-header,
+body .notices-view .page-header {
+  margin-bottom: 20px;
+}
+
+body .my-repairs-view .header-left h2,
+body .my-leaves-view .header-left h2,
+body .notices-view .header-left h2 {
+  font-size: 26px;
+  font-weight: 650;
+  color: var(--sd-text);
+}
+
+body .my-repairs-view .repair-card,
+body .my-leaves-view .leave-card,
+body .notices-view .notice-card {
+  background: var(--sd-surface);
+  border: 1px solid var(--sd-border);
+  border-radius: var(--sd-radius);
+  box-shadow: var(--sd-shadow-soft);
+}
+
+body .my-repairs-view .repair-card:hover,
+body .my-leaves-view .leave-card:hover,
+body .notices-view .notice-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--sd-shadow-hover);
+  border-color: #c7ddd5;
+}
+
+body .my-repairs-view .card-header,
+body .my-leaves-view .card-header,
+body .notices-view .card-header {
+  border-bottom: 1px solid var(--sd-border);
+}
+
+body .my-repairs-view .label,
+body .my-leaves-view .label,
+body .notices-view .date {
+  color: var(--sd-text-3);
+}
+
+body .my-repairs-view .reply-section,
+body .my-leaves-view .reply-section {
+  background: var(--sd-primary-softer);
+  border-radius: 10px;
+  border-left: 3px solid var(--sd-primary);
+}
+
+body .my-repairs-view .reply-label,
+body .my-leaves-view .reply-label {
+  color: var(--sd-primary-strong);
+}
+
+body .my-repairs-view .submit-btn,
+body .my-leaves-view .submit-btn {
+  border-radius: 11px;
+  box-shadow: 0 8px 18px rgba(75, 156, 132, 0.18);
+}
+
+/* 学生个人设置 */
+body .profile-view .profile-card {
+  background: var(--sd-surface);
+  border: 1px solid var(--sd-border);
+  border-radius: var(--sd-radius);
+  box-shadow: var(--sd-shadow-soft);
+  overflow: hidden;
+}
+
+body .profile-view .card-header {
+  background: var(--sd-surface-soft);
+  border-bottom: 1px solid var(--sd-border);
+}
+
+body .profile-view .card-header h3 {
+  color: var(--sd-text);
+  font-weight: 650;
+}
+
+body .profile-view .info-item {
+  border-bottom: 1px solid var(--sd-border);
+}
+
+body .profile-view .info-item label {
+  color: var(--sd-text-2);
+}
+
+body .profile-view .readonly,
+body .profile-view .editable-text {
+  color: var(--sd-text);
+}
+
+body .profile-view .default-avatar {
+  background: linear-gradient(135deg, #69bda6 0%, #4b9c84 100%);
+}
+
+/* 管理端布局 */
+body .admin-layout {
+  background: var(--sd-bg);
+}
+
+body .admin-layout .sidebar {
+  width: 236px;
+  background: var(--sd-surface);
+  border-right: 1px solid var(--sd-border);
+  box-shadow: none;
+}
+
+body .admin-layout .logo-section {
+  padding: 24px 20px;
+  border-bottom: 1px solid var(--sd-border);
+  color: var(--sd-text);
+}
+
+body .admin-layout .logo-icon {
+  color: var(--sd-primary);
+}
+
+body .admin-layout .logo-section h2 {
+  color: var(--sd-text);
+  font-size: 19px;
+  font-weight: 650;
+}
+
+body .admin-layout .nav-menu {
+  padding: 14px 12px;
+}
+
+body .admin-layout .nav-item {
+  color: var(--sd-text-2);
+  border-radius: 11px;
+  font-weight: 500;
+  margin-bottom: 5px;
+  padding: 11px 14px;
+  transition: background-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
+}
+
+body .admin-layout .nav-item:hover {
+  background: var(--sd-surface-soft);
+  color: var(--sd-text);
+}
+
+body .admin-layout .nav-item.active {
+  background: var(--sd-primary-soft);
+  color: var(--sd-primary-strong);
+  font-weight: 600;
+}
+
+body .admin-layout .sidebar-footer {
+  border-top: 1px solid var(--sd-border);
+  padding: 14px;
+}
+
+body .admin-layout .logout-btn {
+  background: var(--sd-surface-soft);
+  border: 1px solid var(--sd-border);
+  color: var(--sd-text-2);
+  border-radius: 11px;
+}
+
+body .admin-layout .logout-btn:hover {
+  background: #fff2f2;
+  border-color: #f0c6c9;
+  color: var(--sd-danger);
+}
+
+body .admin-layout .top-bar {
+  height: 68px;
+  background: rgba(255, 255, 255, 0.92);
+  border-bottom: 1px solid var(--sd-border);
+  box-shadow: none;
+  padding: 0 28px;
+  backdrop-filter: blur(16px);
+}
+
+body .admin-layout .current-page {
+  color: var(--sd-text);
+  font-size: 17px;
+  font-weight: 650;
+}
+
+body .admin-layout .user-name {
+  color: var(--sd-text-2);
+}
+
+body .admin-layout .user-avatar {
+  background: linear-gradient(135deg, #69bda6 0%, #4b9c84 100%);
+  box-shadow: 0 6px 14px rgba(75, 156, 132, 0.18);
+}
+
+body .admin-layout .content-area {
+  background: var(--sd-bg);
+  overflow: auto;
+}
+
+/* 管理端仪表盘 */
+body .dashboard-container {
+  padding: 28px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+body .dashboard-container .dashboard-header {
+  margin-bottom: 24px;
+}
+
+body .dashboard-container .dashboard-header h1 {
+  font-size: 28px;
+  font-weight: 650;
+  color: var(--sd-text);
+  margin-bottom: 6px;
+}
+
+body .dashboard-container .dashboard-header p {
+  color: var(--sd-text-2);
+}
+
+body .dashboard-container .stat-card,
+body .dashboard-container .chart-card,
+body .dashboard-container .quick-actions {
+  background: var(--sd-surface);
+  border: 1px solid var(--sd-border);
+  border-radius: var(--sd-radius);
+  box-shadow: var(--sd-shadow-soft);
+}
+
+body .dashboard-container .stat-card {
+  padding: 20px;
+}
+
+body .dashboard-container .stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--sd-shadow-hover);
+}
+
+body .dashboard-container .stat-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 16px;
+  background: var(--sd-primary-soft) !important;
+  color: var(--sd-primary-strong) !important;
+  margin-right: 16px;
+}
+
+body .dashboard-container .stat-label {
+  color: var(--sd-text-3);
+}
+
+body .dashboard-container .stat-value {
+  color: var(--sd-text);
+}
+
+body .dashboard-container .chart-card h3,
+body .dashboard-container .quick-actions h3 {
+  color: var(--sd-text);
+  font-weight: 650;
+}
+
+body .dashboard-container .action-grid {
+  gap: 14px;
+}
+
+body .dashboard-container .quick-action-btn {
+  border-radius: 14px;
+  box-shadow: var(--sd-shadow-soft);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+body .dashboard-container .quick-action-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--sd-shadow-hover);
+}
+
+body .dashboard-container .students-btn,
+body .dashboard-container .rooms-btn,
+body .dashboard-container .repairs-btn,
+body .dashboard-container .leaves-btn {
+  background: var(--sd-surface-soft) !important;
+  color: var(--sd-text) !important;
+  border: 1px solid var(--sd-border) !important;
+}
+
+/* 管理端卡片列表页 */
+body .students-view .student-card,
+body .rooms-view .room-card,
+body .repairs-view .repair-card,
+body .leaves-view .leave-card,
+body .notices-view .notice-card,
+body .buildings-view .building-card {
+  background: var(--sd-surface);
+  border: 1px solid var(--sd-border);
+  border-radius: var(--sd-radius);
+  box-shadow: var(--sd-shadow-soft);
+}
+
+body .students-view .student-card:hover,
+body .rooms-view .room-card:hover,
+body .repairs-view .repair-card:hover,
+body .leaves-view .leave-card:hover,
+body .notices-view .notice-card:hover,
+body .buildings-view .building-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--sd-shadow-hover);
+  border-color: #c7ddd5;
+}
+
+body .repairs-view .filter-buttons,
+body .leaves-view .filter-buttons {
+  background: var(--sd-surface);
+  border: 1px solid var(--sd-border);
+  box-shadow: var(--sd-shadow-soft);
+}
+
+body .repairs-view .filter-btn,
+body .leaves-view .filter-btn {
+  color: var(--sd-text-2);
+  border-radius: 10px;
+}
+
+body .repairs-view .filter-btn.active,
+body .leaves-view .filter-btn.active {
+  background: var(--sd-primary-soft);
+  color: var(--sd-primary-strong);
+  box-shadow: none;
+}
+
+body .admins-view {
+  background: var(--sd-bg);
+}
+
+body .admins-view .table-container {
+  background: var(--sd-surface);
+  border: 1px solid var(--sd-border);
+  border-radius: var(--sd-radius);
+  padding: 10px;
+  box-shadow: var(--sd-shadow-soft);
+  overflow: hidden;
+}
+
+body .admins-view .el-table {
+  border-radius: 12px;
+}
+
+body .admins-view .el-table th.el-table__cell {
+  background: var(--sd-surface-soft) !important;
+}
+
+/* 移动端适配 */
+@media (max-width: 900px) {
+  body .admin-layout .sidebar {
+    width: 76px;
+  }
+
+  body .admin-layout .logo-section {
+    padding: 18px 14px;
+    justify-content: center;
+  }
+
+  body .admin-layout .logo-section h2,
+  body .admin-layout .nav-item span,
+  body .admin-layout .logout-btn span {
+    display: none;
+  }
+
+  body .admin-layout .nav-item,
+  body .admin-layout .logout-btn {
+    justify-content: center;
+    padding: 12px;
+  }
+
+  body .student-home .personal-info-card,
+  body .student-home .roommates-card,
+  body .student-home .status-card,
+  body .student-home .rules-card {
+    grid-column: span 12;
+  }
+
+  body .student-layout .top-nav {
+    padding: 0 20px;
+  }
+
+  body .dashboard-container .action-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  body .student-layout .content-wrapper,
+  body .dashboard-container {
+    padding: 18px 14px 28px;
+  }
+
+  body .student-layout .tab-nav {
+    overflow-x: auto;
+  }
+
+  body .student-layout .tab-item {
+    flex: 0 0 auto;
+    padding: 10px 14px;
+  }
+
+  body .student-layout .user-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+}
+
+/* 顶部栏附加信息 */
+body .student-layout .date-chip,
+body .admin-layout .date-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: var(--sd-surface-soft);
+  border: 1px solid var(--sd-border);
+  color: var(--sd-text-2);
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+body .admin-layout .breadcrumb {
+  gap: 14px;
+}
+
+body .admin-layout .role-tag {
+  border-radius: 999px;
+  height: 28px;
+  line-height: 26px;
+  font-size: 12px;
+}
+
+@media (max-width: 760px) {
+  body .student-layout .date-chip {
+    display: none;
+  }
+}
+
+/* 管理端业务页布局优化：卡片更透气，行动区域更清晰 */
+body .students-view .students-grid {
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)) !important;
+  gap: 16px !important;
+}
+
+body .rooms-view .rooms-grid {
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)) !important;
+  gap: 14px !important;
+}
+
+body .repairs-view .repairs-grid,
+body .leaves-view .leaves-grid,
+body .notices-view .notices-grid,
+body .buildings-view .buildings-grid {
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
+  gap: 16px !important;
+}
+
+body .students-view .view-header,
+body .rooms-view .view-header,
+body .repairs-view .view-header,
+body .leaves-view .view-header,
+body .notices-view .view-header,
+body .buildings-view .view-header,
+body .admins-view .view-header {
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+body .students-view .header-actions,
+body .rooms-view .header-filters,
+body .repairs-view .filter-buttons,
+body .leaves-view .filter-buttons,
+body .admins-view .header-actions {
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+
+/* Responsive dialog and message-box guard */
+html body .el-overlay-dialog .el-dialog:not(.is-fullscreen),
+html body .el-overlay .el-overlay-dialog .el-dialog:not(.is-fullscreen) {
+  max-width: calc(100vw - 24px) !important;
+  max-height: calc(100vh - 24px) !important;
+}
+
+html body .el-overlay-dialog .el-dialog:not(.is-fullscreen) .el-dialog__body,
+html body .el-overlay .el-overlay-dialog .el-dialog:not(.is-fullscreen) .el-dialog__body {
+  max-height: calc(100vh - 160px) !important;
+  overflow-y: auto !important;
+}
+
+html body .el-overlay-message-box .el-message-box,
+html body .el-overlay .el-message-box {
+  max-width: calc(100vw - 24px) !important;
+  max-height: calc(100vh - 24px) !important;
+}
+
+html body .el-overlay-message-box .el-message-box__content,
+html body .el-overlay .el-message-box__content {
+  max-height: calc(100vh - 160px) !important;
+  overflow-y: auto !important;
+}
+
+html body .el-overlay-dialog .el-dialog__footer,
+html body .el-overlay-message-box .el-message-box__btns,
+html body .dialog-footer,
+html body .dialog-footer-buttons,
+html body .apple-dialog-footer {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 10px !important;
+}
+
+html body .el-overlay-dialog .el-dialog__footer {
+  justify-content: flex-end !important;
+}
+
+html body .el-overlay-message-box .el-message-box__btns {
+  justify-content: center !important;
+}
+
+html body .el-overlay-dialog .el-dialog__footer .el-button,
+html body .el-overlay-message-box .el-message-box__btns .el-button,
+html body .dialog-footer .el-button,
+html body .dialog-footer-buttons .el-button,
+html body .apple-dialog-footer .apple-btn {
+  min-height: 40px !important;
+  line-height: 1.4 !important;
+  white-space: normal !important;
+  max-width: 100% !important;
+}
+
+html body .el-overlay-message-box .el-message-box__btns .el-button,
+html body .el-overlay .el-message-box__btns .el-button {
+  flex: 1 1 auto !important;
+  min-width: 96px !important;
+  max-width: none !important;
+}
+
+@media (max-width: 640px) {
+  html body .el-overlay-dialog .el-dialog:not(.is-fullscreen),
+  html body .el-overlay .el-overlay-dialog .el-dialog:not(.is-fullscreen) {
+    width: calc(100vw - 24px) !important;
+    --el-dialog-margin-top: max(12px, env(safe-area-inset-top)) !important;
+  }
+
+  html body .el-overlay-message-box .el-message-box,
+  html body .el-overlay .el-message-box {
+    width: calc(100vw - 24px) !important;
+  }
+
+  html body .el-overlay-dialog .el-dialog__footer,
+  html body .el-overlay-message-box .el-message-box__btns,
+  html body .dialog-footer,
+  html body .dialog-footer-buttons,
+  html body .apple-dialog-footer {
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+  }
+
+  html body .el-overlay-dialog .el-dialog__footer .el-button,
+  html body .el-overlay-message-box .el-message-box__btns .el-button,
+  html body .dialog-footer .el-button,
+  html body .dialog-footer-buttons .el-button,
+  html body .apple-dialog-footer .apple-btn {
+    flex: 1 1 calc(50% - 8px) !important;
+    min-width: 0 !important;
+  }
+}
+
+@media (max-width: 360px) {
+  html body .el-overlay-dialog .el-dialog__footer .el-button,
+  html body .el-overlay-message-box .el-message-box__btns .el-button,
+  html body .dialog-footer .el-button,
+  html body .dialog-footer-buttons .el-button,
+  html body .apple-dialog-footer .apple-btn {
+    flex-basis: 100% !important;
+  }
+}
+
+/* ============================================
+   对话框/按钮自适应与外观统一
+   ============================================ */
+html body .el-overlay-dialog .el-dialog:not(.is-fullscreen),
+html body .el-overlay .el-overlay-dialog .el-dialog:not(.is-fullscreen) {
+  max-width: min(calc(100vw - 32px), var(--el-dialog-width, 640px)) !important;
+  max-height: calc(100vh - 32px) !important;
+  overflow: hidden !important;
+  border-radius: 18px !important;
+  box-shadow: 0 24px 60px rgba(32, 51, 47, 0.18) !important;
+}
+
+html body .el-overlay-message-box .el-message-box,
+html body .el-overlay .el-message-box {
+  max-width: min(calc(100vw - 32px), var(--el-messagebox-width, 480px)) !important;
+  max-height: calc(100vh - 32px) !important;
+  overflow: hidden !important;
+  border-radius: 18px !important;
+}
+
+html body .el-overlay-dialog .el-dialog:not(.is-fullscreen) .el-dialog__body,
+html body .el-overlay .el-overlay-dialog .el-dialog:not(.is-fullscreen) .el-dialog__body {
+  max-height: calc(100vh - 168px) !important;
+  overflow-y: auto !important;
+  overscroll-behavior: contain;
+}
+
+html body .el-overlay-message-box .el-message-box__content,
+html body .el-overlay .el-message-box__content {
+  max-height: calc(100vh - 168px) !important;
+  overflow-y: auto !important;
+  overscroll-behavior: contain;
+}
+
+/* 统一对话框底部按钮区 */
+html body .el-overlay-dialog .el-dialog__footer,
+html body .el-overlay-message-box .el-message-box__btns,
+html body .dialog-footer,
+html body .dialog-footer-buttons,
+html body .apple-dialog-footer {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: 10px !important;
+  padding: 14px 18px !important;
+  background: var(--sd-surface-soft) !important;
+  border-top: 1px solid var(--sd-border) !important;
+}
+
+html body .el-overlay-dialog .el-dialog__footer,
+html body .dialog-footer,
+html body .dialog-footer-buttons {
+  justify-content: flex-end !important;
+}
+
+html body .el-overlay-message-box .el-message-box__btns {
+  justify-content: center !important;
+}
+
+html body .apple-dialog-footer {
+  justify-content: stretch !important;
+}
+
+/* 统一对话框按钮尺寸与换行 */
+html body .el-overlay-dialog .el-dialog__footer .el-button,
+html body .el-overlay-message-box .el-message-box__btns .el-button,
+html body .dialog-footer .el-button,
+html body .dialog-footer-buttons .el-button,
+html body .dialog-footer .dialog-btn,
+html body .apple-dialog-footer .apple-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  min-height: 40px !important;
+  padding: 9px 16px !important;
+  border-radius: 10px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  line-height: 1.35 !important;
+  white-space: normal !important;
+  box-sizing: border-box !important;
+}
+
+/* 主要确认按钮统一为绿色主题 */
+html body .el-overlay-dialog .el-dialog__footer .el-button--primary,
+html body .dialog-footer .el-button--primary,
+html body .dialog-footer-buttons .el-button--primary,
+html body .dialog-footer .dialog-btn.confirm-btn,
+html body .apple-dialog-footer .apple-btn.primary {
+  background: linear-gradient(135deg, #69bda6 0%, #4b9c84 100%) !important;
+  border-color: transparent !important;
+  color: #ffffff !important;
+  box-shadow: 0 8px 18px rgba(75, 156, 132, 0.2) !important;
+}
+
+html body .el-overlay-dialog .el-dialog__footer .el-button--primary:hover,
+html body .dialog-footer .el-button--primary:hover,
+html body .dialog-footer-buttons .el-button--primary:hover,
+html body .dialog-footer .dialog-btn.confirm-btn:hover,
+html body .apple-dialog-footer .apple-btn.primary:hover {
+  background: linear-gradient(135deg, #78c6b1 0%, #337a65 100%) !important;
+  box-shadow: 0 12px 24px rgba(75, 156, 132, 0.24) !important;
+  transform: translateY(-1px);
+}
+
+/* 普通/取消按钮统一为中性色 */
+html body .el-overlay-dialog .el-dialog__footer .el-button--default,
+html body .dialog-footer .el-button--default,
+html body .dialog-footer-buttons .el-button--default,
+html body .dialog-footer .dialog-btn.cancel-btn,
+html body .apple-dialog-footer .apple-btn.cancel {
+  background: var(--sd-surface) !important;
+  color: var(--sd-text-2) !important;
+  border-color: var(--sd-border) !important;
+  box-shadow: none !important;
+}
+
+/* 自定义对话框头部统一为品牌绿色 */
+html body .el-overlay-dialog .el-dialog .custom-dialog-header {
+  background: linear-gradient(135deg, #69bda6 0%, #4b9c84 100%) !important;
+  padding: 18px 20px !important;
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: space-between !important;
+  gap: 14px !important;
+}
+
+html body .el-overlay-dialog .el-dialog .custom-dialog-header .header-content {
+  display: flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+  flex: 1 !important;
+  min-width: 0 !important;
+}
+
+html body .el-overlay-dialog .el-dialog .custom-dialog-header .header-icon {
+  width: 42px !important;
+  height: 42px !important;
+  border-radius: 12px !important;
+  background: rgba(255, 255, 255, 0.18) !important;
+  flex-shrink: 0 !important;
+}
+
+html body .el-overlay-dialog .el-dialog .custom-dialog-header .header-text h3 {
+  margin: 0 0 4px 0 !important;
+  color: #ffffff !important;
+  font-size: 17px !important;
+  font-weight: 700 !important;
+  line-height: 1.25 !important;
+}
+
+html body .el-overlay-dialog .el-dialog .custom-dialog-header .header-text p {
+  margin: 0 !important;
+  color: rgba(255, 255, 255, 0.88) !important;
+  font-size: 13px !important;
+  line-height: 1.4 !important;
+  word-break: break-word;
+}
+
+html body .el-overlay-dialog .el-dialog .custom-dialog-header .close-btn {
+  width: 34px !important;
+  height: 34px !important;
+  border-radius: 10px !important;
+  background: rgba(255, 255, 255, 0.18) !important;
+  color: #ffffff !important;
+  flex-shrink: 0 !important;
+}
+
+/* 小屏下对话框按钮更稳定 */
+@media (max-width: 640px) {
+  html body .el-overlay-dialog .el-dialog:not(.is-fullscreen),
+  html body .el-overlay .el-overlay-dialog .el-dialog:not(.is-fullscreen) {
+    width: calc(100vw - 24px) !important;
+    max-width: calc(100vw - 24px) !important;
+    --el-dialog-margin-top: max(12px, env(safe-area-inset-top)) !important;
+  }
+
+  html body .el-overlay-message-box .el-message-box,
+  html body .el-overlay .el-message-box {
+    width: calc(100vw - 24px) !important;
+    max-width: calc(100vw - 24px) !important;
+  }
+
+  html body .el-overlay-dialog .el-dialog__footer,
+  html body .el-overlay-message-box .el-message-box__btns,
+  html body .dialog-footer,
+  html body .dialog-footer-buttons,
+  html body .apple-dialog-footer {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  html body .el-overlay-dialog .el-dialog__footer .el-button,
+  html body .el-overlay-message-box .el-message-box__btns .el-button,
+  html body .dialog-footer .el-button,
+  html body .dialog-footer-buttons .el-button,
+  html body .dialog-footer .dialog-btn,
+  html body .apple-dialog-footer .apple-btn {
+    flex: 1 1 calc(50% - 6px) !important;
+  }
+}
+
+@media (max-width: 360px) {
+  html body .el-overlay-dialog .el-dialog__footer .el-button,
+  html body .el-overlay-message-box .el-message-box__btns .el-button,
+  html body .dialog-footer .el-button,
+  html body .dialog-footer-buttons .el-button,
+  html body .dialog-footer .dialog-btn,
+  html body .apple-dialog-footer .apple-btn {
+    flex-basis: 100% !important;
+  }
+}

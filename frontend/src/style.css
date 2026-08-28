@@ -1,0 +1,857 @@
+:root {
+  /* 主色调 */
+  --primary-color: #3b82f6;
+  --primary-hover: #2563eb;
+  --primary-light: #dbeafe;
+  
+  /* 中性色 */
+  --text-primary: #111827; /* 更深的黑色 */
+  --text-secondary: #374151;
+  --text-tertiary: #6b7280;
+  --border-color: #e5e7eb;
+  --bg-gray: #f3f4f6;
+  
+  /* 功能色 */
+  --success: #10b981;
+  --warning: #f59e0b;
+  --error: #ef4444;
+  --info: #3b82f6;
+  
+  /* ============================================
+     Element Plus 全局变量强力覆盖
+     ============================================ */
+  --el-font-size-base: 16px !important;
+  --el-font-size-small: 14px !important;
+  --el-font-size-medium: 16px !important;
+  --el-font-size-large: 18px !important;
+  --el-font-size-extra-large: 22px !important;
+  
+  --el-font-weight-primary: 600 !important;
+  
+  --el-text-color-primary: #111827 !important; /* 加深文字颜色 */
+  --el-text-color-regular: #374151 !important;
+  
+  /* 圆角与阴影 */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  /* 优先使用 Microsoft YaHei UI，在 Windows 上渲染更好 */
+  font-family: "Microsoft YaHei UI", "Microsoft YaHei", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: auto; /* 移除 antialiased，让文字更粗 */
+  color: var(--text-primary);
+  background-color: var(--bg-gray);
+  font-size: 16px;
+  font-weight: 600; /* 全局加粗 */
+  line-height: 1.6; /* 增加行高，缓解拥挤感 */
+}
+
+/* 通用按钮样式 */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* 通用卡片样式 */
+.card {
+  background: white;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: 24px;
+  transition: box-shadow 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+/* 通用输入框样式 */
+.input {
+  width: 100%;
+  padding: 12px 16px; /* 增大输入框内边距 */
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  font-size: 16px; /* 增大输入框字号 */
+  font-weight: 500;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+/* 通用容器 */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ============================================
+   Element Plus 全局字号放大覆盖
+   ============================================ */
+
+/* 表格字号 */
+.el-table {
+  font-size: 17px !important;
+  --el-table-header-text-color: #000000 !important; /* 表头纯黑 */
+}
+.el-table th.el-table__cell {
+  font-weight: 800 !important; /* 表头特粗 */
+  font-size: 17px !important;
+}
+.el-table .cell {
+  line-height: 1.6 !important; /* 增加行高，更易阅读 */
+}
+
+/* 按钮字号 */
+.el-button {
+  font-size: 16px !important;
+  font-weight: 600 !important;
+}
+.el-button--small {
+  font-size: 15px !important;
+}
+
+/* 输入框字号 */
+.el-input {
+  font-size: 16px !important;
+  --el-input-height: 40px !important; /* 增高输入框 */
+}
+.el-input__inner {
+  font-size: 16px !important;
+  font-weight: 500 !important;
+}
+
+/* 标签字号 */
+.el-tag {
+  font-size: 15px !important;
+  font-weight: 600 !important;
+}
+
+/* 侧边栏菜单字号 */
+.el-menu-item {
+  font-size: 17px !important;
+  font-weight: 500 !important;
+}
+.el-sub-menu__title {
+  font-size: 17px !important;
+  font-weight: 600 !important;
+}
+
+/* ============================================
+   针对特定页面的强力覆盖 (Hotfix for Admin Views)
+   ============================================ */
+
+/* 统一覆盖所有管理页面的表格样式 */
+.leaves-view .el-table,
+.notices-view .el-table,
+.repairs-view .el-table {
+  font-size: 18px !important; /* 进一步加大 */
+  border-bottom: none !important; /* 移除底部边框 */
+  --el-table-border-color: transparent !important; /* 让边框透明 */
+}
+
+/* 移除 Element Plus 表格底部的伪元素横线 (多重保险) */
+.leaves-view .el-table::before,
+.notices-view .el-table::before,
+.repairs-view .el-table::before,
+.leaves-view .el-table .el-table__inner-wrapper::before,
+.notices-view .el-table .el-table__inner-wrapper::before,
+.repairs-view .el-table .el-table__inner-wrapper::before {
+  display: none !important;
+  height: 0 !important;
+  background-color: transparent !important;
+}
+
+/* 关键：移除最后一行数据的下边框 */
+.leaves-view .el-table__body tr:last-child td,
+.notices-view .el-table__body tr:last-child td,
+.repairs-view .el-table__body tr:last-child td {
+  border-bottom: none !important;
+}
+
+.leaves-view .el-table .cell,
+.notices-view .el-table .cell,
+.repairs-view .el-table .cell {
+  line-height: 2 !important; /* 双倍行高 */
+  padding: 12px 0 !important; /* 增加垂直间距 */
+  font-weight: 600 !important; /* 确保加粗 */
+  color: #000 !important; /* 纯黑 */
+}
+
+/* 表头单独控制 */
+.leaves-view .el-table th.el-table__cell,
+.notices-view .el-table th.el-table__cell,
+.repairs-view .el-table th.el-table__cell {
+  font-size: 18px !important;
+  font-weight: 900 !important; /* 特粗 */
+  background-color: white !important; /* 改为白色，融入背景 */
+  color: #000 !important;
+  height: 60px !important; /* 增加表头高度 */
+  border-bottom: 1px solid #f0f0f0 !important; /* 加一条极淡的分割线区分表头 */
+}
+
+/* 表头圆角修复 */
+.leaves-view .el-table th.el-table__cell:first-child,
+.notices-view .el-table th.el-table__cell:first-child,
+.repairs-view .el-table th.el-table__cell:first-child {
+  border-top-left-radius: 12px !important;
+}
+.leaves-view .el-table th.el-table__cell:last-child,
+.notices-view .el-table th.el-table__cell:last-child,
+.repairs-view .el-table th.el-table__cell:last-child {
+  border-top-right-radius: 12px !important;
+}
+
+/* 标签内的文字也要大 */
+.leaves-view .el-tag,
+.notices-view .el-tag,
+.repairs-view .el-tag {
+  font-size: 14px !important;
+  padding: 4px 10px !important;
+  height: 32px !important;
+  line-height: 22px !important;
+}
+
+/* 按钮文字 */
+.leaves-view .el-button,
+.notices-view .el-button,
+.repairs-view .el-button {
+  font-size: 16px !important;
+  padding: 8px 16px !important;
+}
+
+/* ============================================
+   苹果风格消息框 (全局样式) - 蓝色主题
+   适用于所有MessageBox
+   ============================================ */
+.el-message-box,
+.el-message-box.apple-message-box,
+.el-overlay .el-message-box,
+div.el-message-box {
+  border-radius: 16px !important;
+  padding: 0 !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
+  border: none !important;
+  background: white !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  backdrop-filter: blur(20px) !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  overflow: hidden !important;
+  width: 420px !important;
+  max-width: 90vw !important;
+}
+
+.el-message-box .el-message-box__header,
+.el-message-box.apple-message-box .el-message-box__header {
+  padding: 20px 24px 12px 24px !important;
+  border-bottom: none !important;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
+  border-radius: 16px 16px 0 0 !important;
+  margin: 0 !important;
+}
+
+.el-message-box .el-message-box__title,
+.el-message-box.apple-message-box .el-message-box__title {
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  color: white !important;
+  text-align: center !important;
+  letter-spacing: -0.5px !important;
+  margin: 0 !important;
+}
+
+.el-message-box .el-message-box__content {
+  padding: 20px 24px !important;
+  text-align: center !important;
+}
+
+.el-message-box .el-message-box__message {
+  font-size: 14px !important;
+  color: #374151 !important;
+  font-weight: 500 !important;
+  line-height: 1.5 !important;
+}
+
+.el-message-box .el-message-box__btns {
+  padding: 16px 24px 20px 24px !important;
+  border-top: 1px solid rgba(0, 0, 0, 0.06) !important;
+  background: rgba(248, 250, 252, 0.8) !important;
+  border-radius: 0 0 16px 16px !important;
+  display: flex !important;
+  gap: 12px !important;
+  justify-content: center !important;
+}
+
+.el-message-box .el-button {
+  flex: 1 !important;
+  padding: 10px 20px !important;
+  border: none !important;
+  border-radius: 10px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  min-width: 80px !important;
+  max-width: 150px !important;
+}
+
+.el-message-box .el-button--default {
+  background: white !important;
+  color: #6b7280 !important;
+  border: 1.5px solid #e5e7eb !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+}
+
+.el-message-box .el-button--default:hover {
+  background: #f9fafb !important;
+  border-color: #d1d5db !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15) !important;
+}
+
+.el-message-box .el-button--primary {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
+  color: white !important;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3) !important;
+}
+
+.el-message-box .el-button--primary:hover {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4) !important;
+}
+.el-message-box.apple-message-box .el-message-box__content {
+  padding: 20px 24px !important;
+  text-align: center !important;
+}
+
+.el-message-box.apple-message-box .el-message-box__message {
+  font-size: 14px !important;
+  color: #374151 !important;
+  font-weight: 500 !important;
+  line-height: 1.5 !important;
+}
+
+.el-message-box.apple-message-box .el-message-box__btns {
+  padding: 16px 24px 20px 24px !important;
+  border-top: 1px solid rgba(0, 0, 0, 0.06) !important;
+  background: rgba(248, 250, 252, 0.8) !important;
+  border-radius: 0 0 16px 16px !important;
+  display: flex !important;
+  gap: 12px !important;
+}
+
+.el-message-box.apple-message-box .el-button {
+  flex: 1 !important;
+  padding: 10px 20px !important;
+  border: none !important;
+  border-radius: 10px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+
+.el-message-box.apple-message-box .el-button--default {
+  background: white !important;
+  color: #6b7280 !important;
+  border: 1.5px solid #e5e7eb !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+}
+
+.el-message-box.apple-message-box .el-button--default:hover {
+  background: #f9fafb !important;
+  border-color: #d1d5db !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15) !important;
+}
+
+.el-message-box.apple-message-box .el-button--primary {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
+  color: white !important;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3) !important;
+}
+
+.el-message-box.apple-message-box .el-button--primary:hover {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4) !important;
+}
+
+/* 额外的兼容性规则 - 确保在所有情况下都能应用 */
+.apple-message-box.el-message-box {
+  border-radius: 16px !important;
+  overflow: hidden !important;
+  background: white !important;
+}
+
+.apple-message-box.el-message-box .el-message-box__header {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
+  border-radius: 16px 16px 0 0 !important;
+}
+
+.apple-message-box.el-message-box .el-message-box__title {
+  color: white !important;
+  font-weight: 700 !important;
+}
+
+/* ============================================
+   分配宿舍对话框 - 全局样式 (超强优先级)
+   ============================================ */
+.el-dialog.apple-assign-dialog,
+.el-overlay .el-dialog.apple-assign-dialog,
+div.el-dialog.apple-assign-dialog {
+  border-radius: 20px !important;
+  overflow: hidden !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
+  border: none !important;
+  background: white !important;
+}
+
+.el-dialog.apple-assign-dialog .el-dialog__header {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+  color: white !important;
+  padding: 20px 24px 16px 24px !important;
+  border-bottom: none !important;
+  border-radius: 20px 20px 0 0 !important;
+  margin: 0 !important;
+}
+
+.el-dialog.apple-assign-dialog .el-dialog__title {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: white !important;
+  text-align: center !important;
+  letter-spacing: -0.5px !important;
+  margin: 0 !important;
+}
+
+.el-dialog.apple-assign-dialog .el-dialog__headerbtn {
+  top: 20px !important;
+  right: 20px !important;
+  width: 32px !important;
+  height: 32px !important;
+}
+
+.el-dialog.apple-assign-dialog .el-dialog__headerbtn .el-dialog__close {
+  color: white !important;
+  font-size: 18px !important;
+  font-weight: bold !important;
+}
+
+.el-dialog.apple-assign-dialog .el-dialog__body {
+  padding: 0 !important;
+  background: white !important;
+  margin: 0 !important;
+}
+
+.el-dialog.apple-assign-dialog .el-dialog__footer {
+  padding: 0 !important;
+  border-top: none !important;
+  background: transparent !important;
+  margin: 0 !important;
+}
+
+/* ============================================
+   分配宿舍对话框 - 更强的全局样式覆盖
+   ============================================ */
+.apple-assign-dialog-wrapper.el-dialog,
+.el-overlay .apple-assign-dialog-wrapper.el-dialog,
+body .apple-assign-dialog-wrapper.el-dialog {
+  border-radius: 20px !important;
+  overflow: hidden !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
+  border: none !important;
+  background: white !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+.apple-assign-dialog-wrapper .el-dialog__header {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+  color: white !important;
+  padding: 20px 24px 16px 24px !important;
+  border-bottom: none !important;
+  border-radius: 20px 20px 0 0 !important;
+  margin: 0 !important;
+}
+
+.apple-assign-dialog-wrapper .el-dialog__title {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: white !important;
+  text-align: center !important;
+  letter-spacing: -0.5px !important;
+  margin: 0 !important;
+  line-height: 1.2 !important;
+}
+
+.apple-assign-dialog-wrapper .el-dialog__headerbtn {
+  top: 20px !important;
+  right: 20px !important;
+  width: 32px !important;
+  height: 32px !important;
+}
+
+.apple-assign-dialog-wrapper .el-dialog__headerbtn .el-dialog__close {
+  color: white !important;
+  font-size: 18px !important;
+  font-weight: bold !important;
+}
+
+.apple-assign-dialog-wrapper .el-dialog__body {
+  padding: 0 !important;
+  background: white !important;
+  margin: 0 !important;
+}
+
+.apple-assign-dialog-wrapper .el-dialog__footer {
+  padding: 0 !important;
+  border-top: none !important;
+  background: transparent !important;
+  margin: 0 !important;
+}
+
+/* 确保对话框容器也居中 */
+.el-overlay-dialog:has(.apple-assign-dialog-wrapper) {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* 兼容性更强的选择器 */
+.el-overlay-dialog {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ============================================
+   智能分配结果对话框 - 紧凑样式（蓝色主题）
+   ============================================ */
+.el-message-box.apple-result-dialog,
+.el-overlay .el-message-box.apple-result-dialog,
+div.el-message-box.apple-result-dialog {
+  border-radius: 16px !important;
+  overflow: hidden !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
+  border: none !important;
+  background: white !important;
+  width: 420px !important;
+  max-width: 90vw !important;
+}
+
+.el-message-box.apple-result-dialog .el-message-box__header {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
+  color: white !important;
+  padding: 16px 20px 12px 20px !important;
+  border-bottom: none !important;
+  border-radius: 16px 16px 0 0 !important;
+  margin: 0 !important;
+}
+
+.el-message-box.apple-result-dialog .el-message-box__title {
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  color: white !important;
+  text-align: center !important;
+  letter-spacing: -0.5px !important;
+  margin: 0 !important;
+}
+
+.el-message-box.apple-result-dialog .el-message-box__content {
+  padding: 16px 20px !important;
+  text-align: left !important;
+  max-height: 400px !important;
+  overflow-y: auto !important;
+}
+
+.el-message-box.apple-result-dialog .el-message-box__message {
+  font-size: 14px !important;
+  color: #374151 !important;
+  font-weight: 500 !important;
+  line-height: 1.4 !important;
+  margin: 0 !important;
+}
+
+.el-message-box.apple-result-dialog .el-message-box__btns {
+  padding: 12px 20px 16px 20px !important;
+  border-top: 1px solid rgba(0, 0, 0, 0.06) !important;
+  background: rgba(248, 250, 252, 0.8) !important;
+  border-radius: 0 0 16px 16px !important;
+  display: flex !important;
+  justify-content: center !important;
+}
+
+.el-message-box.apple-result-dialog .el-button--primary {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 10px !important;
+  padding: 8px 24px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.el-message-box.apple-result-dialog .el-button--primary:hover {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4) !important;
+}
+
+/* ============================================
+   智能批量入住确认对话框 - 苹果风格
+   ============================================ */
+.el-message-box.apple-smart-assign-dialog,
+.el-overlay .el-message-box.apple-smart-assign-dialog,
+div.el-message-box.apple-smart-assign-dialog {
+  border-radius: 16px !important;
+  overflow: hidden !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
+  border: none !important;
+  background: white !important;
+  width: 480px !important;
+  max-width: 90vw !important;
+}
+
+.el-message-box.apple-smart-assign-dialog .el-message-box__header {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
+  color: white !important;
+  padding: 18px 24px 14px 24px !important;
+  border-bottom: none !important;
+  border-radius: 16px 16px 0 0 !important;
+  margin: 0 !important;
+}
+
+.el-message-box.apple-smart-assign-dialog .el-message-box__title {
+  font-size: 17px !important;
+  font-weight: 700 !important;
+  color: white !important;
+  text-align: center !important;
+  letter-spacing: -0.5px !important;
+  margin: 0 !important;
+}
+
+.el-message-box.apple-smart-assign-dialog .el-message-box__content {
+  padding: 20px 24px !important;
+  text-align: center !important;
+}
+
+.el-message-box.apple-smart-assign-dialog .el-message-box__message {
+  font-size: 15px !important;
+  color: #374151 !important;
+  font-weight: 500 !important;
+  line-height: 1.5 !important;
+  margin: 0 !important;
+  text-align: left !important;
+}
+
+.el-message-box.apple-smart-assign-dialog .el-message-box__btns {
+  padding: 16px 24px 20px 24px !important;
+  border-top: 1px solid rgba(0, 0, 0, 0.06) !important;
+  background: rgba(248, 250, 252, 0.8) !important;
+  border-radius: 0 0 16px 16px !important;
+  display: flex !important;
+  gap: 12px !important;
+  justify-content: center !important;
+}
+
+.el-message-box.apple-smart-assign-dialog .el-button {
+  flex: 1 !important;
+  padding: 10px 20px !important;
+  border: none !important;
+  border-radius: 10px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+
+.el-message-box.apple-smart-assign-dialog .el-button--default {
+  background: white !important;
+  color: #6b7280 !important;
+  border: 1.5px solid #e5e7eb !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+}
+
+.el-message-box.apple-smart-assign-dialog .el-button--default:hover {
+  background: #f9fafb !important;
+  border-color: #d1d5db !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15) !important;
+}
+
+.el-message-box.apple-smart-assign-dialog .el-button--primary {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
+  color: white !important;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3) !important;
+}
+
+.el-message-box.apple-smart-assign-dialog .el-button--primary:hover {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4) !important;
+}
+
+/* ============================================
+   全局 Element Plus 对话框样式
+   确保强制刷新后样式不丢失
+   ============================================ */
+
+/* 对话框整体 */
+.el-dialog {
+  border-radius: 12px !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+}
+
+/* 对话框头部 - 蓝色渐变背景 */
+.el-dialog__header {
+  padding: 20px 24px !important;
+  border-bottom: none !important;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
+  border-radius: 0 !important;
+  margin: 0 !important;
+}
+
+/* 学生对话框 - 使用自定义标题栏，隐藏默认标题 */
+.apple-student-dialog.el-dialog {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.apple-student-dialog .el-dialog__header {
+  padding: 0 !important;
+  margin: 0 !important;
+  background: transparent !important;
+  border: none !important;
+}
+
+/* 批量分班对话框 - 使用自定义标题栏，隐藏默认标题 */
+.apple-batch-class-dialog.el-dialog {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.apple-batch-class-dialog .el-dialog__header {
+  padding: 0 !important;
+  margin: 0 !important;
+  background: transparent !important;
+  border: none !important;
+}
+
+/* 对话框标题 - 白色文字 */
+.el-dialog__title {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: white !important;
+}
+
+/* 关闭按钮 - 白色 */
+.el-dialog__headerbtn {
+  top: 20px !important;
+  right: 20px !important;
+}
+
+.el-dialog__headerbtn .el-dialog__close {
+  color: white !important;
+  font-size: 20px !important;
+}
+
+.el-dialog__headerbtn .el-dialog__close:hover {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* 对话框内容区 */
+.el-dialog__body {
+  padding: 24px !important;
+}
+
+/* 表单标签 */
+.el-form-item__label {
+  font-weight: 600 !important;
+  color: #374151 !important;
+  text-align: right !important;
+}
+
+/* 输入框 */
+.el-input__wrapper {
+  border-radius: 8px !important;
+  box-shadow: 0 0 0 1px #e5e7eb inset !important;
+  transition: all 0.2s ease !important;
+}
+
+.el-input__wrapper:hover {
+  box-shadow: 0 0 0 1px #3b82f6 inset !important;
+}
+
+.el-input__wrapper.is-focus {
+  box-shadow: 0 0 0 2px #3b82f6 inset !important;
+}
+
+/* 下拉框 */
+.el-select .el-select__wrapper {
+  min-height: 40px !important;
+  height: auto !important;
+}
+
+/* 表格样式 */
+.el-table {
+  font-size: 14px !important;
+}
+
+.el-table th {
+  font-weight: 600 !important;
+  color: #374151 !important;
+}
+
+.el-table td {
+  color: #111827 !important;
+}
+

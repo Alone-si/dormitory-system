@@ -1,0 +1,200 @@
+
+/* Apple风格对话框 - 报修处理 */
+.repairs-view .el-dialog {
+  border-radius: 16px !important;
+  overflow: hidden !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15) !important;
+  padding: 0 !important;
+}
+
+.repairs-view .el-dialog .el-dialog__header {
+  padding: 18px 24px !important;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
+  border-bottom: none !important;
+  margin: 0 !important;
+  border-radius: 16px 16px 0 0 !important;
+}
+
+.repairs-view .el-dialog__title {
+  font-size: 17px !important;
+  font-weight: 600 !important;
+  color: white !important;
+  letter-spacing: -0.2px !important;
+}
+
+.repairs-view .el-dialog__headerbtn {
+  top: 16px !important;
+  right: 20px !important;
+  width: 28px !important;
+  height: 28px !important;
+}
+
+.repairs-view .el-dialog__headerbtn .el-dialog__close {
+  color: white !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  opacity: 0.95 !important;
+}
+
+.repairs-view .el-dialog__headerbtn:hover .el-dialog__close {
+  opacity: 1 !important;
+}
+
+.repairs-view .el-dialog__body {
+  padding: 24px !important;
+  background: white !important;
+}
+
+.repairs-view .el-dialog__footer {
+  padding: 0 24px 20px !important;
+  background: white !important;
+  border-top: none !important;
+  margin: 0 !important;
+}
+
+/* 表单样式 */
+.repairs-view .apple-form .el-form-item {
+  margin-bottom: 16px !important;
+}
+
+.repairs-view .apple-form .el-form-item__label {
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: #1f2937 !important;
+  padding-right: 12px !important;
+}
+
+/* 输入框通用样式 */
+.repairs-view .el-dialog .el-input__wrapper {
+  border-radius: 8px !important;
+  border: 1px solid #e5e7eb !important;
+  transition: all 0.2s ease !important;
+  background: #f9fafb !important;
+  box-shadow: none !important;
+  padding: 8px 12px !important;
+}
+
+.repairs-view .el-dialog .el-input__wrapper:hover {
+  border-color: #d1d5db !important;
+  background: white !important;
+}
+
+.repairs-view .el-dialog .el-input__wrapper.is-focus {
+  border-color: #3b82f6 !important;
+  background: white !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+}
+
+.repairs-view .el-dialog .el-input__wrapper.is-disabled {
+  background: #f3f4f6 !important;
+  border-color: #e5e7eb !important;
+}
+
+.repairs-view .el-dialog .el-input__inner {
+  font-size: 14px !important;
+  color: #374151 !important;
+}
+
+.repairs-view .el-dialog .el-input__inner::placeholder {
+  color: #9ca3af !important;
+}
+
+/* 文本域样式 */
+.repairs-view .el-dialog .el-textarea__inner {
+  border-radius: 8px !important;
+  border: 1px solid #e5e7eb !important;
+  padding: 10px 12px !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+  transition: all 0.2s ease !important;
+  background: #f9fafb !important;
+  box-shadow: none !important;
+  color: #374151 !important;
+}
+
+.repairs-view .el-dialog .el-textarea__inner:hover {
+  border-color: #d1d5db !important;
+  background: white !important;
+}
+
+.repairs-view .el-dialog .el-textarea__inner:focus {
+  border-color: #3b82f6 !important;
+  background: white !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+  outline: none !important;
+}
+
+.repairs-view .el-dialog .el-textarea__inner.is-disabled {
+  background: #f3f4f6 !important;
+  border-color: #e5e7eb !important;
+  color: #6b7280 !important;
+}
+
+.repairs-view .el-dialog .el-textarea__inner::placeholder {
+  color: #9ca3af !important;
+}
+
+/* 按钮容器 */
+.dialog-footer-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+/* 对话框按钮 */
+.repairs-view .el-dialog__footer .el-button {
+  padding: 9px 24px !important;
+  border-radius: 8px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  transition: all 0.2s ease !important;
+  border: none !important;
+  min-width: 80px !important;
+}
+
+.repairs-view .el-dialog__footer .cancel-btn {
+  background: #f3f4f6 !important;
+  color: #6b7280 !important;
+  border: 1px solid #e5e7eb !important;
+}
+
+.repairs-view .el-dialog__footer .cancel-btn:hover {
+  background: #e5e7eb !important;
+  color: #374151 !important;
+}
+
+.repairs-view .el-dialog__footer .cancel-btn:active {
+  transform: scale(0.98) !important;
+}
+
+.repairs-view .el-dialog__footer .process-btn {
+  background: #3b82f6 !important;
+  color: white !important;
+}
+
+.repairs-view .el-dialog__footer .process-btn:hover {
+  background: #2563eb !important;
+}
+
+.repairs-view .el-dialog__footer .process-btn:active {
+  transform: scale(0.98) !important;
+}
+
+/* 处理人信息样式 */
+.handler-name {
+  color: #3b82f6 !important;
+  font-weight: 600 !important;
+}
+
+.handler-signature {
+  margin-top: 12px;
+  text-align: right;
+  color: #6b7280;
+  font-size: 13px;
+  font-style: italic;
+}
+
+/* 加载状态 */
+.repairs-view .el-dialog .el-button.is-loading {
+  opacity: 0.7 !important;
+}

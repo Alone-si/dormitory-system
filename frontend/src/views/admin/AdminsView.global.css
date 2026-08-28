@@ -1,0 +1,359 @@
+
+.admins-view {
+  padding: 24px;
+  background: #f9fafb;
+  min-height: 100vh;
+}
+
+.view-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.view-header h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+}
+
+.header-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+/* 按钮样式 */
+.action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: none;
+  white-space: nowrap;
+}
+
+.primary-btn {
+  background: #3b82f6;
+  color: white;
+}
+
+.primary-btn:hover {
+  background: #2563eb;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.3);
+}
+
+.primary-btn:active {
+  transform: translateY(0);
+}
+
+/* 表格容器 */
+.table-container {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* 表格操作按钮 */
+.table-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin: 0 4px;
+}
+
+.edit-btn {
+  background: #eff6ff;
+  color: #3b82f6;
+}
+
+.edit-btn:hover {
+  background: #dbeafe;
+  transform: translateY(-1px);
+}
+
+.reset-btn {
+  background: #fef3c7;
+  color: #f59e0b;
+}
+
+.reset-btn:hover {
+  background: #fde68a;
+  transform: translateY(-1px);
+}
+
+.delete-btn {
+  background: #fee2e2;
+  color: #ef4444;
+}
+
+.delete-btn:hover:not(.disabled) {
+  background: #fecaca;
+  transform: translateY(-1px);
+}
+
+.delete-btn.disabled {
+  background: #f3f4f6;
+  color: #9ca3af;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.delete-btn.disabled:hover {
+  transform: none;
+}
+
+/* 对话框样式 */
+:deep(.el-dialog) {
+  border-radius: 16px;
+  overflow: hidden;
+  padding: 0 !important;
+}
+
+:deep(.el-dialog__header) {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+:deep(.el-dialog__body) {
+  padding: 24px !important;
+}
+
+:deep(.el-dialog__footer) {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.custom-dialog-header {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  padding: 24px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.custom-dialog-header .header-content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+}
+
+.custom-dialog-header .header-icon {
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  flex-shrink: 0;
+}
+
+.custom-dialog-header .header-text h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  margin: 0 0 4px 0;
+}
+
+.custom-dialog-header .header-text p {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+}
+
+.custom-dialog-header .close-btn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.custom-dialog-header .close-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* 对话框按钮 */
+.dialog-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 20px 24px;
+  border-top: 1px solid #e5e7eb;
+  background: #f9fafb;
+  border-radius: 0 0 16px 16px;
+}
+
+.dialog-btn {
+  padding: 10px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cancel-btn {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.cancel-btn:hover {
+  background: #e5e7eb;
+}
+
+.confirm-btn {
+  background: #3b82f6;
+  color: white;
+}
+
+.confirm-btn:hover {
+  background: #2563eb;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.3);
+}
+
+/* Element Plus 样式覆盖 */
+.admins-view .el-table {
+  font-size: 14px;
+}
+
+.admins-view .el-table th {
+  font-weight: 600;
+  color: #374151;
+}
+
+.admins-view .el-table td {
+  color: #111827;
+}
+
+.admins-view .el-input__wrapper {
+  border-radius: 8px;
+  box-shadow: 0 0 0 1px #e5e7eb inset;
+  transition: all 0.2s ease;
+}
+
+.admins-view .el-input__wrapper:hover {
+  box-shadow: 0 0 0 1px #3b82f6 inset;
+}
+
+.admins-view .el-input__wrapper.is-focus {
+  box-shadow: 0 0 0 2px #3b82f6 inset;
+}
+
+.admins-view .el-dialog {
+  border-radius: 12px !important;
+}
+
+.admins-view .el-dialog__header {
+  padding: 20px 24px !important;
+  border-bottom: none !important;
+  background: #3b82f6 !important;
+  border-radius: 12px 12px 0 0 !important;
+}
+
+.admins-view .el-dialog__title {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: white !important;
+}
+
+.admins-view .el-dialog__headerbtn {
+  top: 20px !important;
+}
+
+.admins-view .el-dialog__headerbtn .el-dialog__close {
+  color: white !important;
+  font-size: 20px !important;
+}
+
+.admins-view .el-dialog__headerbtn .el-dialog__close:hover {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.admins-view .el-dialog__body {
+  padding: 24px !important;
+}
+
+.admins-view .el-form-item__label {
+  font-weight: 600 !important;
+  color: #374151 !important;
+  text-align: right !important;
+  padding-right: 12px !important;
+}
+
+/* 修复下拉框选中项文字显示 */
+.admins-view .el-select {
+  width: 100%;
+}
+
+.admins-view .el-select .el-select__wrapper {
+  min-height: 50px;
+  height: auto;
+  padding: 8px 12px;
+  box-sizing: border-box;
+}
+
+.admins-view .el-select .el-select__selected-item {
+  white-space: normal;
+  line-height: 1.5;
+  overflow: visible;
+  text-overflow: clip;
+  height: auto;
+}
+
+.admins-view .el-select .el-select__placeholder {
+  white-space: normal;
+  line-height: 1.5;
+}
+
+/* 修复下拉框选项显示 */
+.el-select-dropdown__item {
+  font-size: 14px;
+  padding: 10px 16px;
+  color: #374151;
+  white-space: normal;
+  line-height: 1.5;
+  height: auto;
+  min-height: 40px;
+}
+
+.el-select-dropdown__item:hover {
+  background-color: #f3f4f6;
+}
+
+.el-select-dropdown__item.selected {
+  color: #3b82f6;
+  font-weight: 600;
+}

@@ -1,0 +1,188 @@
+
+/* Apple风格对话框 - 通知发布 */
+.notices-view .el-dialog {
+  border-radius: 16px !important;
+  overflow: hidden !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15) !important;
+  padding: 0 !important;
+}
+
+.notices-view .el-dialog .el-dialog__header {
+  padding: 18px 24px !important;
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%) !important;
+  border-bottom: none !important;
+  margin: 0 !important;
+  border-radius: 16px 16px 0 0 !important;
+}
+
+.notices-view .el-dialog__title {
+  font-size: 17px !important;
+  font-weight: 600 !important;
+  color: white !important;
+  letter-spacing: -0.2px !important;
+}
+
+.notices-view .el-dialog__headerbtn {
+  top: 16px !important;
+  right: 20px !important;
+  width: 28px !important;
+  height: 28px !important;
+}
+
+.notices-view .el-dialog__headerbtn .el-dialog__close {
+  color: white !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  opacity: 0.95 !important;
+}
+
+.notices-view .el-dialog__headerbtn:hover .el-dialog__close {
+  opacity: 1 !important;
+}
+
+.notices-view .el-dialog__body {
+  padding: 24px !important;
+  background: white !important;
+}
+
+.notices-view .el-dialog__footer {
+  padding: 0 24px 20px !important;
+  background: white !important;
+  border-top: none !important;
+  margin: 0 !important;
+}
+
+/* 表单样式 */
+.notices-view .apple-form .el-form-item {
+  margin-bottom: 16px !important;
+}
+
+.notices-view .apple-form .el-form-item__label {
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: #1f2937 !important;
+  padding-right: 12px !important;
+}
+
+/* 输入框样式 */
+.notices-view .el-dialog .el-input__wrapper {
+  border-radius: 8px !important;
+  border: 1px solid #e5e7eb !important;
+  transition: all 0.2s ease !important;
+  background: #f9fafb !important;
+  box-shadow: none !important;
+  padding: 8px 12px !important;
+}
+
+.notices-view .el-dialog .el-input__wrapper:hover {
+  border-color: #d1d5db !important;
+  background: white !important;
+}
+
+.notices-view .el-dialog .el-input__wrapper.is-focus {
+  border-color: #f59e0b !important;
+  background: white !important;
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1) !important;
+}
+
+.notices-view .el-dialog .el-input__inner {
+  font-size: 14px !important;
+  color: #374151 !important;
+}
+
+/* 文本域样式 */
+.notices-view .el-dialog .el-textarea__inner {
+  border-radius: 8px !important;
+  border: 1px solid #e5e7eb !important;
+  padding: 10px 12px !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+  transition: all 0.2s ease !important;
+  background: #f9fafb !important;
+  box-shadow: none !important;
+  color: #374151 !important;
+}
+
+.notices-view .el-dialog .el-textarea__inner:hover {
+  border-color: #d1d5db !important;
+  background: white !important;
+}
+
+.notices-view .el-dialog .el-textarea__inner:focus {
+  border-color: #f59e0b !important;
+  background: white !important;
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1) !important;
+  outline: none !important;
+}
+
+/* 选择器样式 */
+.notices-view .el-dialog .el-select .el-input__wrapper {
+  border-radius: 8px !important;
+}
+
+/* 开关样式 */
+.notices-view .el-dialog .el-switch.is-checked .el-switch__core {
+  background-color: #f59e0b !important;
+  border-color: #f59e0b !important;
+}
+
+/* 按钮容器 */
+.dialog-footer-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+/* 对话框按钮 */
+.notices-view .el-dialog__footer .el-button {
+  padding: 9px 24px !important;
+  border-radius: 8px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  transition: all 0.2s ease !important;
+  border: none !important;
+  min-width: 80px !important;
+}
+
+.notices-view .el-dialog__footer .cancel-btn {
+  background: #f3f4f6 !important;
+  color: #6b7280 !important;
+  border: 1px solid #e5e7eb !important;
+}
+
+.notices-view .el-dialog__footer .cancel-btn:hover {
+  background: #e5e7eb !important;
+  color: #374151 !important;
+}
+
+.notices-view .el-dialog__footer .cancel-btn:active {
+  transform: scale(0.98) !important;
+}
+
+.notices-view .el-dialog__footer .confirm-btn {
+  background: #f59e0b !important;
+  color: white !important;
+}
+
+.notices-view .el-dialog__footer .confirm-btn:hover {
+  background: #d97706 !important;
+}
+
+.notices-view .el-dialog__footer .confirm-btn:active {
+  transform: scale(0.98) !important;
+}
+
+/* 发布人信息样式 */
+.publisher-item {
+  color: #3b82f6 !important;
+}
+
+.publisher-name {
+  font-weight: 600;
+  color: #3b82f6;
+}
+
+/* 加载状态 */
+.notices-view .el-dialog .el-button.is-loading {
+  opacity: 0.7 !important;
+}

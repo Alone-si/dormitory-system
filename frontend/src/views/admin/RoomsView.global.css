@@ -1,0 +1,337 @@
+
+/* 全局样式 - 简洁学生详情对话框 */
+.simple-student-dialog.el-message-box {
+  border-radius: 12px !important;
+  padding: 0 !important;
+  max-width: 380px !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+  background: white !important;
+  border: 1px solid #e5e7eb !important;
+}
+
+.simple-student-dialog.el-message-box .el-message-box__header {
+  display: none !important;
+}
+
+.simple-student-dialog.el-message-box .el-message-box__content {
+  padding: 0 !important;
+}
+
+.simple-student-dialog.el-message-box .el-message-box__message {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.simple-student-dialog.el-message-box .el-message-box__btns {
+  padding: 16px 24px !important;
+  border-top: 1px solid #f3f4f6 !important;
+  background: #fafafa !important;
+  border-radius: 0 0 12px 12px !important;
+  text-align: center !important;
+}
+
+.simple-student-dialog.el-message-box .el-button--primary {
+  background: #3b82f6 !important;
+  border: none !important;
+  color: white !important;
+  padding: 10px 24px !important;
+  border-radius: 8px !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  transition: all 0.2s ease !important;
+}
+
+.simple-student-dialog.el-message-box .el-button--primary:hover {
+  background: #2563eb !important;
+  transform: translateY(-1px) !important;
+}
+
+/* 简洁学生详情内容 */
+.simple-student-detail {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.student-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px;
+  background: #f8fafc;
+  border-radius: 12px 12px 0 0;
+}
+
+.student-avatar {
+  font-size: 40px;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.student-info h3 {
+  margin: 0 0 4px 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.student-info p {
+  margin: 0;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.student-details {
+  padding: 20px 24px;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.detail-row:last-child {
+  border-bottom: none;
+}
+
+.detail-row .label {
+  font-size: 14px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.detail-row .value {
+  font-size: 14px;
+  color: #1f2937;
+  font-weight: 600;
+}
+
+/* 简洁添加学生对话框 */
+.simple-add-student-dialog-box.el-message-box {
+  border-radius: 16px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  max-width: 420px !important;
+  width: 90% !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3) !important;
+  border: none !important;
+  overflow: hidden !important;
+}
+
+.simple-add-student-dialog-box.el-message-box .el-message-box__header {
+  display: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.simple-add-student-dialog-box.el-message-box .el-message-box__content {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.simple-add-student-dialog-box.el-message-box .el-message-box__message {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.simple-add-student-dialog-box.el-message-box .el-message-box__btns {
+  padding: 20px 24px !important;
+  border-top: 1px solid #f3f4f6 !important;
+  background: #fafafa !important;
+  border-radius: 0 0 12px 12px !important;
+  display: flex !important;
+  gap: 12px !important;
+}
+
+.simple-add-student-dialog-box.el-message-box .el-button {
+  flex: 1 !important;
+  padding: 10px 20px !important;
+  border-radius: 8px !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  transition: all 0.2s ease !important;
+}
+
+.simple-add-student-dialog-box.el-message-box .el-button--default {
+  background: white !important;
+  color: #6b7280 !important;
+  border: 1px solid #d1d5db !important;
+}
+
+.simple-add-student-dialog-box.el-message-box .el-button--default:hover {
+  background: #f9fafb !important;
+  border-color: #9ca3af !important;
+  transform: translateY(-1px) !important;
+}
+
+.simple-add-student-dialog-box.el-message-box .el-button--primary {
+  background: #3b82f6 !important;
+  border: none !important;
+  color: white !important;
+}
+
+.simple-add-student-dialog-box.el-message-box .el-button--primary:hover {
+  background: #2563eb !important;
+  transform: translateY(-1px) !important;
+}
+
+/* 简洁添加学生内容 */
+.simple-add-student-dialog {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  padding: 0;
+}
+
+.simple-add-student-dialog .dialog-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  border-radius: 0;
+  margin: 0;
+}
+
+.simple-add-student-dialog .header-icon {
+  font-size: 28px;
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.simple-add-student-dialog .header-content {
+  flex: 1;
+}
+
+.simple-add-student-dialog .room-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 2px;
+}
+
+.simple-add-student-dialog .room-subtitle {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 400;
+}
+
+.room-stats {
+  display: flex;
+  gap: 16px;
+  padding: 24px;
+  background: #f8fafc;
+}
+
+.stat-item {
+  flex: 1;
+  text-align: center;
+  padding: 16px 12px;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+.stat-item.available {
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+}
+
+.stat-icon {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.stat-number {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 4px;
+}
+
+.stat-item.available .stat-number {
+  color: #059669;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.action-guide {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 20px 24px 24px 24px;
+  background: white;
+}
+
+.guide-icon {
+  font-size: 18px;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.guide-text {
+  flex: 1;
+  font-size: 14px;
+  color: #4b5563;
+  line-height: 1.5;
+}
+
+
+
+/* 隐藏页面级别的滚动条 */
+body {
+  overflow: hidden !important;
+}
+
+/* 筛选下拉框样式 - 限制高度并添加滚动条 */
+.room-filter-dropdown {
+  max-height: 200px !important;
+}
+
+.room-filter-dropdown .el-select-dropdown__wrap {
+  max-height: 200px !important;
+}
+
+.room-filter-dropdown .el-scrollbar__view {
+  max-height: 200px !important;
+}
+
+/* 下拉选项样式优化 */
+.room-filter-dropdown .el-select-dropdown__item {
+  height: 36px;
+  line-height: 36px;
+  padding: 0 16px;
+  font-size: 13px;
+  color: #374151;
+  transition: all 0.2s ease;
+}
+
+.room-filter-dropdown .el-select-dropdown__item:hover {
+  background: rgba(59, 130, 246, 0.08);
+  color: #1e40af;
+}
+
+.room-filter-dropdown .el-select-dropdown__item.selected {
+  background: rgba(59, 130, 246, 0.12);
+  color: #1e40af;
+  font-weight: 600;
+}
+
+/* 对话框内容样式 - 保留用于其他功能 */

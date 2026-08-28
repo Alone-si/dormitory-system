@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API 测试页面</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .test-box {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        button {
+            background: #409EFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        button:hover {
+            background: #66b1ff;
+        }
+        .result {
+            margin-top: 15px;
+            padding: 15px;
+            background: #f5f5f5;
+            border-radius: 4px;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+        .success { background: #f0f9ff; border-left: 4px solid #409EFF; }
+        .error { background: #fef0f0; border-left: 4px solid #f56c6c; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+    <h1>🧪 API 连接测试</h1>
+    
+    <div class="test-box">
+        <h2>测试 1: 直接访问后端</h2>
+        <p>直接请求: <code>http://localhost:8080/api/auth/login</code></p>
+        <button onclick="testDirect()">测试直接连接</button>
+        <div id="result1" class="result hidden"></div>
+    </div>
+
+    <div class="test-box">
+        <h2>测试 2: 通过代理访问</h2>
+        <p>代理请求: <code>/api/auth/login</code> (应该被代理到 8080)</p>
+        <button onclick="testProxy()">测试代理连接</button>
+        <div id="result2" class="result hidden"></div>
+    </div>
+
+    <div class="test-box">
+        <h2>测试 3: 使用 request.js</h2>
+        <p>查看当前 baseURL 配置</p>
+        <button onclick="checkConfig()">查看配置</button>
+        <div id="result3" class="result hidden"></div>
+    </div>
+
+    <script>
+        async function testDirect() {
+            const result = document.getElementById('result1');
+            result.style.display = 'block';
+            result.textContent = '测试中...';
+            
+            try {
+                const response = await fetch('http://localhost:8080/api/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        username: 'admin',
+                        password: '123456'
+                    })
+                });
+                
+                const data = await response.json();
+                result.className = 'result success';
+                result.textContent = `✅ 成功！状态码: ${response.status}\n\n响应数据:\n${JSON.stringify(data, null, 2)}`;
+            } catch (error) {
+                result.className = 'result error';
+                result.textContent = `❌ 失败！\n\n错误信息:\n${error.message}`;
+            }
+        }
+
+        async function testProxy() {
+            const result = document.getElementById('result2');
+            result.style.display = 'block';
+            result.textContent = '测试中...';
+            
+            try {
+                const response = await fetch('/api/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        username: 'admin',
+                        password: '123456'
+                    })
+                });
+                
+                const data = await response.json();
+                result.className = 'result success';
+                result.textContent = `✅ 成功！状态码: ${response.status}\n\n响应数据:\n${JSON.stringify(data, null, 2)}`;
+            } catch (error) {
+                result.className = 'result error';
+                result.textContent = `❌ 失败！\n\n错误信息:\n${error.message}`;
+            }
+        }
+
+        function checkConfig() {
+            const result = document.getElementById('result3');
+            result.style.display = 'block';
+            result.className = 'result';
+            result.textContent = `当前页面: ${window.location.href}\n\n说明:\n- 如果直接连接成功，说明后端正常\n- 如果代理连接失败，说明 Vite 代理配置有问题\n- 建议使用直接连接方式（已在 request.js 中配置）`;
+        }
+    </script>
+</body>
+</html>

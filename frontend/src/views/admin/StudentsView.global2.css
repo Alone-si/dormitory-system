@@ -1,0 +1,58 @@
+
+/* 分配宿舍对话框 - 全局样式（必须在 scoped 外面） */
+.apple-assign-dialog.el-dialog {
+  border-radius: 16px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.apple-assign-dialog .el-dialog__header {
+  padding: 20px 24px !important;
+  margin: 0 !important;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
+  border-radius: 0 !important;
+}
+
+.apple-assign-dialog .el-dialog__header.show-close {
+  padding: 20px 24px !important;
+  margin: 0 !important;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
+  border-radius: 0 !important;
+}
+
+.apple-assign-dialog .el-dialog__title {
+  color: white !important;
+  font-weight: 600 !important;
+  font-size: 18px !important;
+}
+
+.apple-assign-dialog .el-dialog__body {
+  padding: 24px !important;
+  margin: 0 !important;
+}
+
+.apple-assign-dialog .el-dialog__headerbtn {
+  top: 20px !important;
+  right: 24px !important;
+}
+
+.apple-assign-dialog .el-dialog__headerbtn .el-dialog__close {
+  color: white !important;
+  font-size: 20px !important;
+}
+
+.apple-assign-dialog .el-dialog__headerbtn .el-dialog__close:hover {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* 强制覆盖 Element Plus 的所有可能样式 */
+.el-overlay .apple-assign-dialog.el-dialog {
+  padding: 0 !important;
+}
+
+.el-overlay .apple-assign-dialog .el-dialog__header {
+  margin: 0 !important;
+  padding: 20px 24px !important;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
+}

@@ -1,0 +1,36 @@
+services:
+  # Spring Boot 后端
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: smartdorm-backend
+    restart: "no"
+    ports:
+      - "8080:8080"
+    environment:
+      # 数据库连接配置（连接到本地 MySQL）
+      SPRING_DATASOURCE_URL: jdbc:mysql://host.docker.internal:3306/alone?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: ${SMART_DORM_DB_PASSWORD}
+      TZ: Asia/Shanghai
+    volumes:
+      # 上传文件持久化
+      - upload-data:/app/uploads
+
+  # Vue 前端
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: smartdorm-frontend
+    restart: "no"
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+# 数据卷（持久化存储）
+volumes:
+  upload-data:
+    driver: local

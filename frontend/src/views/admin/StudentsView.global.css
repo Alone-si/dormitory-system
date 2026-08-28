@@ -1,0 +1,1049 @@
+
+/* Apple风格筛选器样式 */
+.students-view .header-actions .el-select {
+  border-radius: 12px;
+}
+
+.students-view .header-actions .el-select .el-select__wrapper {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border: 1.5px solid #e5e7eb !important;
+  border-radius: 12px !important;
+  padding: 8px 12px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.students-view .header-actions .el-select .el-select__wrapper:hover {
+  border-color: #3b82f6 !important;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15) !important;
+  transform: translateY(-1px);
+}
+
+.students-view .header-actions .el-select .el-select__wrapper.is-focused {
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+}
+
+.students-view .header-actions .el-select .el-select__placeholder {
+  color: #9ca3af !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+}
+
+.students-view .header-actions .el-select .el-select__selected-item {
+  color: #1f2937 !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+}
+
+.students-view .header-actions .el-input__wrapper {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border: 1.5px solid #e5e7eb !important;
+  border-radius: 12px !important;
+  padding: 8px 12px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.students-view .header-actions .el-input__wrapper:hover {
+  border-color: #3b82f6 !important;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15) !important;
+  transform: translateY(-1px);
+}
+
+.students-view .header-actions .el-input__wrapper.is-focus {
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+}
+
+.students-view .header-actions .el-input__inner {
+  color: #1f2937 !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+}
+
+.students-view .header-actions .el-input__inner::placeholder {
+  color: #9ca3af !important;
+  font-weight: 400 !important;
+}
+
+/* 下拉菜单样式 - Apple风格 */
+.apple-select-dropdown.el-select-dropdown.el-popper {
+  border-radius: 12px !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.08) !important;
+  padding: 8px !important;
+  margin-top: 8px !important;
+  background: white !important;
+  backdrop-filter: blur(20px) !important;
+}
+
+.apple-select-dropdown .el-popper__arrow {
+  display: none !important;
+}
+
+.apple-select-dropdown .el-scrollbar {
+  border-radius: 8px !important;
+  background: transparent !important;
+}
+
+.apple-select-dropdown .el-scrollbar__view {
+  background: transparent !important;
+}
+
+.apple-select-dropdown .el-select-dropdown__wrap {
+  max-height: 240px !important;
+  background: transparent !important;
+}
+
+.apple-select-dropdown .el-select-dropdown__list {
+  padding: 0 !important;
+  background: transparent !important;
+}
+
+.apple-select-dropdown .el-select-dropdown__item {
+  border-radius: 8px !important;
+  padding: 10px 14px !important;
+  margin: 2px 0 !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: #1f2937 !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  line-height: 1.5 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  cursor: pointer !important;
+}
+
+.apple-select-dropdown .el-select-dropdown__item:hover,
+.apple-select-dropdown .el-select-dropdown__item.is-hovering {
+  background: rgba(59, 130, 246, 0.1) !important;
+  color: #3b82f6 !important;
+  transform: scale(1.02) !important;
+}
+
+.apple-select-dropdown .el-select-dropdown__item.is-selected {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(37, 99, 235, 0.15) 100%) !important;
+  color: #2563eb !important;
+  font-weight: 600 !important;
+}
+
+.apple-select-dropdown .el-select-dropdown__item.is-selected:hover {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(37, 99, 235, 0.2) 100%) !important;
+}
+
+/* 自定义消息框样式 */
+.custom-message-box {
+  border-radius: 16px !important;
+  padding: 24px !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3) !important;
+}
+
+.custom-message-box .el-message-box__header {
+  padding-bottom: 16px !important;
+}
+
+.custom-message-box .el-message-box__title {
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  color: #1f2937 !important;
+}
+
+.custom-message-box .el-message-box__content {
+  padding: 16px 0 !important;
+}
+
+.custom-message-box .el-message-box__message {
+  font-size: 15px !important;
+  line-height: 1.6 !important;
+  color: #4b5563 !important;
+}
+
+.custom-message-box .el-message-box__btns {
+  padding-top: 20px !important;
+  display: flex !important;
+  gap: 12px !important;
+  justify-content: flex-end !important;
+}
+
+.custom-message-box .el-button {
+  padding: 10px 24px !important;
+  border-radius: 12px !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  transition: all 0.3s ease !important;
+}
+
+.custom-message-box .el-button--default {
+  background: #f3f4f6 !important;
+  border: none !important;
+  color: #6b7280 !important;
+}
+
+.custom-message-box .el-button--default:hover {
+  background: #e5e7eb !important;
+  transform: translateY(-1px);
+}
+
+.custom-message-box .el-button--primary {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important;
+  border: none !important;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3) !important;
+}
+
+.custom-message-box .el-button--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(239, 68, 68, 0.4) !important;
+}
+
+.custom-message-box .el-message-box__status {
+  font-size: 24px !important;
+}
+
+/* 苹果风格分配结果对话框 */
+.apple-result-dialog {
+  border-radius: 20px !important;
+  padding: 0 !important;
+  max-width: 520px !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
+  backdrop-filter: blur(20px) !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+.apple-result-dialog .el-message-box__header {
+  padding: 24px 24px 16px 24px !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  border-radius: 20px 20px 0 0 !important;
+  margin: 0 !important;
+}
+
+.apple-result-dialog .el-message-box__title {
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  color: white !important;
+  text-align: center !important;
+  letter-spacing: -0.5px !important;
+}
+
+.apple-result-dialog .el-message-box__content {
+  padding: 0 !important;
+  max-height: 500px !important;
+  overflow: hidden !important;
+}
+
+.apple-result-dialog .el-message-box__message {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.apple-result-dialog .el-message-box__btns {
+  padding: 16px 24px 24px 24px !important;
+  border-top: 1px solid rgba(0, 0, 0, 0.06) !important;
+  background: rgba(248, 250, 252, 0.8) !important;
+  border-radius: 0 0 20px 20px !important;
+}
+
+.apple-result-dialog .el-button--primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  border: none !important;
+  border-radius: 12px !important;
+  padding: 12px 32px !important;
+  font-weight: 600 !important;
+  font-size: 16px !important;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.apple-result-dialog .el-button--primary:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.6) !important;
+}
+
+/* 分配结果内容样式 */
+.apple-assignment-result {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.result-stats {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  padding: 16px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 252, 0.9) 100%);
+}
+
+.stat-item {
+  text-align: center;
+  padding: 12px 16px;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  min-width: 80px;
+  transition: all 0.3s ease;
+}
+
+.stat-item.success {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.1) 100%);
+  border-color: rgba(16, 185, 129, 0.2);
+}
+
+.stat-item.failed {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(220, 38, 38, 0.1) 100%);
+  border-color: rgba(239, 68, 68, 0.2);
+}
+
+.stat-number {
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.stat-item.success .stat-number {
+  color: #059669;
+}
+
+.stat-item.failed .stat-number {
+  color: #dc2626;
+}
+
+.stat-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #6b7280;
+  letter-spacing: 0.5px;
+}
+
+.result-details {
+  max-height: 240px;
+  overflow-y: auto;
+  padding: 0 16px 16px 16px;
+}
+
+.building-group {
+  margin-bottom: 16px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+.building-header {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.building-icon {
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+.building-info {
+  flex: 1;
+}
+
+.class-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 2px;
+}
+
+.building-name {
+  font-size: 12px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.students-list {
+  padding: 4px 0;
+}
+
+.student-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  transition: all 0.2s ease;
+}
+
+.student-item:hover {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.student-avatar {
+  margin-right: 12px;
+}
+
+.avatar-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 16px;
+  color: white;
+}
+
+.avatar-circle.success {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+}
+
+.avatar-circle.failed {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3);
+}
+
+.student-info {
+  flex: 1;
+}
+
+.student-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 2px;
+}
+
+.room-number {
+  font-size: 13px;
+  color: #059669;
+  font-weight: 600;
+  background: rgba(16, 185, 129, 0.1);
+  padding: 2px 8px;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+.error-reason {
+  font-size: 13px;
+  color: #dc2626;
+  font-weight: 500;
+  background: rgba(239, 68, 68, 0.1);
+  padding: 2px 8px;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+/* 滚动条样式 */
+.result-details::-webkit-scrollbar {
+  width: 6px;
+}
+
+.result-details::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 3px;
+}
+
+.result-details::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+/* 苹果风格学生对话框 */
+.apple-student-dialog {
+  border-radius: 20px !important;
+  padding: 0 !important;
+  max-width: 480px !important;
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.25),
+    0 0 0 1px rgba(0, 0, 0, 0.05) !important;
+  overflow: hidden !important;
+}
+
+.apple-student-dialog .el-dialog__header {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.apple-student-dialog .el-dialog__body {
+  padding: 0 !important;
+  max-height: 500px !important;
+  overflow-y: auto !important;
+}
+
+.apple-student-dialog .el-dialog__footer {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.apple-student-dialog .custom-dialog-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 24px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.apple-student-dialog .custom-dialog-header .header-content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+}
+
+.apple-student-dialog .custom-dialog-header .header-icon {
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  flex-shrink: 0;
+}
+
+.apple-student-dialog .custom-dialog-header .header-text h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  margin: 0 0 4px 0;
+}
+
+.apple-student-dialog .custom-dialog-header .header-text p {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+}
+
+.apple-student-dialog .custom-dialog-header .close-btn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.apple-student-dialog .custom-dialog-header .close-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* 表单容器 */
+.apple-form-container {
+  padding: 12px 16px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.apple-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* 表单分组 */
+.form-section {
+  background: rgba(248, 250, 252, 0.6);
+  border-radius: 10px;
+  padding: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.section-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #374151;
+  margin-bottom: 8px;
+  padding-bottom: 4px;
+  border-bottom: 2px solid rgba(102, 126, 234, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.section-title::before {
+  content: '';
+  width: 3px;
+  height: 12px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 2px;
+}
+
+/* 表单组 */
+.form-group {
+  margin-bottom: 4px;
+}
+
+.form-group:last-child {
+  margin-bottom: 0;
+}
+
+.form-label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 3px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.label-icon {
+  font-size: 14px;
+  width: 18px;
+  text-align: center;
+}
+
+.label-text {
+  flex: 1;
+}
+
+/* 苹果风格输入框 */
+.apple-input .el-input__wrapper {
+  background: white !important;
+  border: 1.5px solid #e5e7eb !important;
+  border-radius: 10px !important;
+  padding: 8px 12px !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.apple-input .el-input__wrapper:hover {
+  border-color: #667eea !important;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.15) !important;
+}
+
+.apple-input .el-input__wrapper.is-focus {
+  border-color: #667eea !important;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1) !important;
+}
+
+.apple-input .el-input__inner {
+  font-size: 14px !important;
+  color: #1f2937 !important;
+  font-weight: 500 !important;
+}
+
+.apple-input .el-input__inner::placeholder {
+  color: #9ca3af !important;
+  font-weight: 400 !important;
+}
+
+/* 宿舍显示 */
+.room-display {
+  background: white;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 14px;
+  color: #6b7280;
+  font-weight: 500;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* 性别选择器 */
+.gender-selector {
+  display: flex;
+  gap: 10px;
+}
+
+.gender-option {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 10px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 14px;
+  font-weight: 500;
+  color: #6b7280;
+}
+
+.gender-option:hover {
+  border-color: #667eea;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.15);
+}
+
+.gender-option.active {
+  border-color: #667eea;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+  color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.gender-icon {
+  font-size: 16px;
+}
+
+/* 对话框底部 */
+.apple-dialog-footer {
+  display: flex;
+  gap: 10px;
+  padding: 20px;
+  border-top: 1px solid #e5e7eb;
+  background: #f9fafb;
+  border-radius: 0 0 20px 20px;
+}
+
+.apple-btn {
+  flex: 1;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.apple-btn.cancel {
+  background: white;
+  color: #6b7280;
+  border: 1.5px solid #e5e7eb;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.apple-btn.cancel:hover {
+  background: #f9fafb;
+  border-color: #d1d5db;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.apple-btn.primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.apple-btn.primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.6);
+}
+
+.apple-btn.primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.apple-btn.danger {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+}
+
+.apple-btn.danger:hover {
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(239, 68, 68, 0.6);
+}
+
+.loading-spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* 滚动条样式 */
+.apple-student-dialog .el-dialog__body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.apple-student-dialog .el-dialog__body::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 3px;
+}
+
+.apple-student-dialog .el-dialog__body::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+.apple-student-dialog .el-dialog__body::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.result-details::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* 分配宿舍表单特殊样式 */
+.apple-assign-dialog .apple-select .el-select__wrapper {
+  background: rgba(248, 250, 252, 0.8) !important;
+  border: 1.5px solid #e5e7eb !important;
+  border-radius: 12px !important;
+  padding: 12px 16px !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.apple-assign-dialog .apple-select .el-select__wrapper:hover {
+  border-color: #10b981 !important;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1) !important;
+}
+
+.apple-assign-dialog .apple-select .el-select__wrapper.is-focused {
+  border-color: #10b981 !important;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2) !important;
+}
+
+.apple-assign-dialog .apple-select .el-select__placeholder {
+  color: #9ca3af !important;
+  font-weight: 500 !important;
+}
+
+.apple-assign-dialog .apple-select .el-select__input {
+  color: #374151 !important;
+  font-weight: 600 !important;
+}
+
+/* 绿色主题按钮 */
+.apple-assign-dialog .apple-btn.primary {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+  color: white !important;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4) !important;
+}
+
+.apple-assign-dialog .apple-btn.primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, #059669 0%, #047857 100%) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 20px rgba(16, 185, 129, 0.6) !important;
+}
+
+/* 紧凑型表单样式 */
+.compact-form {
+  padding: 16px 20px;
+}
+
+.student-info {
+  background: rgba(16, 185, 129, 0.05);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 16px;
+}
+
+.info-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.info-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.info-value {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1f2937;
+  flex: 1;
+}
+
+.gender-badge {
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.gender-badge.male {
+  background: rgba(59, 130, 246, 0.1);
+  color: #2563eb;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.gender-badge.female {
+  background: rgba(236, 72, 153, 0.1);
+  color: #db2777;
+  border: 1px solid rgba(236, 72, 153, 0.3);
+}
+
+.room-select {
+  margin-bottom: 8px;
+}
+
+.select-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 8px;
+}
+
+/* 批量分班对话框样式 */
+:deep(.el-dialog) {
+  border-radius: 16px;
+  overflow: hidden;
+  padding: 0 !important;
+}
+
+/* 批量分班对话框 */
+:deep(.apple-batch-class-dialog) {
+  border-radius: 16px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+}
+
+:deep(.apple-batch-class-dialog .el-dialog__header) {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+:deep(.apple-batch-class-dialog .el-dialog__body) {
+  padding: 24px !important;
+}
+
+:deep(.apple-batch-class-dialog .el-dialog__footer) {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+:deep(.el-dialog__header) {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+:deep(.el-dialog__body) {
+  padding: 24px !important;
+}
+
+:deep(.el-dialog__footer) {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* 自定义对话框标题栏 */
+.custom-dialog-header {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  padding: 24px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.custom-dialog-header .header-content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+}
+
+.custom-dialog-header .header-icon {
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  flex-shrink: 0;
+}
+
+.custom-dialog-header .header-text h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  margin: 0 0 4px 0;
+}
+
+.custom-dialog-header .header-text p {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+}
+
+.custom-dialog-header .close-btn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.custom-dialog-header .close-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* 对话框底部按钮区域 */
+.dialog-footer {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  padding: 20px 24px;
+  border-top: 1px solid #e5e7eb;
+  background: #f9fafb;
+  border-radius: 0 0 16px 16px;
+}
+
+.dialog-footer .el-button {
+  min-width: 100px;
+  font-weight: 500;
+}
+
+/* 只读字段样式 */
+.readonly-hint {
+  font-size: 12px;
+  color: #9ca3af;
+  font-weight: 400;
+  margin-left: 4px;
+}
+
+.readonly-input.is-disabled {
+  background-color: #f9fafb !important;
+  border-color: #e5e7eb !important;
+  cursor: not-allowed;
+}
+
+.readonly-input.is-disabled .el-input__inner {
+  color: #6b7280 !important;
+  -webkit-text-fill-color: #6b7280 !important;
+}
+
+.dialog-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
+}
+
+/* 字段提示样式 */
+.field-hint {
+  font-size: 12px;
+  color: #6b7280;
+  margin-top: 4px;
+  line-height: 1.4;
+}

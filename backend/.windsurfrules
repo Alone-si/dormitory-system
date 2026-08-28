@@ -1,0 +1,21 @@
+# ⚙️ 后端项目规则 (Backend Context)
+
+## 🛠 技术栈规范
+- **核心**: Spring Boot 3.3.5, JDK 17.
+- **数据库**: MySQL 8.0+, Spring Data JPA.
+- **工具**: Lombok, Maven.
+
+## 🏗 架构规范 (Layered Architecture)
+1.  **Controller**: 仅负责接收请求、参数校验、返回 `ApiResponse<T>`。**禁止写业务逻辑**。
+2.  **Service**: 负责所有业务逻辑、事务控制 (`@Transactional`)、异常抛出。
+3.  **Repository**: 负责数据访问。使用 JPA 方法命名规则或 `@Query`。
+
+## 💻 编码习惯
+1.  **统一响应**: 所有接口必须包裹在 `ApiResponse` (或类似 Result) 类中返回。
+2.  **异常处理**: 不要 try-catch 吃掉异常，应抛出自定义异常由 `@RestControllerAdvice` 统一拦截。
+3.  **实体类**: 必须使用 JPA 标准注解 (`@Entity`, `@Table`, `@Id`, `@GeneratedValue`).
+4.  **安全性**: 涉及用户数据的增删改查，必须检查权限。
+
+## 🔗 联调提示
+- 前端期望的时间格式通常为 `yyyy-MM-dd HH:mm:ss`，请确保 Jackson 配置正确。
+- 字段名请保持驼峰命名 (camelCase)，与前端 JSON 保持一致。
