@@ -19,7 +19,7 @@
               {{ userInfo.name ? userInfo.name.charAt(0) : '?' }}
             </div>
           </div>
-          <div class="avatar-actions">
+          <div v-if="!isReadOnly" class="avatar-actions">
             <input 
               type="file" 
               ref="avatarInput" 
@@ -64,9 +64,9 @@
                 ref="displayNameInput"
                 placeholder="个性化用户名"
               />
-              <span v-else @click="startEditDisplayName" class="editable-text">
+              <span v-else @click="!isReadOnly && startEditDisplayName()" :class="{ 'editable-text': !isReadOnly, readonly: isReadOnly }">
                 {{ userInfo.displayName || `默认：${userInfo.studentId}` }}
-                <el-icon class="edit-icon"><Edit /></el-icon>
+                <el-icon v-if="!isReadOnly" class="edit-icon"><Edit /></el-icon>
               </span>
             </div>
           </div>
@@ -88,9 +88,9 @@
                 @keyup.enter="savePhone"
                 ref="phoneInput"
               />
-              <span v-else @click="startEditPhone" class="editable-text">
+              <span v-else @click="!isReadOnly && startEditPhone()" :class="{ 'editable-text': !isReadOnly, readonly: isReadOnly }">
                 {{ userInfo.phone || '未设置' }}
-                <el-icon class="edit-icon"><Edit /></el-icon>
+                <el-icon v-if="!isReadOnly" class="edit-icon"><Edit /></el-icon>
               </span>
             </div>
           </div>
@@ -106,9 +106,9 @@
                 placeholder="请输入邮箱地址"
                 type="email"
               />
-              <span v-else @click="startEditEmail" class="editable-text">
+              <span v-else @click="!isReadOnly && startEditEmail()" :class="{ 'editable-text': !isReadOnly, readonly: isReadOnly }">
                 {{ userInfo.email || '未设置' }}
-                <el-icon class="edit-icon"><Edit /></el-icon>
+                <el-icon v-if="!isReadOnly" class="edit-icon"><Edit /></el-icon>
               </span>
             </div>
           </div>
@@ -216,6 +216,7 @@ const {
   editingPhone,
   emailInput,
   handleAvatarChange,
+  isReadOnly,
   Lock,
   passwordForm,
   passwordFormRef,

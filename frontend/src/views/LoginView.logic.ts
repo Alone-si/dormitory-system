@@ -38,7 +38,7 @@ const handleLogin = async () => {
 
       ElMessage.success(`登录成功！欢迎 ${res.name}`)
 
-      if (res.user.mustChangePassword) {
+      if (res.role === 'STUDENT' && res.user.mustChangePassword) {
         await router.push('/change-password')
       } else if (res.role === 'ADMIN') {
         await router.push('/admin/dashboard')

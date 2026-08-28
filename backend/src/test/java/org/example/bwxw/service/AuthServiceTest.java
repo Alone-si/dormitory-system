@@ -74,7 +74,7 @@ class AuthServiceTest {
     }
 
     @Test
-    void marksExistingDefaultPasswordForChange() {
+    void doesNotForceAdminToChangeDefaultPassword() {
         User user = new User();
         user.setId(1L);
         user.setUsername("admin");
@@ -82,8 +82,29 @@ class AuthServiceTest {
         user.setRole(User.UserRole.ADMIN);
         user.setPassword("encoded");
         user.setStatus("ACTIVE");
+        user.setMustChangePassword(true);
         LoginRequest request = loginRequest("admin", "123456");
         when(userRepository.findByStudentId("admin")).thenReturn(Optional.of(user));
+        when(passwordEncoder.matches("123456", "encoded")).thenReturn(true);
+
+        authService.login(request);
+
+        assertEquals(false, user.getMustChangePassword());
+        verify(userRepository).save(user);
+    }
+
+    @Test
+    void marksStudentUsingDefaultPasswordAsReadOnly() {
+        User user = new User();
+        user.setId(2L);
+        user.setUsername("20240001");
+        user.setStudentId("20240001");
+        user.setName("学生");
+        user.setRole(User.UserRole.STUDENT);
+        user.setPassword("encoded");
+        user.setStatus("ACTIVE");
+        LoginRequest request = loginRequest("20240001", "123456");
+        when(userRepository.findByStudentId("20240001")).thenReturn(Optional.of(user));
         when(passwordEncoder.matches("123456", "encoded")).thenReturn(true);
 
         authService.login(request);

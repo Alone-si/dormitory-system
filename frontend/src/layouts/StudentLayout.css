@@ -102,6 +102,19 @@
   padding: 32px 24px;
 }
 
+.readonly-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+  padding: 14px 18px;
+  border: 1px solid #f2d59c;
+  border-radius: 12px;
+  color: #7a5517;
+  background: #fff8e8;
+}
+
 .user-card {
   background: white;
   border-radius: 16px;
@@ -203,4 +216,11 @@
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
+}
+
+@media (max-width: 640px) {
+  .readonly-banner {
+    align-items: stretch;
+    flex-direction: column;
+  }
 }

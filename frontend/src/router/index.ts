@@ -132,11 +132,6 @@ router.beforeEach((to, from, next) => {
     return
   }
 
-  if (userStore.userInfo?.mustChangePassword && to.path !== '/change-password') {
-    next('/change-password')
-    return
-  }
-  
   // 已登录，检查角色权限
   if (to.meta.role) {
     if (to.meta.role === userStore.role) {

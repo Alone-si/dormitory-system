@@ -5,7 +5,7 @@
         <h2>我的报修记录</h2>
         <p class="subtitle">查看和管理您提交的报修申请</p>
       </div>
-      <el-button type="primary" size="large" @click="dialogVisible = true" class="submit-btn">
+      <el-button v-if="!isReadOnly" type="primary" size="large" @click="dialogVisible = true" class="submit-btn">
         <Plus :size="18" />
         <span>提交报修</span>
       </el-button>
@@ -128,7 +128,12 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
 import { useMyRepairsView } from './MyRepairsView.logic'
+import { useUserStore } from '../../stores/user'
+
+const userStore = useUserStore()
+const isReadOnly = computed(() => Boolean(userStore.userInfo?.mustChangePassword))
 
 const {
   dialogVisible,

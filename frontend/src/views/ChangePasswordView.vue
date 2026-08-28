@@ -50,6 +50,10 @@
         </el-button>
       </el-form>
 
+      <button v-if="canSkip" class="skip-button" type="button" @click="skipPasswordChange">
+        暂时跳过，仅只读浏览
+      </button>
+
       <button class="logout-button" type="button" @click="logout">
         <LogOut :size="16" />
         退出登录
@@ -59,7 +63,7 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, ref } from 'vue'
+import { computed, reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
 import type { FormInstance, FormRules } from 'element-plus'
@@ -72,6 +76,9 @@ const router = useRouter()
 const userStore = useUserStore()
 const formRef = ref<FormInstance>()
 const loading = ref(false)
+const canSkip = computed(() =>
+  userStore.role === 'STUDENT' && Boolean(userStore.userInfo?.mustChangePassword)
+)
 const form = reactive({ currentPassword: '', newPassword: '', confirmPassword: '' })
 
 const rules: FormRules = {
@@ -101,16 +108,19 @@ const submit = async () => {
       return
     }
 
-    if (userStore.userInfo) {
-      userStore.setUserInfo({ ...userStore.userInfo, mustChangePassword: false })
-    }
-    ElMessage.success('密码修改成功')
-    await router.replace(userStore.role === 'ADMIN' ? '/admin/dashboard' : '/student/home')
+    userStore.clearAuth()
+    await router.replace('/login')
+    ElMessage.success('密码已修改，请重新登录')
   } catch (error: any) {
     if (error !== false) ElMessage.error(error?.response?.data?.message || '密码修改失败')
   } finally {
     loading.value = false
   }
+}
+
+const skipPasswordChange = async () => {
+  await router.replace('/student/home')
+  ElMessage.warning('当前为只读访客模式，修改密码后即可操作')
 }
 
 const logout = async () => {

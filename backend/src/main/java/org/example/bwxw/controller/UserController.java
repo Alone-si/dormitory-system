@@ -8,6 +8,7 @@ import org.example.bwxw.dto.ApiResponse;
 import org.example.bwxw.dto.UserInfoResponse;
 import org.example.bwxw.entity.Room;
 import org.example.bwxw.entity.User;
+import org.example.bwxw.filter.TokenAuthenticationFilter;
 import org.example.bwxw.repository.RoomRepository;
 import org.example.bwxw.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -257,7 +258,8 @@ public class UserController {
     
     // 修改密码
     @PutMapping("/password")
-    public ApiResponse<Void> changePassword(@RequestBody Map<String, String> passwordData) {
+    public ApiResponse<Void> changePassword(@RequestBody Map<String, String> passwordData,
+                                            HttpServletRequest request) {
         try {
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             String username = authentication.getName();
@@ -289,8 +291,13 @@ public class UserController {
             user.setPassword(passwordEncoder.encode(newPassword));
             user.setMustChangePassword(false);
             userRepository.save(user);
+
+            String authHeader = request.getHeader("Authorization");
+            if (authHeader != null && authHeader.startsWith("Bearer ")) {
+                TokenAuthenticationFilter.removeToken(authHeader.substring(7));
+            }
             
-            return ApiResponse.<Void>success("密码修改成功", null);
+            return ApiResponse.<Void>success("密码已修改，请重新登录", null);
         } catch (Exception e) {
             return ApiResponse.error("密码修改失败: " + e.getMessage());
         }
@@ -440,7 +447,7 @@ public class UserController {
             admin.setUsername(request.getUsername().trim());
             admin.setPhone(request.getPhone().trim());
             admin.setPassword(passwordEncoder.encode("123456"));
-            admin.setMustChangePassword(true);
+            admin.setMustChangePassword(false);
             admin.setRole(User.UserRole.ADMIN);
             admin.setAdminType(request.getAdminType());
             admin.setStatus("ACTIVE");
@@ -573,7 +580,7 @@ public class UserController {
             }
             
             admin.setPassword(passwordEncoder.encode("123456"));
-            admin.setMustChangePassword(true);
+            admin.setMustChangePassword(false);
             userRepository.save(admin);
             
             return ApiResponse.success("密码重置成功，新密码为：123456", null);

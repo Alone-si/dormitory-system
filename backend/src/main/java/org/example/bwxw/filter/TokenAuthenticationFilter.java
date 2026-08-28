@@ -70,13 +70,14 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter {
 
                         SecurityContextHolder.getContext().setAuthentication(authentication);
 
-                        if (Boolean.TRUE.equals(user.getMustChangePassword())
-                                && !isPasswordChangeRequest(request)) {
+                        if (user.getRole() == User.UserRole.STUDENT
+                                && Boolean.TRUE.equals(user.getMustChangePassword())
+                                && !isReadOnlyRequest(request)) {
                             response.setStatus(HttpServletResponse.SC_FORBIDDEN);
                             response.setCharacterEncoding("UTF-8");
                             response.setContentType("application/json");
                             response.getWriter().write(
-                                    "{\"code\":403,\"message\":\"请先修改初始密码\",\"data\":null}"
+                                    "{\"code\":403,\"message\":\"当前为只读访客模式，修改密码后即可操作\",\"data\":null}"
                             );
                             return;
                         }
@@ -89,7 +90,11 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter {
         filterChain.doFilter(request, response);
     }
 
-    private boolean isPasswordChangeRequest(HttpServletRequest request) {
+    private boolean isReadOnlyRequest(HttpServletRequest request) {
+        String method = request.getMethod();
+        if ("GET".equals(method) || "HEAD".equals(method) || "OPTIONS".equals(method)) {
+            return true;
+        }
         String path = request.getRequestURI();
         return "/api/users/password".equals(path) || "/api/auth/logout".equals(path);
     }

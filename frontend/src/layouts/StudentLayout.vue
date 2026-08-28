@@ -24,6 +24,11 @@
     <!-- 主内容区 -->
     <main class="main-content">
       <div class="content-wrapper">
+        <div v-if="isReadOnly" class="readonly-banner">
+          <span>当前为只读访客模式，只能查看信息。</span>
+          <el-button type="primary" plain size="small" @click="changePassword">修改密码并解锁操作</el-button>
+        </div>
+
         <!-- 用户信息卡片 -->
         <div class="user-card">
           <div class="user-info">
@@ -87,9 +92,11 @@ const {
   Building2,
   currentDate,
   currentSemester,
+  changePassword,
   FileText,
   handleLogout,
   Home,
+  isReadOnly,
   LogOut,
   roomText,
   Settings,

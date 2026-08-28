@@ -5,7 +5,7 @@
         <h2>我的缺寝记录</h2>
         <p class="subtitle">查看和管理您提交的缺寝申请</p>
       </div>
-      <el-button type="primary" size="large" @click="dialogVisible = true" class="submit-btn">
+      <el-button v-if="!isReadOnly" type="primary" size="large" @click="dialogVisible = true" class="submit-btn">
         <Plus :size="18" />
         <span>申请缺寝</span>
       </el-button>
@@ -137,7 +137,12 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
 import { useMyLeavesView } from './MyLeavesView.logic'
+import { useUserStore } from '../../stores/user'
+
+const userStore = useUserStore()
+const isReadOnly = computed(() => Boolean(userStore.userInfo?.mustChangePassword))
 
 const {
   CalendarClock,

@@ -32,8 +32,8 @@ class TokenAuthenticationFilterTest {
     private TokenAuthenticationFilter filter;
 
     @Test
-    void blocksOtherApisUntilInitialPasswordIsChanged() throws Exception {
-        String token = "forced-password-change-token";
+    void permitsReadsInStudentVisitorMode() throws Exception {
+        String token = "student-read-token";
         User user = forcedUser();
         TokenAuthenticationFilter.storeToken(token, user.getStudentId());
         when(userRepository.findByStudentId(user.getStudentId())).thenReturn(Optional.of(user));
@@ -44,9 +44,49 @@ class TokenAuthenticationFilterTest {
 
         try {
             filter.doFilter(request, response, filterChain);
+            assertEquals(200, response.getStatus());
+            verify(filterChain).doFilter(request, response);
+        } finally {
+            TokenAuthenticationFilter.removeToken(token);
+        }
+    }
+
+    @Test
+    void blocksWritesInStudentVisitorMode() throws Exception {
+        String token = "student-write-token";
+        User user = forcedUser();
+        TokenAuthenticationFilter.storeToken(token, user.getStudentId());
+        when(userRepository.findByStudentId(user.getStudentId())).thenReturn(Optional.of(user));
+
+        MockHttpServletRequest request = new MockHttpServletRequest("POST", "/api/repairs");
+        request.addHeader("Authorization", "Bearer " + token);
+        MockHttpServletResponse response = new MockHttpServletResponse();
+
+        try {
+            filter.doFilter(request, response, filterChain);
             assertEquals(403, response.getStatus());
-            assertTrue(response.getContentAsString().contains("请先修改初始密码"));
+            assertTrue(response.getContentAsString().contains("只读访客模式"));
             verify(filterChain, never()).doFilter(request, response);
+        } finally {
+            TokenAuthenticationFilter.removeToken(token);
+        }
+    }
+
+    @Test
+    void permitsPasswordChangeInStudentVisitorMode() throws Exception {
+        String token = "student-password-token";
+        User user = forcedUser();
+        TokenAuthenticationFilter.storeToken(token, user.getStudentId());
+        when(userRepository.findByStudentId(user.getStudentId())).thenReturn(Optional.of(user));
+
+        MockHttpServletRequest request = new MockHttpServletRequest("PUT", "/api/users/password");
+        request.addHeader("Authorization", "Bearer " + token);
+        MockHttpServletResponse response = new MockHttpServletResponse();
+
+        try {
+            filter.doFilter(request, response, filterChain);
+            assertEquals(200, response.getStatus());
+            verify(filterChain).doFilter(request, response);
         } finally {
             TokenAuthenticationFilter.removeToken(token);
         }

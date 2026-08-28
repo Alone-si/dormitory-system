@@ -1,10 +1,15 @@
-import { ref, reactive, onMounted, nextTick } from 'vue'
+import { computed, ref, reactive, onMounted, nextTick } from 'vue'
+import { useRouter } from 'vue-router'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { Upload, Delete, Edit } from '@element-plus/icons-vue'
 import { Lock, X } from 'lucide-vue-next'
 import * as userApi from '../../api/user'
+import { useUserStore } from '../../stores/user'
 
 export function useProfileView() {
+const router = useRouter()
+const userStore = useUserStore()
+const isReadOnly = computed(() => Boolean(userStore.userInfo?.mustChangePassword))
 // 响应式数据
 const userInfo = ref({
   id: 0,
@@ -311,13 +316,15 @@ const changePassword = async () => {
     })
 
     if (response.code === 200) {
-      ElMessage.success('密码修改成功')
       showChangePassword.value = false
       
       // 重置表单
       passwordForm.currentPassword = ''
       passwordForm.newPassword = ''
       passwordForm.confirmPassword = ''
+      userStore.clearAuth()
+      await router.replace('/login')
+      ElMessage.success('密码已修改，请重新登录')
     } else {
       ElMessage.error(response.message || '密码修改失败')
     }
@@ -345,6 +352,7 @@ onMounted(() => {
   editingPhone,
   emailInput,
   handleAvatarChange,
+  isReadOnly,
   Lock,
   passwordForm,
   passwordFormRef,

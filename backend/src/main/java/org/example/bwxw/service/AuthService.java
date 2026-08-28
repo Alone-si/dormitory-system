@@ -59,9 +59,16 @@ public class AuthService {
 
         failedLogins.remove(username);
 
-        // 兼容已有账号：仍使用历史默认密码的用户，下次登录立即进入改密流程。
-        if ("123456".equals(request.getPassword()) && !Boolean.TRUE.equals(user.getMustChangePassword())) {
+        // 只有学生使用默认密码时进入只读访客模式；管理员账号数量少，不强制改密。
+        if (user.getRole() == User.UserRole.STUDENT
+                && "123456".equals(request.getPassword())
+                && !Boolean.TRUE.equals(user.getMustChangePassword())) {
             user.setMustChangePassword(true);
+            userRepository.save(user);
+        } else if (user.getRole() == User.UserRole.ADMIN
+                && Boolean.TRUE.equals(user.getMustChangePassword())) {
+            // 清理旧版本曾给管理员写入的强制改密标记。
+            user.setMustChangePassword(false);
             userRepository.save(user);
         }
         

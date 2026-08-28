@@ -8,6 +8,7 @@ import { ElMessage } from 'element-plus'
 export function useStudentLayoutView() {
 const router = useRouter()
 const userStore = useUserStore()
+const isReadOnly = computed(() => Boolean(userStore.userInfo?.mustChangePassword))
 
 const roomText = computed(() => {
   if (!userStore.userInfo?.room) return '未分配'
@@ -48,14 +49,17 @@ const handleLogout = async () => {
   ElMessage.success('已退出登录')
   router.push('/login')
 }
+const changePassword = () => router.push('/change-password')
   return {
   Bell,
   Building2,
   currentDate,
   currentSemester,
+  changePassword,
   FileText,
   handleLogout,
   Home,
+  isReadOnly,
   LogOut,
   roomText,
   Settings,

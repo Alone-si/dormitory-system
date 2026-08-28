@@ -33,7 +33,7 @@ public class PasswordMigrationRunner implements CommandLineRunner {
                     || password.startsWith("$2y$");
             if (!alreadyBcrypt) {
                 user.setPassword(passwordEncoder.encode(password));
-                if ("123456".equals(password)) {
+                if (user.getRole() == User.UserRole.STUDENT && "123456".equals(password)) {
                     user.setMustChangePassword(true);
                 }
                 userRepository.save(user);
