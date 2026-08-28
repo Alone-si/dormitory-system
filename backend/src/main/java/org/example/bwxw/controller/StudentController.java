@@ -5,6 +5,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.example.bwxw.dto.ApiResponse;
 import org.example.bwxw.entity.User;
 import org.example.bwxw.repository.UserRepository;
+import org.example.bwxw.service.RoomService;
 import org.example.bwxw.service.StudentArchiveService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -26,6 +27,9 @@ public class StudentController {
     
     @Autowired
     private StudentArchiveService studentArchiveService;
+
+    @Autowired
+    private RoomService roomService;
     
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping
@@ -212,18 +216,7 @@ public class StudentController {
     @Transactional
     public ApiResponse<String> checkOutStudent(@PathVariable Long userId) {
         try {
-            User user = userRepository.findById(userId)
-                    .orElseThrow(() -> new RuntimeException("用户不存在"));
-            
-            if (user.getRole() != User.UserRole.STUDENT) {
-                return ApiResponse.error("该用户不是学生");
-            }
-            
-            // 将学生状态设置为INACTIVE（退宿）并清除宿舍分配
-            user.setStatus("INACTIVE");
-            user.setRoom(null);
-            userRepository.save(user);
-            
+            roomService.removeStudentFromRoom(userId);
             return ApiResponse.success("办理退宿成功");
         } catch (Exception e) {
             return ApiResponse.error("办理退宿失败: " + e.getMessage());

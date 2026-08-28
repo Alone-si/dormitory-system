@@ -13,6 +13,7 @@ services:
       SPRING_DATASOURCE_URL: jdbc:mysql://host.docker.internal:3306/alone?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: ${SMART_DORM_DB_PASSWORD}
+      SPRING_JPA_HIBERNATE_DDL_AUTO: validate
       TZ: Asia/Shanghai
     volumes:
       # 上传文件持久化

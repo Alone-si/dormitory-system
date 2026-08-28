@@ -90,6 +90,8 @@ docker-compose up -d backend
 
 删除容器不会删除本机数据库，但仍应定期备份。
 
+后端容器只校验数据库表结构，不会自动修改表。首次部署前，请先在开发模式启动一次后端完成建表或更新。
+
 ### **备份数据库**
 ```bash
 mysqldump -u root -p alone > backup.sql
