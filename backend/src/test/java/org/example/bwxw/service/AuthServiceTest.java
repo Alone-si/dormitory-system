@@ -15,6 +15,7 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
 class AuthServiceTest {
@@ -70,6 +71,25 @@ class AuthServiceTest {
                 () -> authService.login(request)
         );
         assertEquals("登录失败次数过多，请5分钟后再试", error.getMessage());
+    }
+
+    @Test
+    void marksExistingDefaultPasswordForChange() {
+        User user = new User();
+        user.setId(1L);
+        user.setUsername("admin");
+        user.setName("管理员");
+        user.setRole(User.UserRole.ADMIN);
+        user.setPassword("encoded");
+        user.setStatus("ACTIVE");
+        LoginRequest request = loginRequest("admin", "123456");
+        when(userRepository.findByStudentId("admin")).thenReturn(Optional.of(user));
+        when(passwordEncoder.matches("123456", "encoded")).thenReturn(true);
+
+        authService.login(request);
+
+        assertEquals(true, user.getMustChangePassword());
+        verify(userRepository).save(user);
     }
 
     private LoginRequest loginRequest(String username, String password) {

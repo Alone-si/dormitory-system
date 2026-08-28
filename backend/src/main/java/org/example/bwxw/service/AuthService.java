@@ -58,6 +58,12 @@ public class AuthService {
         }
 
         failedLogins.remove(username);
+
+        // 兼容已有账号：仍使用历史默认密码的用户，下次登录立即进入改密流程。
+        if ("123456".equals(request.getPassword()) && !Boolean.TRUE.equals(user.getMustChangePassword())) {
+            user.setMustChangePassword(true);
+            userRepository.save(user);
+        }
         
         // 生成简单token（实际应使用JWT）
         String token = UUID.randomUUID().toString();

@@ -17,6 +17,12 @@ const router = createRouter({
       meta: { hideLayout: true }
     },
     {
+      path: '/change-password',
+      name: 'ChangePassword',
+      component: () => import('../views/ChangePasswordView.vue'),
+      meta: { requiresAuth: true, hideLayout: true }
+    },
+    {
       path: '/admin',
       name: 'Admin',
       component: AdminLayout,
@@ -123,6 +129,11 @@ router.beforeEach((to, from, next) => {
     // 未登录，清除数据并跳转登录
     userStore.clearAuth()
     next('/login')
+    return
+  }
+
+  if (userStore.userInfo?.mustChangePassword && to.path !== '/change-password') {
+    next('/change-password')
     return
   }
   

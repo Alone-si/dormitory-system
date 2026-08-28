@@ -272,6 +272,14 @@ public class UserController {
             if (currentPassword == null || newPassword == null) {
                 return ApiResponse.error("当前密码和新密码不能为空");
             }
+
+            if (newPassword.length() < 8 || newPassword.length() > 128) {
+                return ApiResponse.error("新密码长度必须为8至128位");
+            }
+
+            if (currentPassword.equals(newPassword)) {
+                return ApiResponse.error("新密码不能与当前密码相同");
+            }
             
             // 验证当前密码
             if (!passwordEncoder.matches(currentPassword, user.getPassword())) {
@@ -279,6 +287,7 @@ public class UserController {
             }
 
             user.setPassword(passwordEncoder.encode(newPassword));
+            user.setMustChangePassword(false);
             userRepository.save(user);
             
             return ApiResponse.<Void>success("密码修改成功", null);
@@ -431,6 +440,7 @@ public class UserController {
             admin.setUsername(request.getUsername().trim());
             admin.setPhone(request.getPhone().trim());
             admin.setPassword(passwordEncoder.encode("123456"));
+            admin.setMustChangePassword(true);
             admin.setRole(User.UserRole.ADMIN);
             admin.setAdminType(request.getAdminType());
             admin.setStatus("ACTIVE");
@@ -563,6 +573,7 @@ public class UserController {
             }
             
             admin.setPassword(passwordEncoder.encode("123456"));
+            admin.setMustChangePassword(true);
             userRepository.save(admin);
             
             return ApiResponse.success("密码重置成功，新密码为：123456", null);
@@ -721,6 +732,7 @@ public class UserController {
             }
             
             student.setPassword(passwordEncoder.encode("123456"));
+            student.setMustChangePassword(true);
             userRepository.save(student);
             
             return ApiResponse.success("密码重置成功，新密码为：123456", null);

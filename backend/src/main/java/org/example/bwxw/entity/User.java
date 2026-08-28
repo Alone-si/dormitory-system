@@ -26,6 +26,9 @@ public class User {
     @JsonIgnore
     @Column(nullable = false)
     private String password;
+
+    @Column(name = "must_change_password")
+    private Boolean mustChangePassword = false;
     
     @Column(nullable = false, length = 50)
     private String name;

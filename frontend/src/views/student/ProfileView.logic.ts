@@ -49,7 +49,7 @@ const passwordRules = {
   ],
   newPassword: [
     { required: true, message: '请输入新密码', trigger: 'blur' },
-    { min: 6, message: '密码长度不能少于6位', trigger: 'blur' }
+    { min: 8, max: 128, message: '密码长度必须为8至128位', trigger: 'blur' }
   ],
   confirmPassword: [
     { required: true, message: '请确认新密码', trigger: 'blur' },

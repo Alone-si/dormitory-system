@@ -69,6 +69,17 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter {
                             new UsernamePasswordAuthenticationToken(principal, null, authorities);
 
                         SecurityContextHolder.getContext().setAuthentication(authentication);
+
+                        if (Boolean.TRUE.equals(user.getMustChangePassword())
+                                && !isPasswordChangeRequest(request)) {
+                            response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+                            response.setCharacterEncoding("UTF-8");
+                            response.setContentType("application/json");
+                            response.getWriter().write(
+                                    "{\"code\":403,\"message\":\"请先修改初始密码\",\"data\":null}"
+                            );
+                            return;
+                        }
                     }
                 } catch (Exception ignored) {
                 }
@@ -76,6 +87,11 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter {
         }
 
         filterChain.doFilter(request, response);
+    }
+
+    private boolean isPasswordChangeRequest(HttpServletRequest request) {
+        String path = request.getRequestURI();
+        return "/api/users/password".equals(path) || "/api/auth/logout".equals(path);
     }
 
     private static class TokenEntry {

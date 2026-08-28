@@ -23,6 +23,7 @@ export interface User {
   className?: string
   room?: Room
   status?: string
+  mustChangePassword?: boolean
   createdAt?: string
   updatedAt?: string
 }

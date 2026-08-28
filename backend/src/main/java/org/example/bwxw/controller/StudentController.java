@@ -112,6 +112,7 @@ public class StudentController {
             }
             
             user.setPassword(passwordEncoder.encode("123456"));
+            user.setMustChangePassword(true);
             user.setStatus("ACTIVE");
             
             User savedUser = userRepository.save(user);
@@ -163,6 +164,7 @@ public class StudentController {
                 String password = (String) params.get("password");
                 if (password != null && !password.isEmpty()) {
                     user.setPassword(passwordEncoder.encode(password));
+                    user.setMustChangePassword(true);
                 }
             }
             
@@ -294,6 +296,7 @@ public class StudentController {
                     user.setPhone(phone);
                     user.setClassName(className);
                     user.setPassword(passwordEncoder.encode("123456"));
+                    user.setMustChangePassword(true);
                     user.setStatus("ACTIVE");
                     
                     userRepository.save(user);
