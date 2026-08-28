@@ -1,0 +1,263 @@
+:root {
+  --apple-blue: #0a84ff;
+  --apple-blue-strong: #0066cc;
+  --apple-green: #30d158;
+  --apple-orange: #ff9f0a;
+  --apple-red: #ff453a;
+  --apple-purple: #af52de;
+  --apple-text: #1d1d1f;
+  --apple-text-2: #5f5f65;
+  --apple-text-3: #8a8a8e;
+  --apple-line: rgba(120, 120, 128, 0.14);
+  --apple-surface: rgba(255, 255, 255, 0.78);
+  --apple-surface-solid: #ffffff;
+  --apple-fill: rgba(120, 120, 128, 0.08);
+  --apple-radius: 16px;
+  --apple-radius-lg: 22px;
+  --apple-shadow: 0 16px 40px rgba(45, 52, 68, 0.08);
+
+  --el-color-primary: #0a84ff;
+  --el-color-primary-light-3: #54a9ff;
+  --el-color-primary-light-5: #85c2ff;
+  --el-color-primary-light-7: #b8dcff;
+  --el-color-primary-light-8: #d4eaff;
+  --el-color-primary-light-9: #eef7ff;
+  --el-color-primary-dark-2: #0066cc;
+  --el-text-color-primary: #1d1d1f;
+  --el-text-color-regular: #5f5f65;
+  --el-text-color-secondary: #8a8a8e;
+  --el-border-color: rgba(120, 120, 128, 0.18);
+  --el-border-color-light: rgba(120, 120, 128, 0.12);
+  --el-fill-color-light: rgba(120, 120, 128, 0.07);
+  --el-bg-color-page: #f3f4f7;
+  --el-border-radius-base: 12px;
+  --el-border-radius-small: 9px;
+  --el-border-radius-round: 999px;
+}
+
+html body {
+  color: var(--apple-text);
+  background: #f3f4f7;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "PingFang SC", "Segoe UI", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: -0.005em;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+html body button,
+html body input,
+html body textarea,
+html body select { font: inherit; }
+
+html body ::selection { color: #fff; background: rgba(10, 132, 255, 0.76); }
+
+html body .el-button {
+  min-height: 38px;
+  padding: 8px 15px;
+  border-radius: 11px !important;
+  font-size: 13px !important;
+  font-weight: 590 !important;
+  letter-spacing: -0.01em;
+  box-shadow: none;
+  transition: transform 150ms ease, box-shadow 150ms ease, background 150ms ease;
+}
+
+html body .el-button--primary:not(.is-plain) {
+  border-color: transparent;
+  background: linear-gradient(180deg, #168bff, #0877e5);
+  box-shadow: 0 7px 18px rgba(10, 132, 255, 0.23);
+}
+
+html body .el-button:hover { transform: translateY(-1px); }
+html body .el-button:active { transform: scale(0.98); }
+
+html body .el-input,
+html body .el-select { font-size: 13px !important; }
+
+html body .el-input__wrapper,
+html body .el-select__wrapper,
+html body .el-textarea__inner {
+  min-height: 40px;
+  border-radius: 11px !important;
+  background: rgba(118, 118, 128, 0.07) !important;
+  box-shadow: 0 0 0 1px transparent inset !important;
+}
+
+html body .el-input__wrapper:hover,
+html body .el-select__wrapper:hover { box-shadow: 0 0 0 1px rgba(10, 132, 255, 0.25) inset !important; }
+
+html body .el-input__wrapper.is-focus,
+html body .el-select__wrapper.is-focused {
+  background: #fff !important;
+  box-shadow: 0 0 0 3px rgba(10, 132, 255, 0.16) !important;
+}
+
+html body .el-form-item__label {
+  color: #4a4a50 !important;
+  font-size: 12px !important;
+  font-weight: 590 !important;
+}
+
+html body .el-tag {
+  height: 26px;
+  padding: 0 9px;
+  border: 0;
+  border-radius: 999px;
+  font-size: 11px !important;
+  font-weight: 580 !important;
+}
+
+html body .el-table {
+  overflow: hidden;
+  border-radius: 15px;
+  color: var(--apple-text-2) !important;
+  background: transparent;
+  font-size: 12px !important;
+  --el-table-border-color: rgba(120, 120, 128, 0.1);
+  --el-table-header-bg-color: rgba(118, 118, 128, 0.055);
+  --el-table-row-hover-bg-color: rgba(10, 132, 255, 0.045);
+}
+
+html body .el-table th.el-table__cell {
+  height: 46px !important;
+  color: #737379 !important;
+  background: rgba(118, 118, 128, 0.055) !important;
+  font-size: 10px !important;
+  font-weight: 680 !important;
+  letter-spacing: 0.04em;
+}
+
+html body .el-table td.el-table__cell { padding: 11px 0; color: #333338 !important; }
+html body .el-table .cell { line-height: 1.45 !important; }
+
+html body .el-pagination { --el-pagination-button-bg-color: rgba(118, 118, 128, 0.07); }
+html body .el-pagination.is-background .btn-prev,
+html body .el-pagination.is-background .btn-next,
+html body .el-pagination.is-background .el-pager li { border-radius: 9px; }
+
+html body .el-empty__description p { color: var(--apple-text-3); font-size: 12px; }
+
+html body .el-overlay { background: rgba(20, 20, 24, 0.24); backdrop-filter: blur(9px); }
+
+html body .el-overlay-dialog .el-dialog,
+html body .el-message-box {
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.82) !important;
+  border-radius: 22px !important;
+  background: rgba(250, 250, 252, 0.9) !important;
+  box-shadow: 0 32px 90px rgba(26, 31, 43, 0.23) !important;
+  backdrop-filter: blur(34px) saturate(150%);
+}
+
+html body .el-overlay-dialog .el-dialog__header,
+html body .el-message-box .el-message-box__header {
+  margin: 0 !important;
+  padding: 20px 22px 14px !important;
+  border-bottom: 1px solid var(--apple-line) !important;
+  color: var(--apple-text) !important;
+  background: rgba(255, 255, 255, 0.5) !important;
+}
+
+html body .el-overlay-dialog .el-dialog__title,
+html body .el-message-box .el-message-box__title {
+  color: var(--apple-text) !important;
+  font-size: 16px !important;
+  font-weight: 680 !important;
+  text-align: left !important;
+}
+
+html body .el-overlay-dialog .el-dialog__headerbtn .el-dialog__close { color: #77777d !important; }
+html body .el-overlay-dialog .el-dialog__body { padding: 22px !important; background: transparent !important; }
+html body .el-overlay-dialog .el-dialog__footer,
+html body .el-message-box .el-message-box__btns {
+  padding: 13px 18px !important;
+  border-top: 1px solid var(--apple-line) !important;
+  background: rgba(246, 246, 248, 0.68) !important;
+}
+
+/* Shared page hierarchy */
+html body :is(.students-view, .admins-view, .rooms-view, .buildings-view, .repairs-view, .leaves-view, .notices-view, .profile-view, .my-repairs-view, .my-leaves-view, .student-home) {
+  max-width: 1480px;
+  margin: 0 auto;
+}
+
+html body :is(.students-view, .admins-view, .rooms-view, .buildings-view, .repairs-view, .leaves-view, .notices-view) {
+  padding: 28px 30px 40px !important;
+}
+
+html body :is(.view-header, .page-header, .profile-header) {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 22px !important;
+}
+
+html body :is(.view-header h2, .page-header h2, .profile-header h2) {
+  margin: 0 !important;
+  color: var(--apple-text) !important;
+  font-size: clamp(24px, 3vw, 34px) !important;
+  font-weight: 720 !important;
+  letter-spacing: -0.04em !important;
+}
+
+html body .subtitle { margin-top: 4px !important; color: var(--apple-text-3) !important; font-size: 12px !important; }
+
+html body :is(.table-container, .table-wrapper, .profile-card, .glass-card, .building-card, .room-card, .repair-card, .leave-card, .notice-card) {
+  border: 1px solid rgba(255, 255, 255, 0.82) !important;
+  border-radius: 18px !important;
+  background: rgba(255, 255, 255, 0.76) !important;
+  box-shadow: var(--apple-shadow) !important;
+  backdrop-filter: blur(20px);
+}
+
+html body :is(.create-btn, .action-btn.primary-btn, .submit-btn) {
+  border: 0 !important;
+  border-radius: 11px !important;
+  color: #fff !important;
+  background: linear-gradient(180deg, #168bff, #0877e5) !important;
+  box-shadow: 0 7px 18px rgba(10, 132, 255, 0.23) !important;
+}
+
+html body .filter-buttons {
+  padding: 4px;
+  border-radius: 12px;
+  background: rgba(118, 118, 128, 0.08);
+}
+
+html body .filter-btn {
+  border: 0 !important;
+  border-radius: 9px !important;
+  color: #727278 !important;
+  background: transparent !important;
+  font-size: 11px !important;
+}
+
+html body .filter-btn.active {
+  color: #1d1d1f !important;
+  background: #fff !important;
+  box-shadow: 0 3px 11px rgba(45, 52, 68, 0.1) !important;
+}
+
+html body :is(.repairs-grid, .leaves-grid, .notices-grid, .buildings-grid) { gap: 14px !important; }
+
+@media (max-width: 720px) {
+  html body .admin-layout .sidebar {
+    width: calc(100% - 20px);
+    flex: none;
+  }
+  html body :is(.students-view, .admins-view, .rooms-view, .buildings-view, .repairs-view, .leaves-view, .notices-view) {
+    padding: 22px 15px 34px !important;
+  }
+  html body :is(.view-header, .page-header, .profile-header) { align-items: stretch; flex-direction: column; }
+  html body :is(.header-actions, .header-filters) { width: 100%; flex-wrap: wrap; }
+  html body :is(.header-actions, .header-filters) .el-input,
+  html body :is(.header-actions, .header-filters) .el-select { width: 100% !important; }
+  html body .el-overlay-dialog .el-dialog { width: calc(100vw - 24px) !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}

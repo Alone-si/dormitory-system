@@ -13,7 +13,12 @@ const loadUserInfo = async () => {
   try {
     const response = await getCurrentUser()
     if (response.code === 200) {
-      userStore.setUserInfo(response.data)
+      // 资料接口未必返回首次改密标记，保留登录时的只读状态。
+      userStore.setUserInfo({
+        ...response.data,
+        mustChangePassword: response.data.mustChangePassword
+          ?? userStore.userInfo?.mustChangePassword
+      })
       // 如果有宿舍信息，加载室友
       if (response.data.room?.id) {
         await loadRoommates(response.data.room.id)

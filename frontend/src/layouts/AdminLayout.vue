@@ -1,47 +1,55 @@
 <template>
   <div class="admin-layout">
-    <!-- 侧边栏 -->
     <aside class="sidebar">
       <div class="logo-section">
-        <Building2 :size="32" class="logo-icon" />
-        <h2>智能宿舍</h2>
+        <div class="brand-mark"><Building2 :size="22" /></div>
+        <div class="brand-copy">
+          <h2>宿舍管理</h2>
+          <span>Dorm Workspace</span>
+        </div>
       </div>
       
       <nav class="nav-menu">
-        <router-link 
-          v-for="item in menuItems" 
-          :key="item.path"
-          :to="item.path"
-          class="nav-item"
-          active-class="active"
-        >
-          <component :is="item.icon" :size="20" />
-          <span>{{ item.label }}</span>
-        </router-link>
+        <div v-for="group in menuGroups" :key="group.label" class="nav-group">
+          <span class="nav-group-label">{{ group.label }}</span>
+          <router-link
+            v-for="item in group.items"
+            :key="item.path"
+            :to="item.path"
+            class="nav-item"
+            active-class="active"
+          >
+            <span class="nav-icon"><component :is="item.icon" :size="18" /></span>
+            <span>{{ item.label }}</span>
+          </router-link>
+        </div>
       </nav>
       
       <div class="sidebar-footer">
-        <button @click="handleLogout" class="logout-btn">
-          <LogOut :size="20" />
-          <span>退出登录</span>
+        <div class="account-avatar">{{ userStore.userInfo?.name?.charAt(0) || 'A' }}</div>
+        <div class="account-copy">
+          <strong>{{ userStore.userInfo?.name }}</strong>
+          <span>{{ roleText }}</span>
+        </div>
+        <button @click="handleLogout" class="logout-btn" title="退出登录">
+          <LogOut :size="17" />
         </button>
       </div>
     </aside>
     
     <!-- 主内容区 -->
     <div class="main-content">
-      <!-- 顶部栏 -->
       <header class="top-bar">
-        <div class="breadcrumb">
-          <span class="current-page">{{ currentPageTitle }}</span>
-          <span class="date-chip">{{ currentDate }}</span>
-        </div>
-        <div class="user-info">
-          <el-tag class="role-tag" effect="plain" size="small">{{ roleText }}</el-tag>
-          <span class="user-name">{{ userStore.userInfo?.name }}</span>
-          <div class="user-avatar">
-            <User :size="20" />
+        <div class="page-context">
+          <span class="context-kicker">{{ currentDate }}</span>
+          <div class="context-title-row">
+            <h1>{{ currentPageTitle }}</h1>
+            <span class="live-dot">运行正常</span>
           </div>
+          <p>{{ currentPageDescription }}</p>
+        </div>
+        <div class="window-tools" aria-hidden="true">
+          <span></span><span></span><span></span>
         </div>
       </header>
       
@@ -63,12 +71,12 @@ import { useAdminLayoutView } from './AdminLayout.logic'
 const {
   Building2,
   currentDate,
+  currentPageDescription,
   currentPageTitle,
   handleLogout,
   LogOut,
-  menuItems,
+  menuGroups,
   roleText,
-  User,
   userStore
 } = useAdminLayoutView()
 </script>

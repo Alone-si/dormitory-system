@@ -9,7 +9,6 @@ import {
   FileText, 
   Bell,
   LogOut,
-  User,
   UserCog
 } from 'lucide-vue-next'
 import { useUserStore } from '../stores/user'
@@ -23,14 +22,14 @@ const userStore = useUserStore()
 
 // 所有菜单项
 const allMenuItems = [
-  { path: '/admin/dashboard', label: '仪表盘', icon: LayoutDashboard },
-  { path: '/admin/students', label: '学生管理', icon: Users },
-  { path: '/admin/admins', label: '管理员管理', icon: UserCog, requireSuperAdmin: true },
-  { path: '/admin/buildings', label: '宿舍楼管理', icon: Building2 },
-  { path: '/admin/rooms', label: '宿舍管理', icon: Home },
-  { path: '/admin/repairs', label: '报修处理', icon: Wrench },
-  { path: '/admin/leaves', label: '缺寑请假', icon: FileText },
-  { path: '/admin/notices', label: '宿舍通知', icon: Bell }
+  { path: '/admin/dashboard', label: '总览', description: '掌握今日住宿运行状态', icon: LayoutDashboard, group: '工作台' },
+  { path: '/admin/students', label: '学生', description: '学生档案与住宿安排', icon: Users, group: '住宿管理' },
+  { path: '/admin/buildings', label: '楼栋', description: '楼栋资料与容量配置', icon: Building2, group: '住宿管理' },
+  { path: '/admin/rooms', label: '房间', description: '房间状态与入住信息', icon: Home, group: '住宿管理' },
+  { path: '/admin/admins', label: '管理员', description: '管理后台成员与权限', icon: UserCog, group: '住宿管理', requireSuperAdmin: true },
+  { path: '/admin/repairs', label: '报修', description: '跟进学生报修与处理进度', icon: Wrench, group: '服务中心' },
+  { path: '/admin/leaves', label: '请假', description: '审核缺寝与请假申请', icon: FileText, group: '服务中心' },
+  { path: '/admin/notices', label: '通知', description: '发布和维护宿舍通知', icon: Bell, group: '服务中心' }
 ]
 
 // 根据用户权限过滤菜单
@@ -47,9 +46,19 @@ const menuItems = computed(() => {
   })
 })
 
+const menuGroups = computed(() => ['工作台', '住宿管理', '服务中心'].map(label => ({
+  label,
+  items: menuItems.value.filter(item => item.group === label)
+})))
+
 const currentPageTitle = computed(() => {
   const item = allMenuItems.find(m => m.path === route.path)
   return item?.label || '管理后台'
+})
+
+const currentPageDescription = computed(() => {
+  const item = allMenuItems.find(m => m.path === route.path)
+  return item?.description || '让住宿管理更清晰、更高效'
 })
 
 const currentDate = computed(() => {
@@ -78,12 +87,12 @@ const handleLogout = async () => {
   return {
   Building2,
   currentDate,
+  currentPageDescription,
   currentPageTitle,
   handleLogout,
   LogOut,
-  menuItems,
+  menuGroups,
   roleText,
-  User,
   userStore
   }
 }

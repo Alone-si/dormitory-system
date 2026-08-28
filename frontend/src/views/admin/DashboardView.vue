@@ -1,14 +1,15 @@
 <template>
   <div class="dashboard-container">
     <div class="dashboard-header">
-      <h1>管理员仪表盘</h1>
-      <p>欢迎回来，{{ userStore.userInfo?.name }}</p>
+      <span class="dashboard-eyebrow">TODAY AT A GLANCE</span>
+      <h1>欢迎回来，{{ userStore.userInfo?.name }}</h1>
+      <p>需要关注的信息已经整理在这里。</p>
     </div>
     
     <!-- 统计卡片 -->
     <div class="stats-grid">
-      <div class="stat-card">
-        <div class="stat-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%)">
+      <div class="stat-card students-stat">
+        <div class="stat-icon">
           <Users :size="32" />
         </div>
         <div class="stat-content">
@@ -17,8 +18,8 @@
         </div>
       </div>
       
-      <div class="stat-card">
-        <div class="stat-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%)">
+      <div class="stat-card rooms-stat">
+        <div class="stat-icon">
           <Home :size="32" />
         </div>
         <div class="stat-content">
@@ -27,8 +28,8 @@
         </div>
       </div>
       
-      <div class="stat-card">
-        <div class="stat-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)">
+      <div class="stat-card occupancy-stat">
+        <div class="stat-icon">
           <TrendingUp :size="32" />
         </div>
         <div class="stat-content">
@@ -37,8 +38,8 @@
         </div>
       </div>
       
-      <div class="stat-card">
-        <div class="stat-icon" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%)">
+      <div class="stat-card pending-stat">
+        <div class="stat-icon">
           <AlertCircle :size="32" />
         </div>
         <div class="stat-content">
@@ -51,19 +52,19 @@
     <!-- 图表区域 -->
     <div class="charts-grid">
       <div class="chart-card">
-        <h3>报修类型分布</h3>
+        <div class="panel-heading"><span>服务趋势</span><h3>报修类型分布</h3></div>
         <div ref="repairChartRef" class="chart"></div>
       </div>
       
       <div class="chart-card">
-        <h3>各楼栋房间数</h3>
+        <div class="panel-heading"><span>空间概览</span><h3>各楼栋房间数</h3></div>
         <div ref="buildingChartRef" class="chart"></div>
       </div>
     </div>
     
     <!-- 快捷操作 -->
     <div class="quick-actions">
-      <h3>快捷操作</h3>
+      <div class="panel-heading"><span>SHORTCUTS</span><h3>快捷操作</h3></div>
       <div class="action-grid">
         <button class="quick-action-btn students-btn" @click="router.push('/admin/students')">
           <Users :size="20" />

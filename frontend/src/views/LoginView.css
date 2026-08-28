@@ -244,3 +244,92 @@
     background: linear-gradient(135deg, #4b9c84 0%, #5c8fd4 100%);
   }
 }
+
+/* 2026 Apple-inspired entrance */
+.login-page {
+  padding: 28px;
+  background:
+    radial-gradient(circle at 10% 12%, rgba(88, 166, 255, 0.3), transparent 30%),
+    radial-gradient(circle at 84% 18%, rgba(180, 130, 255, 0.22), transparent 28%),
+    radial-gradient(circle at 58% 100%, rgba(90, 220, 180, 0.16), transparent 30%),
+    #eef1f6;
+}
+
+.soft-blob { filter: blur(40px); opacity: 0.45; }
+.blob-a { background: #4aa3ff; }
+.blob-b { background: #9c7cff; }
+.blob-c { background: #54d9b0; }
+
+.login-shell {
+  width: min(980px, 100%);
+  min-height: 600px;
+  grid-template-columns: 1.05fr 0.95fr;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.66);
+  box-shadow: 0 36px 110px rgba(38, 47, 66, 0.18);
+  backdrop-filter: blur(36px) saturate(150%);
+}
+
+.brand-panel {
+  padding: 38px;
+  background:
+    radial-gradient(circle at 80% 20%, rgba(100, 155, 255, 0.48), transparent 34%),
+    radial-gradient(circle at 10% 90%, rgba(147, 92, 255, 0.34), transparent 32%),
+    linear-gradient(155deg, #101521 0%, #1c2740 55%, #233c60 100%);
+}
+
+.brand-logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.brand-title { font-size: 18px; font-weight: 660; letter-spacing: -0.02em; }
+.brand-subtitle { color: rgba(255, 255, 255, 0.5); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; }
+.brand-copy h2 { max-width: 320px; font-size: clamp(34px, 4.2vw, 50px); line-height: 1.05; font-weight: 730; letter-spacing: -0.055em; }
+.brand-copy p { max-width: 350px; color: rgba(255, 255, 255, 0.67); font-size: 13px; }
+.brand-points { flex-direction: row; flex-wrap: wrap; }
+.brand-point { flex: 1 1 170px; padding: 10px 12px; border-radius: 13px; color: rgba(255, 255, 255, 0.76); background: rgba(255, 255, 255, 0.07); font-size: 11px; }
+
+.form-panel { padding: 46px; background: rgba(255, 255, 255, 0.54); }
+.form-wrap { max-width: 340px; }
+.login-header { margin-bottom: 28px; }
+.login-header h2 { color: #1d1d1f; font-size: 31px; font-weight: 720; letter-spacing: -0.045em; }
+.login-header p { color: #8a8a8e; font-size: 12px; }
+
+.login-form :deep(.el-input__wrapper) {
+  min-height: 50px;
+  border-radius: 13px !important;
+  background: rgba(118, 118, 128, 0.075) !important;
+  box-shadow: 0 0 0 1px transparent inset !important;
+}
+
+.login-form :deep(.el-input__wrapper.is-focus) {
+  background: #fff !important;
+  box-shadow: 0 0 0 3px rgba(10, 132, 255, 0.16) !important;
+}
+
+.login-btn {
+  height: 50px;
+  border: 0;
+  border-radius: 13px !important;
+  background: linear-gradient(180deg, #168bff, #0877e5) !important;
+  box-shadow: 0 10px 24px rgba(10, 132, 255, 0.25) !important;
+  font-size: 14px !important;
+}
+
+.login-hint { color: #99999f; font-size: 10px; }
+
+@media (max-width: 760px) {
+  .login-page { padding: 14px; }
+  .login-shell {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    border-radius: 25px;
+  }
+  .form-panel { padding: 34px 25px; }
+  .mobile-brand { color: #1d1d1f; font-size: 16px; }
+}

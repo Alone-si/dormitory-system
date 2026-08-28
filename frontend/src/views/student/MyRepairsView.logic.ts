@@ -91,7 +91,7 @@ const getStatusColor = (status: string) => {
     COMPLETED: 'success',
     REJECTED: 'danger'
   }
-  return map[status] || ''
+  return map[status] || 'info'
 }
 
 const getUrgencyText = (urgency: string) => {
@@ -107,11 +107,11 @@ const getUrgencyText = (urgency: string) => {
 const getUrgencyColor = (urgency: string) => {
   const map: Record<string, any> = {
     LOW: 'info',
-    MEDIUM: '',
+    MEDIUM: 'info',
     HIGH: 'warning',
     URGENT: 'danger'
   }
-  return map[urgency] || ''
+  return map[urgency] || 'info'
 }
 
 const formatDate = (date: string) => {

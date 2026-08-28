@@ -1,5 +1,5 @@
 import { computed } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { Building2, LogOut, Home, Wrench, FileText, Bell, Settings } from 'lucide-vue-next'
 import { useUserStore } from '../stores/user'
 import { authApi } from '../api/auth'
@@ -7,13 +7,9 @@ import { ElMessage } from 'element-plus'
 
 export function useStudentLayoutView() {
 const router = useRouter()
+const route = useRoute()
 const userStore = useUserStore()
 const isReadOnly = computed(() => Boolean(userStore.userInfo?.mustChangePassword))
-
-const roomText = computed(() => {
-  if (!userStore.userInfo?.room) return '未分配'
-  return `${userStore.userInfo.room.building.name}-${userStore.userInfo.room.roomNumber}`
-})
 
 const currentDate = computed(() => {
   return new Intl.DateTimeFormat('zh-CN', {
@@ -39,6 +35,16 @@ const currentSemester = computed(() => {
   }
 })
 
+const navItems = [
+  { path: '/student/home', label: '我的宿舍', description: '查看住宿与室友信息', icon: Home },
+  { path: '/student/repairs', label: '报修', description: '提交和跟进维修事项', icon: Wrench },
+  { path: '/student/leaves', label: '请假', description: '管理缺寝与请假记录', icon: FileText },
+  { path: '/student/notices', label: '通知', description: '查看宿舍最新消息', icon: Bell },
+  { path: '/student/profile', label: '我的账户', description: '维护个人资料与安全', icon: Settings }
+]
+
+const currentPage = computed(() => navItems.find(item => item.path === route.path) || navItems[0])
+
 const handleLogout = async () => {
   try {
     await authApi.logout()
@@ -51,19 +57,15 @@ const handleLogout = async () => {
 }
 const changePassword = () => router.push('/change-password')
   return {
-  Bell,
   Building2,
   currentDate,
+  currentPage,
   currentSemester,
   changePassword,
-  FileText,
   handleLogout,
-  Home,
   isReadOnly,
   LogOut,
-  roomText,
-  Settings,
-  userStore,
-  Wrench
+  navItems,
+  userStore
   }
 }
