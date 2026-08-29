@@ -56,13 +56,13 @@ const getPriorityText = (priority: string) => {
 }
 
 const getPriorityColor = (priority: string) => {
-  const map: Record<string, any> = {
+  const map: Record<string, 'info' | 'warning' | 'danger' | undefined> = {
     LOW: 'info',
-    NORMAL: '',
+    NORMAL: undefined,
     HIGH: 'warning',
     URGENT: 'danger'
   }
-  return map[priority] || ''
+  return map[priority]
 }
 
 const formatDate = (date: string | undefined) => {

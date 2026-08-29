@@ -1,11 +1,16 @@
 <template>
   <div class="admin-layout">
     <aside class="sidebar">
-      <div class="logo-section">
-        <div class="brand-mark"><Building2 :size="22" /></div>
-        <div class="brand-copy">
-          <h2>宿舍管理</h2>
-          <span>Dorm Workspace</span>
+      <div class="sidebar-titlebar">
+        <div class="window-controls" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </div>
+        <div class="logo-section">
+          <div class="brand-mark"><Building2 :size="18" /></div>
+          <div class="brand-copy">
+            <h2>宿舍管理</h2>
+            <span>Dorm</span>
+          </div>
         </div>
       </div>
       
@@ -41,15 +46,12 @@
     <div class="main-content">
       <header class="top-bar">
         <div class="page-context">
-          <span class="context-kicker">{{ currentDate }}</span>
-          <div class="context-title-row">
-            <h1>{{ currentPageTitle }}</h1>
-            <span class="live-dot">运行正常</span>
-          </div>
+          <h1>{{ currentPageTitle }}</h1>
           <p>{{ currentPageDescription }}</p>
         </div>
-        <div class="window-tools" aria-hidden="true">
-          <span></span><span></span><span></span>
+        <div class="toolbar-meta">
+          <span class="toolbar-date">{{ currentDate }}</span>
+          <span class="live-dot">运行正常</span>
         </div>
       </header>
       

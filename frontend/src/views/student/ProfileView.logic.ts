@@ -104,9 +104,8 @@ const loadUserInfo = async () => {
             type: 'warning'
           }
         ).then(() => {
-          // 清除本地存储并跳转到登录页
-          localStorage.clear()
-          window.location.href = '/login'
+          userStore.clearAuth()
+          router.replace('/login')
         })
       }
     }
@@ -125,8 +124,8 @@ const loadUserInfo = async () => {
           type: 'warning'
         }
       ).then(() => {
-        localStorage.clear()
-        window.location.href = '/login'
+        userStore.clearAuth()
+        router.replace('/login')
       })
     }
   }

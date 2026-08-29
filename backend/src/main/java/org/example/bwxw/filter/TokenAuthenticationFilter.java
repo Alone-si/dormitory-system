@@ -96,7 +96,7 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter {
             return true;
         }
         String path = request.getRequestURI();
-        return "/api/users/password".equals(path) || "/api/auth/logout".equals(path);
+        return path.startsWith("/api/auth/") || "/api/users/password".equals(path);
     }
 
     private static class TokenEntry {

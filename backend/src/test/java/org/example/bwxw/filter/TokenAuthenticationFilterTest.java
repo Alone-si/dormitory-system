@@ -92,6 +92,26 @@ class TokenAuthenticationFilterTest {
         }
     }
 
+    @Test
+    void permitsLoginInStudentVisitorMode() throws Exception {
+        String token = "student-login-token";
+        User user = forcedUser();
+        TokenAuthenticationFilter.storeToken(token, user.getStudentId());
+        when(userRepository.findByStudentId(user.getStudentId())).thenReturn(Optional.of(user));
+
+        MockHttpServletRequest request = new MockHttpServletRequest("POST", "/api/auth/login");
+        request.addHeader("Authorization", "Bearer " + token);
+        MockHttpServletResponse response = new MockHttpServletResponse();
+
+        try {
+            filter.doFilter(request, response, filterChain);
+            assertEquals(200, response.getStatus());
+            verify(filterChain).doFilter(request, response);
+        } finally {
+            TokenAuthenticationFilter.removeToken(token);
+        }
+    }
+
     private User forcedUser() {
         User user = new User();
         user.setStudentId("20240001");

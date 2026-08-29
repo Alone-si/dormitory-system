@@ -1,13 +1,18 @@
 <template>
   <div class="student-layout">
     <aside class="student-sidebar">
-      <div class="student-brand">
-        <div class="logo-wrapper">
-          <Building2 :size="22" class="logo-icon" />
+      <div class="student-sidebar-titlebar">
+        <div class="window-controls" aria-hidden="true">
+          <span></span><span></span><span></span>
         </div>
-        <div class="title-section">
-          <h1 class="main-title">我的宿舍</h1>
-          <p class="sub-title">Student Home</p>
+        <div class="student-brand">
+          <div class="logo-wrapper">
+            <Building2 :size="18" class="logo-icon" />
+          </div>
+          <div class="title-section">
+            <h1 class="main-title">我的宿舍</h1>
+            <p class="sub-title">Dorm</p>
+          </div>
         </div>
       </div>
 
@@ -36,11 +41,11 @@
     <div class="student-main">
       <header class="student-topbar">
         <div>
-          <span class="student-date">{{ currentDate }} · {{ currentSemester }}</span>
           <h1>{{ currentPage.label }}</h1>
           <p>{{ currentPage.description }}</p>
         </div>
         <div class="student-topbar-actions">
+          <span class="student-date">{{ currentDate }} · {{ currentSemester }}</span>
           <span class="student-role">学生</span>
           <button @click="handleLogout" class="mobile-logout" title="退出登录"><LogOut :size="18" /></button>
         </div>

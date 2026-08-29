@@ -751,27 +751,6 @@ body .admins-view .el-table th.el-table__cell {
 
 /* 移动端适配 */
 @media (max-width: 900px) {
-  body .admin-layout .sidebar {
-    width: 76px;
-  }
-
-  body .admin-layout .logo-section {
-    padding: 18px 14px;
-    justify-content: center;
-  }
-
-  body .admin-layout .logo-section h2,
-  body .admin-layout .nav-item span,
-  body .admin-layout .logout-btn span {
-    display: none;
-  }
-
-  body .admin-layout .nav-item,
-  body .admin-layout .logout-btn {
-    justify-content: center;
-    padding: 12px;
-  }
-
   body .student-home .personal-info-card,
   body .student-home .roommates-card,
   body .student-home .status-card,
