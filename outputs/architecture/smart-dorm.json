@@ -1,0 +1,161 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "SmartDormSystem 项目结构",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "viewBox": [
+      1200,
+      640
+    ]
+  },
+  "components": [
+    {
+      "id": "dorm-ui",
+      "type": "frontend",
+      "label": "Vue 3 双角色页面",
+      "sublabel": "学生端 / 管理端 · Element Plus",
+      "pos": [
+        40,
+        90
+      ],
+      "size": [
+        260,
+        80
+      ]
+    },
+    {
+      "id": "dorm-http",
+      "type": "frontend",
+      "label": "API 与登录状态",
+      "sublabel": "Axios / Pinia / Vue Router",
+      "pos": [
+        440,
+        90
+      ],
+      "size": [
+        260,
+        80
+      ]
+    },
+    {
+      "id": "dorm-auth",
+      "type": "security",
+      "label": "请求认证",
+      "sublabel": "Spring Security / 内存 Token",
+      "pos": [
+        860,
+        90
+      ],
+      "size": [
+        290,
+        80
+      ]
+    },
+    {
+      "id": "dorm-db",
+      "type": "database",
+      "label": "MySQL 数据库",
+      "sublabel": "alone · 7 张业务表",
+      "pos": [
+        40,
+        340
+      ],
+      "size": [
+        260,
+        80
+      ]
+    },
+    {
+      "id": "dorm-data",
+      "type": "backend",
+      "label": "数据访问与实体",
+      "sublabel": "7 Repository / JPA Entity",
+      "pos": [
+        440,
+        340
+      ],
+      "size": [
+        260,
+        80
+      ]
+    },
+    {
+      "id": "dorm-business",
+      "type": "backend",
+      "label": "接口与业务处理",
+      "sublabel": "10 Controller / Service",
+      "pos": [
+        860,
+        340
+      ],
+      "size": [
+        290,
+        80
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "from": "dorm-ui",
+      "to": "dorm-http",
+      "label": "调用接口"
+    },
+    {
+      "from": "dorm-http",
+      "to": "dorm-auth",
+      "label": "HTTP /api",
+      "variant": "emphasis"
+    },
+    {
+      "from": "dorm-auth",
+      "to": "dorm-business",
+      "label": "认证后分发",
+      "variant": "security",
+      "labelAt": [
+        1005,
+        250
+      ]
+    },
+    {
+      "from": "dorm-business",
+      "to": "dorm-data",
+      "label": "查询 / 保存"
+    },
+    {
+      "from": "dorm-data",
+      "to": "dorm-db",
+      "label": "JPA / SQL"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "frontend/src · 页面与交互",
+      "items": [
+        "views/admin：学生、楼栋、宿舍、管理员、报修、请假、公告、看板",
+        "views/student：主页、报修、请假、公告、个人资料",
+        "api / stores / router：请求、登录状态、页面权限"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "backend/src/main · 业务与数据",
+      "items": [
+        "Java 17 / Spring Boot 4.0.0；主包 org.example.bwxw",
+        "controller / service / repository / entity / dto",
+        "表：users、buildings、rooms、repairs、leaves、notices、system_configs"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "代码核实范围 · 2026-09-05",
+      "items": [
+        "开发配置：Vite 5173 → 后端 8080 → MySQL 3306",
+        "主关系：楼栋 → 宿舍 → 学生；请假、报修关联用户",
+        "图为源码结构；不代表服务已启动或部署已验证"
+      ]
+    }
+  ]
+}

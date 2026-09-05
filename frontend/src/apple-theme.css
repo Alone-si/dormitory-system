@@ -177,6 +177,40 @@ html body .el-message-box .el-message-box__btns {
   background: rgba(246, 246, 248, 0.68) !important;
 }
 
+/* Page-level legacy styles used colored dialog chrome; the app shell owns it now. */
+html body .el-overlay-dialog .el-dialog .el-dialog__header {
+  color: var(--apple-text) !important;
+  background: rgba(255, 255, 255, 0.56) !important;
+}
+
+html body .el-overlay-dialog .el-dialog .el-dialog__title { color: var(--apple-text) !important; }
+html body .el-overlay-dialog .el-dialog .el-dialog__headerbtn .el-dialog__close { color: #77777d !important; }
+
+html body .el-overlay-dialog .el-dialog .el-dialog__footer :is(.confirm-btn, .process-btn, .approve-btn, .submit-btn, .apple-btn.primary) {
+  border-color: transparent !important;
+  color: #fff !important;
+  background: var(--apple-blue) !important;
+  box-shadow: none !important;
+}
+
+html body .el-overlay-dialog .el-dialog .custom-dialog-header {
+  padding: 0 0 16px !important;
+  color: var(--apple-text) !important;
+  background: transparent !important;
+}
+
+html body .el-overlay-dialog .el-dialog .custom-dialog-header .header-icon {
+  color: var(--apple-blue) !important;
+  background: rgba(10, 132, 255, 0.1) !important;
+  backdrop-filter: none !important;
+}
+
+html body .el-overlay-dialog .el-dialog .custom-dialog-header .header-text :is(h3, p) { color: inherit !important; }
+html body .el-overlay-dialog .el-dialog .custom-dialog-header .header-text p { color: var(--apple-text-3) !important; }
+html body .el-overlay-dialog .el-dialog .custom-dialog-header .close-btn { color: var(--apple-text-2) !important; background: var(--apple-fill) !important; }
+html body .el-overlay-dialog :is(.label-icon, .gender-icon, .type-icon) { display: none !important; }
+html body .el-overlay-dialog .gender-option.active { border-color: rgba(10, 132, 255, 0.45) !important; color: #0066cc !important; background: rgba(10, 132, 255, 0.08) !important; }
+
 /* Shared page hierarchy */
 html body :is(.students-view, .admins-view, .rooms-view, .buildings-view, .repairs-view, .leaves-view, .notices-view, .profile-view, .my-repairs-view, .my-leaves-view, .student-home) {
   max-width: 1480px;
@@ -405,7 +439,135 @@ html body .filter-btn.active {
   box-shadow: 0 3px 11px rgba(45, 52, 68, 0.1) !important;
 }
 
-html body :is(.repairs-grid, .leaves-grid, .notices-grid, .buildings-grid) { gap: 14px !important; }
+/* Unified record lists: one content language across repairs, leaves and notices. */
+html body .admin-layout :is(.repairs-grid, .leaves-grid, .notices-grid) {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 380px), 1fr)) !important;
+  align-items: start;
+  gap: 14px !important;
+}
+
+html body .admin-layout :is(.repair-card, .leave-card, .notice-card) {
+  min-height: 0 !important;
+  border-radius: 14px !important;
+  transform: none !important;
+  transition: border-color 150ms ease, background 150ms ease !important;
+}
+
+html body .admin-layout :is(.repair-card, .leave-card, .notice-card):hover {
+  border-color: rgba(10, 132, 255, 0.24) !important;
+  box-shadow: var(--apple-shadow) !important;
+  transform: none !important;
+}
+
+html body .admin-layout .repair-card,
+html body .admin-layout .notice-card { padding: 16px !important; }
+
+html body .admin-layout .repair-card .description-box {
+  margin-bottom: 10px;
+  padding: 12px;
+  border-left: 0;
+  border-radius: 10px;
+  background: var(--apple-fill);
+}
+
+html body .admin-layout .leave-card .card-header,
+html body .admin-layout .leave-card .card-body,
+html body .admin-layout .leave-card .card-footer { padding: 14px 16px; }
+
+html body .admin-layout .leave-card .card-header,
+html body .admin-layout .leave-card .card-footer { background: #fbfbfc; }
+
+html body .admin-layout .notice-card .notice-content {
+  color: var(--apple-text-2);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+html body .admin-layout :is(.repairs-view, .leaves-view, .notices-view) .custom-tag {
+  padding: 4px 9px !important;
+  border-radius: 8px !important;
+  color: var(--apple-text-2) !important;
+  background: var(--apple-fill) !important;
+  box-shadow: none !important;
+  font-size: 11px !important;
+  transform: none !important;
+}
+
+html body .admin-layout :is(.repairs-view, .leaves-view, .notices-view) :is(.tag-primary, .tag-info, .tag-announcement, .type-personal, .tag-male) {
+  color: #0066cc !important;
+  background: rgba(10, 132, 255, 0.11) !important;
+}
+
+html body .admin-layout :is(.repairs-view, .leaves-view, .notices-view) :is(.tag-success, .tag-all, .type-family) {
+  color: #14833b !important;
+  background: rgba(48, 209, 88, 0.12) !important;
+}
+
+html body .admin-layout :is(.repairs-view, .leaves-view, .notices-view) :is(.tag-warning, .type-emergency) {
+  color: #9a5a00 !important;
+  background: rgba(255, 159, 10, 0.14) !important;
+}
+
+html body .admin-layout :is(.repairs-view, .leaves-view, .notices-view) :is(.tag-danger, .type-sick) {
+  color: #c9342c !important;
+  background: rgba(255, 69, 58, 0.12) !important;
+}
+
+html body .admin-layout .notices-view .icon-btn,
+html body .admin-layout .leaves-view .action-btn,
+html body .admin-layout .repairs-view .action-btn {
+  border-radius: 9px !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+html body .admin-layout .notices-view .edit-btn { color: #0066cc; background: rgba(10, 132, 255, 0.1); }
+html body .admin-layout :is(.notices-view, .leaves-view) .delete-btn { color: #c9342c; background: rgba(255, 69, 58, 0.1); }
+
+html body .student-layout :is(.my-repairs-view, .my-leaves-view, .notices-view, .profile-view) {
+  max-width: 980px;
+  margin-inline: auto;
+}
+
+html body .student-layout :is(.repairs-list, .leaves-list, .notices-list) { gap: 12px; }
+
+html body .student-layout :is(.my-repairs-view, .my-leaves-view, .notices-view) .glass-card {
+  margin: 0;
+  padding: 16px;
+  border-radius: 14px !important;
+  transform: none !important;
+}
+
+html body .student-layout :is(.my-repairs-view, .my-leaves-view) .card-body {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 24px;
+}
+
+html body .student-layout :is(.my-repairs-view, .my-leaves-view) .reply-section { grid-column: 1 / -1; }
+
+html body .student-layout :is(.section-card, .rules-card) {
+  border-color: rgba(60, 60, 67, 0.12);
+  border-radius: 14px;
+  color: var(--apple-text-2);
+  background: #fff;
+  box-shadow: var(--apple-shadow);
+  backdrop-filter: none;
+}
+
+html body .student-layout .student-home .content-grid {
+  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+  grid-template-areas:
+    "personal status"
+    "personal rules"
+    "roommates roommates";
+  gap: 14px;
+}
+
+html body .student-layout .student-home :is(.personal-info-card, .roommates-card, .status-card, .rules-card) { grid-column: auto; }
+html body .student-layout .rules-card h3 { color: var(--apple-text); }
+html body .student-layout .student-home .rules-list li { color: var(--apple-text-2) !important; }
+html body .student-layout .rules-list li::before { color: var(--apple-blue); }
 
 @media (max-width: 720px) {
   html body .admin-layout .sidebar {
@@ -439,6 +601,12 @@ html body :is(.repairs-grid, .leaves-grid, .notices-grid, .buildings-grid) { gap
   html body :is(.admin-layout .top-bar, .student-layout .student-topbar) { min-height: 88px; padding: 15px 18px; }
   html body :is(.toolbar-date, .student-date) { display: none; }
   html body .student-layout .student-content { padding: 16px 14px; }
+  html body .student-layout .student-home .content-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas: "personal" "status" "roommates" "rules";
+  }
+  html body .student-layout :is(.my-repairs-view, .my-leaves-view) .card-body { grid-template-columns: 1fr; }
+  html body .student-layout :is(.my-repairs-view, .my-leaves-view) .reply-section { grid-column: auto; }
   html body :is(.students-view, .admins-view, .rooms-view, .buildings-view, .repairs-view, .leaves-view, .notices-view) {
     padding: 16px 14px 28px !important;
   }
