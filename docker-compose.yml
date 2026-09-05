@@ -14,7 +14,12 @@ services:
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: ${SMART_DORM_DB_PASSWORD}
       SPRING_JPA_HIBERNATE_DDL_AUTO: validate
+      SMART_DORM_BOOTSTRAP_USERNAME: ${SMART_DORM_BOOTSTRAP_USERNAME:-}
+      SMART_DORM_BOOTSTRAP_PASSWORD: ${SMART_DORM_BOOTSTRAP_PASSWORD:-}
+      SMART_DORM_BOOTSTRAP_NAME: ${SMART_DORM_BOOTSTRAP_NAME:-系统管理员}
       TZ: Asia/Shanghai
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     volumes:
       # 上传文件持久化
       - upload-data:/app/uploads

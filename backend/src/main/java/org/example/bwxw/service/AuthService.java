@@ -59,16 +59,11 @@ public class AuthService {
 
         failedLogins.remove(username);
 
-        // 只有学生使用默认密码时进入只读访客模式；管理员账号数量少，不强制改密。
+        // 学生使用默认密码时进入只读访客模式；管理员的改密标记由创建/重置流程设置。
         if (user.getRole() == User.UserRole.STUDENT
                 && "123456".equals(request.getPassword())
                 && !Boolean.TRUE.equals(user.getMustChangePassword())) {
             user.setMustChangePassword(true);
-            userRepository.save(user);
-        } else if (user.getRole() == User.UserRole.ADMIN
-                && Boolean.TRUE.equals(user.getMustChangePassword())) {
-            // 清理旧版本曾给管理员写入的强制改密标记。
-            user.setMustChangePassword(false);
             userRepository.save(user);
         }
         

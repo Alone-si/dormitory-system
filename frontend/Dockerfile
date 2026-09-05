@@ -1,5 +1,5 @@
 # 第一阶段：构建静态文件
-FROM node:18-alpine AS builder
+FROM node:24-alpine AS builder
 
 # 设置工作目录
 WORKDIR /app
@@ -7,9 +7,8 @@ WORKDIR /app
 # 复制 package.json 和 package-lock.json
 COPY package*.json ./
 
-# 配置淘宝镜像源并安装依赖
-RUN npm config set registry https://registry.npmmirror.com && \
-    npm install
+# 严格按照锁文件安装依赖
+RUN npm ci
 
 # 复制源代码
 COPY . .

@@ -24,6 +24,6 @@ echo 将这个文件复制到新电脑即可
 echo ========================================
 echo.
 echo 新电脑需要安装：
-echo - Node.js 18+
+echo - Node.js 24
 echo.
 pause

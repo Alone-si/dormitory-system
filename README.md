@@ -1,300 +1,117 @@
-# 🏠 智能宿舍管理系统 (Smart Dorm System)
+# 智能宿舍管理系统（Smart Dorm System）
 
-一个基于 **Spring Boot + Vue 3** 的现代化宿舍管理系统，提供宿舍分配、学生管理、报修管理等功能。
+基于 Spring Boot 和 Vue 3 的宿舍管理系统，包含管理员端和学生端，支持楼栋、房间、学生、报修、请假、公告及数据看板管理。
 
-## 📋 项目简介
+## 技术栈
 
-本系统是一个功能完善的现代化宿舍管理系统，包括：
-- 🏢 宿舍楼栋和房间管理
-- 👥 学生信息和入住管理
-- 🔧 报修申请和处理流程
-- 📢 宿舍公告发布和管理
-- 📝 请假申请和审批
-- 📊 数据统计和可视化分析
-- 🔐 权限管理（管理员/学生双端）
-- 🎨 现代化UI设计
+- 后端：Java 17、Spring Boot 4.0.8、Spring Security、Spring Data JPA、MySQL 8
+- 前端：Vue 3、TypeScript、Element Plus、Pinia、Vue Router、Axios、ECharts、Vite
+- 认证：服务端内存 UUID Token，密码使用 BCrypt 哈希保存
 
-## 🛠 技术栈
+Token 有效期为 2 小时，后端重启后现有 Token 会失效。该方式适合课程设计和单机部署；多实例部署时需要改用共享会话或其他统一认证方案。
 
-### 后端
-- **Spring Boot 4.0.0** - 最新版本的Spring框架
-- **Spring Security** - 安全认证框架
-- **Spring Data JPA + Hibernate** - 数据持久化
-- **MySQL 8.0+** - 数据库
-- **UUID Token** - 自定义认证系统
-- **Lombok** - 简化Java代码
-- **Maven** - 项目构建工具
+## 项目结构
 
-### 前端
-- **Vue 3 (Composition API)** - 渐进式JavaScript框架
-- **Element Plus** - 企业级UI组件库
-- **Vue Router** - 路由管理
-- **Pinia** - 状态管理
-- **Axios** - HTTP请求库
-- **Lucide Vue Next** - 现代化图标库
-- **Vite** - 快速的前端构建工具
-
-## 📁 项目结构
-
-```
+```text
 SmartDormSystem/
-├── backend/                    # 后端项目
-│   └── bwxw/
-│       ├── src/
-│       │   ├── main/
-│       │   │   ├── java/
-│       │   │   │   └── org/example/bwxw/
-│       │   │   │       ├── controller/    # 控制器层
-│       │   │   │       ├── service/       # 业务逻辑层
-│       │   │   │       ├── repository/    # 数据访问层
-│       │   │   │       ├── entity/        # 实体类
-│       │   │   │       └── BwxwApplication.java
-│       │   │   └── resources/
-│       │   │       └── application.properties
-│       │   └── test/
-│       └── pom.xml
-│
-└── frontend/                   # 前端项目
-    ├── src/
-    │   ├── views/             # 页面组件
-    │   │   ├── Home.vue       # 首页
-    │   │   └── Login.vue      # 登录页
-    │   ├── router/            # 路由配置
-    │   ├── utils/             # 工具函数
-    │   ├── App.vue            # 根组件
-    │   ├── main.js            # 入口文件
-    │   └── style.css          # 全局样式
-    ├── index.html
-    ├── vite.config.js         # Vite配置
-    └── package.json
+├─ backend/
+│  ├─ src/main/java/org/example/bwxw/
+│  │  ├─ controller/     API 接口
+│  │  ├─ service/        业务逻辑
+│  │  ├─ repository/     数据访问
+│  │  ├─ entity/         JPA 实体
+│  │  ├─ dto/            请求和响应对象
+│  │  ├─ config/         安全与 Web 配置
+│  │  └─ filter/         Token 认证过滤器
+│  └─ src/main/resources/
+├─ frontend/
+│  └─ src/
+│     ├─ views/admin/    管理员页面
+│     ├─ views/student/  学生页面
+│     ├─ layouts/        双端布局
+│     ├─ api/            API 调用
+│     ├─ stores/         登录状态
+│     └─ router/         路由与权限守卫
+├─ scripts/              数据导入、导出和打包脚本
+└─ outputs/architecture/ 交互式项目架构图
 ```
 
-## 🚀 快速开始
+## 本地启动
 
-### 前置要求
+需要安装 Java 17、Node.js 24 和 MySQL 8。
 
-- **Java 17+**
-- **Node.js 18+**
-- **MySQL 8.0+**
-- **Maven 3.8+**
+1. 创建数据库：
 
-### 1️⃣ 数据库配置
+   ```sql
+   CREATE DATABASE alone CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+   ```
 
-创建数据库：
-```sql
-CREATE DATABASE alone CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-```
+2. 复制 `backend/config/application-local.example.properties` 为 `backend/config/application-local.properties`，填写本机 MySQL 密码。该本地文件已被 Git 忽略。
 
-数据库配置已在 `backend/src/main/resources/application.properties` 中完成：
-- 数据库名：`alone`
-- 用户名：`root`
-- 密码：在 `backend/config/application-local.properties` 中填写（该文件不会提交）
-- 端口：`3306`
+3. 启动后端：
 
-**注意**：系统会自动创建所有必要的数据表（JPA自动建表）
+   ```powershell
+   cd backend
+   .\mvnw.cmd spring-boot:run
+   ```
 
-### 2️⃣ 启动后端
+4. 启动前端：
 
-```bash
-# 进入后端目录
-cd backend
+   ```powershell
+   cd frontend
+   npm ci
+   npm run dev
+   ```
 
-# 使用Maven启动
-mvn spring-boot:run
+5. 打开 <http://localhost:5173>。后端地址为 <http://localhost:8080>。
 
-# 或使用IDE（推荐）
-# 直接运行 BwxwApplication.java
-```
+如果数据库中还没有管理员，请在启动前设置环境变量 `SMART_DORM_BOOTSTRAP_USERNAME` 和 `SMART_DORM_BOOTSTRAP_PASSWORD`。程序只会创建一次首个超级管理员，并要求首次登录后修改临时密码。创建成功后应清空临时密码环境变量。
 
-后端将在 **http://localhost:8080** 启动
+项目不会自动导入测试学生；可在管理员页面使用学生批量导入功能。
 
-**首次启动**：系统会自动创建管理员账号和测试数据
+## 构建
 
-### 3️⃣ 启动前端
-
-```bash
-# 进入前端目录
+```powershell
 cd frontend
+npm ci
+npm run build
 
-# 安装依赖
-npm install
-
-# 启动开发服务器
-npm run dev
+cd ..\backend
+.\mvnw.cmd test
+.\mvnw.cmd package
 ```
 
-前端将在 **http://localhost:5173** 启动
+后端产物为 `backend/target/backend-0.0.1-SNAPSHOT.jar`，前端产物位于 `frontend/dist/`。
 
-### 4️⃣ 访问系统
+## Docker
 
-打开浏览器访问：**http://localhost:5173**
+当前 Compose 只启动后端和前端，数据库使用宿主机上的 MySQL。完整步骤见 [README-Docker.md](README-Docker.md)。
 
-**测试账号**：
+## 账号安全
 
-管理员账号：
-- 用户名：`admin`
-- 密码：`123456`
+- 管理员创建或重置账号时必须设置 8–128 位临时密码。
+- 新管理员首次登录后必须修改临时密码。
+- 新学生默认密码由导入或管理流程设置；使用默认密码登录时只能只读浏览，修改密码后才能提交数据。
+- 不要在公开仓库、截图或部署文档中记录真实账号和密码。
 
-学生账号：
-- 学号：`20240001`
-- 密码：`123456`
+## 验证
 
-**注意**：系统包含100个测试学生数据（学号：20240001-20240100）
+项目提交前应通过：
 
-## 📦 构建部署
-
-### 前端构建
-```bash
+```powershell
 cd frontend
 npm run build
-```
-构建产物在 `frontend/dist` 目录
 
-### 后端打包
-```bash
-cd backend
-mvn clean package
-```
-JAR包在 `backend/target` 目录
-
-### 生产环境部署
-```bash
-# 后端
-java -jar backend/target/bwxw-0.0.1-SNAPSHOT.jar
-
-# 前端（需配置Nginx）
-# 将 frontend/dist 目录部署到Web服务器
+cd ..\backend
+.\mvnw.cmd test
 ```
 
-## 🎨 界面特色
+GitHub Actions 会在推送和 Pull Request 时执行相同检查。
 
-### 登录页面
-- 🎨 现代化蓝色渐变背景
-- ✨ 流畅的动画效果（背景渐变、浮动圆圈、卡片入场）
-- 📱 完全响应式设计
-- 🔐 支持学号/用户名双模式登录
+## 许可证
 
-### 管理员端
-- 📊 数据统计仪表盘
-- 👥 学生管理（支持批量入住、退宿、分班）
-- 🏢 宿舍楼管理
-- 🏠 房间分配和管理
-- 🔧 报修处理
-- 📢 公告发布
-- 📝 请假审批
+本项目使用 [MIT License](LICENSE)。
 
-### 学生端
-- 🏠 个人宿舍信息
-- 👤 个人资料管理
-- 🔧 在线报修
-- 📢 查看公告
-- 📝 请假申请
-- 👥 查看室友信息
+## 联系方式
 
-## 🔧 开发指南
-
-### 后端开发
-1. 在 `entity` 包下创建实体类
-2. 在 `repository` 包下创建数据访问接口
-3. 在 `service` 包下编写业务逻辑
-4. 在 `controller` 包下创建API接口
-
-### 前端开发
-1. 在 `src/views` 下创建页面组件
-2. 在 `src/router/index.js` 中配置路由
-3. 使用 `src/utils/request.js` 发起API请求
-4. 遵循Vue 3 Composition API规范
-
-## 📝 核心功能
-
-### 认证系统
-- UUID Token 认证
-- 双端权限控制（管理员/学生）
-- 自动token刷新
-- 安全的密码存储
-
-### 学生管理
-- 学生信息CRUD
-- 批量导入/导出
-- 批量入住/退宿
-- 批量分班操作
-- 智能宿舍分配
-
-### 宿舍管理
-- 楼栋管理（男/女生宿舍）
-- 房间管理
-- 入住状态跟踪
-- 床位统计
-
-### 报修管理
-- 在线报修申请
-- 报修类型分类
-- 紧急程度标记
-- 处理进度跟踪
-
-### 公告系统
-- 公告发布
-- 优先级设置
-- 目标群体选择
-- 公告类型分类
-
-### 请假管理
-- 请假申请
-- 请假类型分类
-- 审批流程
-- 状态跟踪
-
-## 🤝 贡献指南
-
-1. Fork 本仓库
-2. 创建特性分支 (`git checkout -b feature/AmazingFeature`)
-3. 提交更改 (`git commit -m 'Add some AmazingFeature'`)
-4. 推送到分支 (`git push origin feature/AmazingFeature`)
-5. 开启 Pull Request
-
-## 📄 许可证
-
-本项目采用 MIT 许可证
-
-## 👨‍💻 作者
-
-智能宿舍管理系统开发团队
-
----
-
-## ⚙️ 系统配置
-
-### 日志配置
-生产环境已配置简洁日志输出，只显示重要信息。
-
-### 跨域配置
-已配置CORS，支持前后端分离开发。
-
-### 文件上传
-- 最大文件大小：2MB
-- 上传目录：`uploads/`
-
----
-
-## 📌 注意事项
-
-- ✅ 首次运行需要确保MySQL服务已启动
-- ✅ 数据库表会自动创建（JPA自动建表）
-- ✅ 开发环境下前端会自动代理API请求到后端
-- ✅ 生产环境需要配置Nginx进行反向代理
-- ✅ 系统已包含完整的测试数据
-- ✅ 所有密码均为明文存储（开发/演示用途）
-
-## 🎯 项目状态
-
-✅ **项目已完成，可直接使用**
-
-- 后端：完整的RESTful API
-- 前端：现代化响应式界面
-- 数据库：完整的测试数据
-- 认证：UUID Token认证系统
-- 功能：所有核心功能已实现
-
-## 📞 技术支持
-
-如有问题，请联系：hewen2797950552@gmail.com
+技术支持：<hewen2797950552@gmail.com>

@@ -30,6 +30,7 @@ export interface AdminRequest {
   username: string
   phone: string
   adminType: AdminType
+  password?: string
 }
 
 /**
@@ -57,7 +58,7 @@ export const adminApi = {
   },
 
   // 重置管理员密码
-  resetPassword: (id: number) => {
-    return request.put<any, void>(`/users/admins/${id}/reset-password`)
+  resetPassword: (id: number, password: string) => {
+    return request.put<any, void>(`/users/admins/${id}/reset-password`, { password })
   }
 }

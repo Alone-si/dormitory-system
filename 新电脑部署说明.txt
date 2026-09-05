@@ -1,98 +1,12 @@
-========================================
 智能宿舍管理系统 - 新电脑部署说明
-========================================
 
-📋 需要的文件：
-1. backend.zip - 后端源码
-2. frontend.zip - 前端源码
-3. alone_backup.sql - 数据库备份
+环境要求：Java 17、Node.js 24、MySQL 8、Git。
 
-========================================
-🖥️ 第一步：安装环境
-========================================
+1. 克隆 GitHub 仓库。
+2. 创建 MySQL 数据库 alone。
+3. 复制 backend/config/application-local.example.properties 为 application-local.properties，并填写本机数据库密码。
+4. 在 backend 目录运行 .\mvnw.cmd spring-boot:run。
+5. 在 frontend 目录运行 npm ci 和 npm run dev。
+6. 浏览器访问 http://localhost:5173。
 
-1. 安装 JDK 17
-   下载：https://adoptium.net/
-   验证：java -version
-
-2. 安装 Node.js 18+
-   下载：https://nodejs.org/
-   验证：node -v
-
-3. 安装 MySQL 8.0
-   下载：https://dev.mysql.com/downloads/mysql/
-   验证：mysql --version
-
-========================================
-🗄️ 第二步：恢复数据库
-========================================
-
-1. 启动 MySQL 服务
-
-2. 创建数据库：
-   mysql -u root -p
-   CREATE DATABASE alone CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-   exit
-
-3. 导入数据：
-   mysql -u root -p alone < alone_backup.sql
-
-========================================
-⚙️ 第三步：配置后端
-========================================
-
-1. 解压 backend.zip
-
-2. 复制配置模板：
-   backend/config/application-local.example.properties
-   改名为：application-local.properties
-   
-   修改这一行（改成新电脑的MySQL密码）：
-   spring.datasource.password=你的新密码
-
-========================================
-🚀 第四步：启动项目
-========================================
-
-1. 启动后端（打开终端1）：
-   cd backend
-   .\mvnw.cmd spring-boot:run
-   
-   看到 "Started BwxwApplication" 说明启动成功
-
-2. 启动前端（打开终端2）：
-   cd frontend
-   npm install
-   npm run dev
-   
-   看到 "Local: http://localhost:5173/" 说明启动成功
-
-3. 访问系统：
-   打开浏览器访问：http://localhost:5173
-   
-   测试账号：
-   - 管理员：admin / 123456
-   - 学生：20240001 / 123456
-
-========================================
-❓ 常见问题
-========================================
-
-Q: 后端启动失败 - 端口被占用
-A: 修改 application.properties 中的 server.port=8081
-
-Q: 数据库连接失败
-A: 检查 MySQL 是否启动，密码是否正确
-
-Q: 前端无法访问后端
-A: 确保后端已启动，访问 http://localhost:8080 测试
-
-Q: npm install 很慢
-A: 使用淘宝镜像：
-   npm config set registry https://registry.npmmirror.com
-
-========================================
-✅ 部署完成
-========================================
-
-如果能登录系统并看到数据，说明部署成功！
+空数据库的首个管理员需要通过环境变量创建，项目不会提供公开的默认管理员密码。详细步骤见 README.md。

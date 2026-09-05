@@ -12,4 +12,5 @@ public class AdminRequest {
     private String username;    // 用户名（登录账号）
     private String phone;       // 电话号码
     private User.AdminType adminType; // 管理员类型
+    private String password;    // 创建或重置账号时使用的临时密码
 }

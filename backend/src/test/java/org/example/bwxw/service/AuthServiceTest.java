@@ -16,6 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.never;
 
 @ExtendWith(MockitoExtension.class)
 class AuthServiceTest {
@@ -74,7 +75,7 @@ class AuthServiceTest {
     }
 
     @Test
-    void doesNotForceAdminToChangeDefaultPassword() {
+    void preservesAdminPasswordChangeRequirement() {
         User user = new User();
         user.setId(1L);
         user.setUsername("admin");
@@ -89,8 +90,8 @@ class AuthServiceTest {
 
         authService.login(request);
 
-        assertEquals(false, user.getMustChangePassword());
-        verify(userRepository).save(user);
+        assertEquals(true, user.getMustChangePassword());
+        verify(userRepository, never()).save(user);
     }
 
     @Test

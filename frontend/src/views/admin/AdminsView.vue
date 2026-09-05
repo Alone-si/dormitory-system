@@ -116,10 +116,10 @@
             超级管理员可管理其他管理员，普通管理员不可
           </div>
         </el-form-item>
-        <el-form-item v-if="dialogMode === 'add'" label="初始密码">
-          <el-input value="123456" disabled />
+        <el-form-item v-if="dialogMode === 'add'" label="初始密码" prop="password">
+          <el-input v-model="formData.password" type="password" show-password placeholder="请输入8至128位临时密码" />
           <div style="color: #6b7280; font-size: 12px; margin-top: 4px;">
-            默认密码为 123456，创建后可重置
+            新管理员首次登录后必须修改密码
           </div>
         </el-form-item>
       </el-form>

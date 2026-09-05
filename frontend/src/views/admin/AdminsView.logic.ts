@@ -19,7 +19,8 @@ const formData = ref<AdminRequest>({
   name: '',
   username: '',
   phone: '',
-  adminType: AdminType.NORMAL_ADMIN
+  adminType: AdminType.NORMAL_ADMIN,
+  password: ''
 })
 
 // 表单验证规则
@@ -39,6 +40,16 @@ const formRules: FormRules = {
   ],
   adminType: [
     { required: true, message: '请选择管理员类型', trigger: 'change' }
+  ],
+  password: [
+    {
+      validator: (_rule, value, callback) => {
+        if (dialogMode.value === 'edit') callback()
+        else if (!value || value.length < 8 || value.length > 128) callback(new Error('初始密码长度必须为8至128位'))
+        else callback()
+      },
+      trigger: 'blur'
+    }
   ]
 }
 
@@ -84,7 +95,8 @@ const showAddDialog = () => {
     name: '',
     username: '',
     phone: '',
-    adminType: AdminType.NORMAL_ADMIN
+    adminType: AdminType.NORMAL_ADMIN,
+    password: ''
   }
   dialogVisible.value = true
 }
@@ -129,18 +141,21 @@ const handleSubmit = async () => {
 // 重置密码
 const handleResetPassword = async (admin: Admin) => {
   try {
-    await ElMessageBox.confirm(
-      `确定要重置管理员 "${admin.name}" 的密码吗？密码将重置为 123456`,
+    const { value } = await ElMessageBox.prompt(
+      `为管理员“${admin.name}”设置临时密码。登录后必须立即修改。`,
       '重置密码',
       {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
-        type: 'warning'
+        inputType: 'password',
+        inputPlaceholder: '请输入8至128位临时密码',
+        inputValidator: (password) =>
+          password.length >= 8 && password.length <= 128 ? true : '临时密码长度必须为8至128位'
       }
     )
     
-    await adminApi.resetPassword(admin.id)
-    ElMessage.success('密码重置成功，新密码为：123456')
+    await adminApi.resetPassword(admin.id, value)
+    ElMessage.success('密码已重置，该管理员下次登录后必须修改密码')
   } catch (error: any) {
     if (error !== 'cancel') {
       ElMessage.error(error.message || '重置密码失败')

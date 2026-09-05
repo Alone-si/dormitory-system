@@ -70,14 +70,16 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter {
 
                         SecurityContextHolder.getContext().setAuthentication(authentication);
 
-                        if (user.getRole() == User.UserRole.STUDENT
-                                && Boolean.TRUE.equals(user.getMustChangePassword())
-                                && !isReadOnlyRequest(request)) {
+                        if (Boolean.TRUE.equals(user.getMustChangePassword())
+                                && !isAllowedBeforePasswordChange(request, user)) {
                             response.setStatus(HttpServletResponse.SC_FORBIDDEN);
                             response.setCharacterEncoding("UTF-8");
                             response.setContentType("application/json");
+                            String message = user.getRole() == User.UserRole.STUDENT
+                                    ? "当前为只读访客模式，修改密码后即可操作"
+                                    : "请先修改初始密码";
                             response.getWriter().write(
-                                    "{\"code\":403,\"message\":\"当前为只读访客模式，修改密码后即可操作\",\"data\":null}"
+                                    "{\"code\":403,\"message\":\"" + message + "\",\"data\":null}"
                             );
                             return;
                         }
@@ -90,13 +92,16 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter {
         filterChain.doFilter(request, response);
     }
 
-    private boolean isReadOnlyRequest(HttpServletRequest request) {
-        String method = request.getMethod();
-        if ("GET".equals(method) || "HEAD".equals(method) || "OPTIONS".equals(method)) {
+    private boolean isAllowedBeforePasswordChange(HttpServletRequest request, User user) {
+        String path = request.getRequestURI();
+        if (path.startsWith("/api/auth/") || "/api/users/password".equals(path)) {
             return true;
         }
-        String path = request.getRequestURI();
-        return path.startsWith("/api/auth/") || "/api/users/password".equals(path);
+        if (user.getRole() != User.UserRole.STUDENT) {
+            return false;
+        }
+        String method = request.getMethod();
+        return "GET".equals(method) || "HEAD".equals(method) || "OPTIONS".equals(method);
     }
 
     private static class TokenEntry {

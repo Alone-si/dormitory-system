@@ -143,7 +143,7 @@
       "dot": "emerald",
       "title": "backend/src/main · 业务与数据",
       "items": [
-        "Java 17 / Spring Boot 4.0.0；主包 org.example.bwxw",
+        "Java 17 / Spring Boot 4.0.8；主包 org.example.bwxw",
         "controller / service / repository / entity / dto",
         "表：users、buildings、rooms、repairs、leaves、notices、system_configs"
       ]

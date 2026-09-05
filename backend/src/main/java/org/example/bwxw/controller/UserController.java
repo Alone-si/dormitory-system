@@ -435,6 +435,11 @@ public class UserController {
             if (request.getAdminType() == null) {
                 return ApiResponse.error("请选择管理员类型");
             }
+            if (request.getPassword() == null
+                    || request.getPassword().length() < 8
+                    || request.getPassword().length() > 128) {
+                return ApiResponse.error("初始密码长度必须为8至128位");
+            }
             
             // 检查用户名是否已存在
             if (userRepository.findByUsername(request.getUsername()).isPresent()) {
@@ -446,8 +451,8 @@ public class UserController {
             admin.setName(request.getName().trim());
             admin.setUsername(request.getUsername().trim());
             admin.setPhone(request.getPhone().trim());
-            admin.setPassword(passwordEncoder.encode("123456"));
-            admin.setMustChangePassword(false);
+            admin.setPassword(passwordEncoder.encode(request.getPassword()));
+            admin.setMustChangePassword(true);
             admin.setRole(User.UserRole.ADMIN);
             admin.setAdminType(request.getAdminType());
             admin.setStatus("ACTIVE");
@@ -559,11 +564,12 @@ public class UserController {
     }
     
     /**
-     * 重置管理员密码为默认密码123456
+     * 重置管理员临时密码，并要求下次登录后修改
      */
     @PreAuthorize("hasRole('SUPER_ADMIN')")
     @PutMapping("/admins/{id}/reset-password")
-    public ApiResponse<Void> resetAdminPassword(@PathVariable Long id) {
+    public ApiResponse<Void> resetAdminPassword(@PathVariable Long id,
+                                                @RequestBody Map<String, String> passwordData) {
         try {
             // 权限校验：只有超级管理员才能重置密码
             User currentUser = getCurrentAuthenticatedUser();
@@ -578,12 +584,17 @@ public class UserController {
             if (admin.getRole() != User.UserRole.ADMIN) {
                 return ApiResponse.error("该用户不是管理员");
             }
+
+            String password = passwordData.get("password");
+            if (password == null || password.length() < 8 || password.length() > 128) {
+                return ApiResponse.error("临时密码长度必须为8至128位");
+            }
             
-            admin.setPassword(passwordEncoder.encode("123456"));
-            admin.setMustChangePassword(false);
+            admin.setPassword(passwordEncoder.encode(password));
+            admin.setMustChangePassword(true);
             userRepository.save(admin);
             
-            return ApiResponse.success("密码重置成功，新密码为：123456", null);
+            return ApiResponse.success("密码已重置，该管理员下次登录后必须修改密码", null);
         } catch (Exception e) {
             return ApiResponse.error("重置密码失败: " + e.getMessage());
         }

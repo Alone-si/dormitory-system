@@ -27,7 +27,7 @@ REM 检查Node.js
 node -v >nul 2>&1
 if %ERRORLEVEL% NEQ 0 (
     echo ❌ 错误：未检测到Node.js环境！
-    echo    请安装 Node.js 18+
+    echo    请安装 Node.js 24
     echo    下载地址：https://nodejs.org/
     echo.
     pause
@@ -74,7 +74,7 @@ if not exist "frontend\node_modules" (
     echo    这可能需要几分钟时间，请耐心等待
     echo.
     cd frontend
-    call npm install
+    call npm ci
     if %ERRORLEVEL% NEQ 0 (
         echo ❌ 前端依赖安装失败！
         echo    请检查网络连接或尝试使用淘宝镜像：
@@ -119,10 +119,6 @@ echo.
 echo 📌 访问地址：
 echo    前端：http://localhost:5173
 echo    后端：http://localhost:8080
-echo.
-echo 📌 测试账号：
-echo    管理员：admin / 123456
-echo    学生：20240001 / 123456
 echo.
 echo 📌 注意事项：
 echo    1. 请勿关闭弹出的两个命令行窗口

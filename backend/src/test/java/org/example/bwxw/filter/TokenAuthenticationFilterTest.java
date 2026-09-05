@@ -112,6 +112,31 @@ class TokenAuthenticationFilterTest {
         }
     }
 
+    @Test
+    void blocksAdminRequestsUntilInitialPasswordIsChanged() throws Exception {
+        String token = "admin-password-change-token";
+        User user = new User();
+        user.setUsername("admin");
+        user.setRole(User.UserRole.ADMIN);
+        user.setMustChangePassword(true);
+        TokenAuthenticationFilter.storeToken(token, user.getUsername());
+        when(userRepository.findByStudentId(user.getUsername())).thenReturn(Optional.empty());
+        when(userRepository.findByUsername(user.getUsername())).thenReturn(Optional.of(user));
+
+        MockHttpServletRequest request = new MockHttpServletRequest("GET", "/api/dashboard/stats");
+        request.addHeader("Authorization", "Bearer " + token);
+        MockHttpServletResponse response = new MockHttpServletResponse();
+
+        try {
+            filter.doFilter(request, response, filterChain);
+            assertEquals(403, response.getStatus());
+            assertTrue(response.getContentAsString().contains("请先修改初始密码"));
+            verify(filterChain, never()).doFilter(request, response);
+        } finally {
+            TokenAuthenticationFilter.removeToken(token);
+        }
+    }
+
     private User forcedUser() {
         User user = new User();
         user.setStudentId("20240001");
