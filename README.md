@@ -297,4 +297,4 @@ java -jar backend/target/bwxw-0.0.1-SNAPSHOT.jar
 
 ## 📞 技术支持
 
-如有问题，请联系：279750552
+如有问题，请联系：hewen2797950552@gmail.com
