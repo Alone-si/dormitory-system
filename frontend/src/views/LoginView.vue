@@ -105,5 +105,3 @@ const {
   User
 } = useLoginView()
 </script>
-
-<style scoped src="./LoginView.css"></style>

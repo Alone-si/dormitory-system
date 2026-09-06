@@ -82,6 +82,3 @@ const {
   userStore
 } = useAdminLayoutView()
 </script>
-
-<style scoped src="./AdminLayout.css"></style>
-

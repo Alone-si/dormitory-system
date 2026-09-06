@@ -132,5 +132,3 @@ const logout = async () => {
   }
 }
 </script>
-
-<style scoped src="./ChangePasswordView.css"></style>

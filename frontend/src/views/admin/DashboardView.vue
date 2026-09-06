@@ -1,7 +1,7 @@
 <template>
   <div class="dashboard-container">
     <div class="dashboard-header">
-      <span class="dashboard-eyebrow">TODAY AT A GLANCE</span>
+      <span class="dashboard-eyebrow">今日概览</span>
       <h1>欢迎回来，{{ userStore.userInfo?.name }}</h1>
       <p>需要关注的信息已经整理在这里。</p>
     </div>
@@ -64,7 +64,7 @@
     
     <!-- 快捷操作 -->
     <div class="quick-actions">
-      <div class="panel-heading"><span>SHORTCUTS</span><h3>快捷操作</h3></div>
+      <div class="panel-heading"><span>常用入口</span><h3>快捷操作</h3></div>
       <div class="action-grid">
         <button class="quick-action-btn students-btn" @click="router.push('/admin/students')">
           <Users :size="20" />

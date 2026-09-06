@@ -83,5 +83,3 @@ const {
   userStore
 } = useStudentLayoutView()
 </script>
-
-<style scoped src="./StudentLayout.css"></style>
