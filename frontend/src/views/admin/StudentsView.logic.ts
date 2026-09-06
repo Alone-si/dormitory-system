@@ -167,8 +167,11 @@ const batchCheckIn = async () => {
       }
     )
     
-    // 开始智能分配
-    await performSmartRoomAssignment(studentsWithoutRoom)
+    const result = await performSmartRoomAssignment(studentsWithoutRoom)
+    if (result.successCount > 0) {
+      await loadStudents()
+      exitSelectionMode()
+    }
     
   } catch (error) {
     // 用户取消

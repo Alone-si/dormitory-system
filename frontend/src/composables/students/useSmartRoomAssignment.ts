@@ -199,7 +199,7 @@ function createAssignmentResultHtml(successCount: number, failCount: number, res
   return `<div class="apple-assignment-result">${statsHtml}${detailsHtml}</div>`
 }
 
-export async function performSmartRoomAssignment(students: StudentLike[], onSuccess: () => void) {
+export async function performSmartRoomAssignment(students: StudentLike[]) {
   try {
     ElMessage.info('正在智能分配宿舍，请稍候...')
 
@@ -234,18 +234,16 @@ export async function performSmartRoomAssignment(students: StudentLike[], onSucc
     }
 
     showAssignmentResults(successCount, failCount, assignmentResults)
-
-    if (successCount > 0) {
-      onSuccess()
-    }
+    return { successCount, failCount }
   } catch (error) {
     console.error('智能分配失败:', error)
     ElMessage.error('智能分配过程中出现错误')
+    return { successCount: 0, failCount: students.length }
   }
 }
 
 export function showAssignmentResults(successCount: number, failCount: number, results: string[]) {
-  ElMessageBox({
+  void ElMessageBox({
     title: '🎉 智能分配完成',
     message: createAssignmentResultHtml(successCount, failCount, results),
     showCancelButton: false,
@@ -253,7 +251,7 @@ export function showAssignmentResults(successCount: number, failCount: number, r
     customClass: 'apple-result-dialog',
     dangerouslyUseHTMLString: true,
     center: true
-  })
+  }).catch(() => {})
 
   if (successCount > 0) {
     ElMessage.success(
