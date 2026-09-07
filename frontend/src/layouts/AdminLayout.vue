@@ -2,9 +2,6 @@
   <div class="admin-layout">
     <aside class="sidebar">
       <div class="sidebar-titlebar">
-        <div class="window-controls" aria-hidden="true">
-          <span></span><span></span><span></span>
-        </div>
         <div class="logo-section">
           <div class="brand-mark"><Building2 :size="18" /></div>
           <div class="brand-copy">

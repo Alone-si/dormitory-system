@@ -164,13 +164,8 @@ html body :is(.admin-layout, .student-layout) { height: 100dvh; display: flex; g
 html body :is(.admin-layout .sidebar, .student-layout .student-sidebar) { display: flex; flex-direction: column; overflow: hidden; border: 1px solid rgba(30, 32, 39, .12); border-right: 0; border-radius: 18px 0 0 18px; background: rgba(235, 236, 240, .92); box-shadow: -10px 24px 54px rgba(28, 31, 40, .1); backdrop-filter: blur(30px) saturate(135%); }
 html body .admin-layout .sidebar { width: 238px; flex: 0 0 238px; }
 html body .student-layout .student-sidebar { width: 226px; flex: 0 0 226px; }
-html body :is(.sidebar-titlebar, .student-sidebar-titlebar) { min-height: 98px; padding: 17px 16px 13px; border-bottom: 1px solid rgba(30, 32, 39, .075); }
-html body .window-controls { height: 14px; display: flex; align-items: center; gap: 8px; }
-html body .window-controls span { width: 11px; height: 11px; border-radius: 50%; box-shadow: 0 0 0 .5px rgba(0, 0, 0, .15) inset; }
-html body .window-controls span:nth-child(1) { background: #ff5f57; }
-html body .window-controls span:nth-child(2) { background: #febc2e; }
-html body .window-controls span:nth-child(3) { background: #28c840; }
-html body :is(.admin-layout .logo-section, .student-layout .student-brand) { display: flex; align-items: center; gap: 9px; margin-top: 15px; padding: 0; color: var(--ui-text); border: 0; }
+html body :is(.sidebar-titlebar, .student-sidebar-titlebar) { min-height: 70px; padding: 17px 16px 13px; border-bottom: 1px solid rgba(30, 32, 39, .075); }
+html body :is(.admin-layout .logo-section, .student-layout .student-brand) { display: flex; align-items: center; gap: 9px; margin-top: 0; padding: 0; color: var(--ui-text); border: 0; }
 html body :is(.admin-layout .brand-mark, .student-layout .logo-wrapper) { width: 29px; height: 29px; display: grid; place-items: center; flex: 0 0 29px; border-radius: 8px; color: #fff; background: var(--ui-accent); box-shadow: none; }
 html body :is(.admin-layout .brand-copy h2, .student-layout .main-title) { margin: 0; color: var(--ui-text); font-size: 13px; font-weight: 680; line-height: 1.2; }
 html body :is(.admin-layout .brand-copy span, .student-layout .sub-title) { margin: 1px 0 0; color: var(--ui-text-3); font-size: 9px; line-height: 1.2; }

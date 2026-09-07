@@ -2,9 +2,6 @@
   <div class="student-layout">
     <aside class="student-sidebar">
       <div class="student-sidebar-titlebar">
-        <div class="window-controls" aria-hidden="true">
-          <span></span><span></span><span></span>
-        </div>
         <div class="student-brand">
           <div class="logo-wrapper">
             <Building2 :size="18" class="logo-icon" />
