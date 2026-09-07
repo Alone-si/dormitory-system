@@ -52,6 +52,30 @@ class TokenAuthenticationFilterTest {
     }
 
     @Test
+    void rejectsUnknownTokenAsUnauthorized() throws Exception {
+        MockHttpServletRequest request = new MockHttpServletRequest("GET", "/api/dashboard/stats");
+        request.addHeader("Authorization", "Bearer unknown-token");
+        MockHttpServletResponse response = new MockHttpServletResponse();
+
+        filter.doFilter(request, response, filterChain);
+
+        assertEquals(401, response.getStatus());
+        verify(filterChain, never()).doFilter(request, response);
+    }
+
+    @Test
+    void permitsLoginRequestWithStaleToken() throws Exception {
+        MockHttpServletRequest request = new MockHttpServletRequest("POST", "/api/auth/login");
+        request.addHeader("Authorization", "Bearer stale-token");
+        MockHttpServletResponse response = new MockHttpServletResponse();
+
+        filter.doFilter(request, response, filterChain);
+
+        assertEquals(200, response.getStatus());
+        verify(filterChain).doFilter(request, response);
+    }
+
+    @Test
     void blocksWritesInStudentVisitorMode() throws Exception {
         String token = "student-write-token";
         User user = forcedUser();

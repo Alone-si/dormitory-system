@@ -47,49 +47,61 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter {
             TokenEntry entry = tokenStore.get(token);
             if (entry == null || entry.isExpired()) {
                 tokenStore.remove(token);
+                if (!request.getRequestURI().startsWith("/api/auth/")) {
+                    rejectExpiredLogin(response);
+                    return;
+                }
             } else {
-                try {
-                    String userIdentifier = entry.getUserIdentifier();
-                    User user = userRepository.findByStudentId(userIdentifier)
-                            .or(() -> userRepository.findByUsername(userIdentifier))
-                            .orElse(null);
+                String userIdentifier = entry.getUserIdentifier();
+                User user = userRepository.findByStudentId(userIdentifier)
+                        .or(() -> userRepository.findByUsername(userIdentifier))
+                        .orElse(null);
 
-                    if (user != null) {
-                        List<SimpleGrantedAuthority> authorities = new ArrayList<>();
-                        authorities.add(new SimpleGrantedAuthority("ROLE_" + user.getRole().name()));
-                        if (user.getAdminType() == User.AdminType.SUPER_ADMIN) {
-                            authorities.add(new SimpleGrantedAuthority("ROLE_SUPER_ADMIN"));
-                        }
+                if (user == null) {
+                    tokenStore.remove(token);
+                    rejectExpiredLogin(response);
+                    return;
+                }
 
-                        String principal = user.getStudentId() != null && !user.getStudentId().isEmpty()
-                                ? user.getStudentId()
-                                : user.getUsername();
+                List<SimpleGrantedAuthority> authorities = new ArrayList<>();
+                authorities.add(new SimpleGrantedAuthority("ROLE_" + user.getRole().name()));
+                if (user.getAdminType() == User.AdminType.SUPER_ADMIN) {
+                    authorities.add(new SimpleGrantedAuthority("ROLE_SUPER_ADMIN"));
+                }
 
-                        UsernamePasswordAuthenticationToken authentication =
-                            new UsernamePasswordAuthenticationToken(principal, null, authorities);
+                String principal = user.getStudentId() != null && !user.getStudentId().isEmpty()
+                        ? user.getStudentId()
+                        : user.getUsername();
 
-                        SecurityContextHolder.getContext().setAuthentication(authentication);
+                UsernamePasswordAuthenticationToken authentication =
+                    new UsernamePasswordAuthenticationToken(principal, null, authorities);
 
-                        if (Boolean.TRUE.equals(user.getMustChangePassword())
-                                && !isAllowedBeforePasswordChange(request, user)) {
-                            response.setStatus(HttpServletResponse.SC_FORBIDDEN);
-                            response.setCharacterEncoding("UTF-8");
-                            response.setContentType("application/json");
-                            String message = user.getRole() == User.UserRole.STUDENT
-                                    ? "当前为只读访客模式，修改密码后即可操作"
-                                    : "请先修改初始密码";
-                            response.getWriter().write(
-                                    "{\"code\":403,\"message\":\"" + message + "\",\"data\":null}"
-                            );
-                            return;
-                        }
-                    }
-                } catch (Exception ignored) {
+                SecurityContextHolder.getContext().setAuthentication(authentication);
+
+                if (Boolean.TRUE.equals(user.getMustChangePassword())
+                        && !isAllowedBeforePasswordChange(request, user)) {
+                    response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+                    response.setCharacterEncoding("UTF-8");
+                    response.setContentType("application/json");
+                    String message = user.getRole() == User.UserRole.STUDENT
+                            ? "当前为只读访客模式，修改密码后即可操作"
+                            : "请先修改初始密码";
+                    response.getWriter().write(
+                            "{\"code\":403,\"message\":\"" + message + "\",\"data\":null}"
+                    );
+                    return;
                 }
             }
         }
 
         filterChain.doFilter(request, response);
+    }
+
+    private void rejectExpiredLogin(HttpServletResponse response) throws IOException {
+        response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType("application/json");
+        response.getWriter().write("{\"code\":401,\"message\":\"登录状态已失效，请重新登录\",\"data\":null}");
     }
 
     private boolean isAllowedBeforePasswordChange(HttpServletRequest request, User user) {
