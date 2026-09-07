@@ -32,13 +32,14 @@ SmartDormSystem/
 │     ├─ api/            API 调用
 │     ├─ stores/         登录状态
 │     └─ router/         路由与权限守卫
-├─ scripts/              数据导入、导出和打包脚本
 └─ outputs/architecture/ 交互式项目架构图
 ```
 
 ## 本地启动
 
 需要安装 Java 17、Node.js 24 和 MySQL 8。
+
+日常使用可直接双击根目录的 `启动项目-开发模式.bat`，停止服务时运行 `停止项目-开发模式.bat`。首次配置或需要排查问题时，也可以按下面的命令手动启动。
 
 1. 创建数据库：
 
